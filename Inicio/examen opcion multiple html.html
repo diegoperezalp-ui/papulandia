@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Evaluación - When y While en Pasado Continuo</title>
+<link rel="stylesheet" href="css formularios o examenes.css"> 
+<style>
+    .feedback {
+        margin-top: 5px;
+        padding: 10px;
+        border-radius: 5px;
+        font-size: 0.9em;
+        line-height: 1.4;
+    }
+    .feedback.correct {
+        background-color: #e8f5e9; 
+        color: #1b5e20;
+    }
+    .feedback.incorrect {
+        background-color: #ffebee;
+        color: #b71c1c; 
+    }
+    .correct-answer-text {
+        font-weight: bold;
+    }
+    .question.incorrect-answer-border .feedback.incorrect {
+        border: 1px solid #b71c1c;
+    }
+    .question input[type="text"] {
+        width: 90%;
+        padding: 8px;
+        margin-top: 5px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+</style>
+</head>
+<body>
+    <a href="index.html" style="display: block; margin: 20px; text-decoration: none; color: #0D47A1;">&larr; Volver al Inicio</a>
+<div class="container">
+<h1>Usos de <em>When</em> y <em>While</em> en Pasado Continuo</h1>
+<p>Responde las siguientes preguntas (escribe **when** o **while**) y haz clic en "Verificar Respuestas".</p>
+
+<form id="quizForm">
+    <div class="question" data-q="q1">
+        <p>1. I was cooking dinner <span class="placeholder">_____</span> the phone rang.</p>
+        <input type="text" name="q1" placeholder="Escribe aquí tu respuesta">
+        <div id="feedback-q1" class="feedback"></div>
+    </div>
+
+    <div class="question" data-q="q2">
+        <p>2. <span class="placeholder">_____</span> I was studying, my friends were playing football.</p>
+        <input type="text" name="q2" placeholder="Escribe aquí tu respuesta">
+        <div id="feedback-q2" class="feedback"></div>
+    </div>
+
+    <div class="question" data-q="q3">
+        <p>3. I was sleeping <span class="placeholder">_____</span> my mom arrived.</p>
+        <input type="text" name="q3" placeholder="Escribe aquí tu respuesta">
+        <div id="feedback-q3" class="feedback"></div>
+    </div>
+
+    <div class="question" data-q="q4">
+        <p>4. ¿Cuál de las siguientes frases es correcta? Escribe **solo** la frase correcta.</p>
+        <p style="font-style: italic; font-size: 0.9em;">(a) While I was watched TV, my brother came.<br>(b) While I was watching TV, my brother was doing homework.<br>(c) When I watching TV, my brother came.</p>
+        <input type="text" name="q4" placeholder="Escribe la frase correcta aquí">
+        <div id="feedback-q4" class="feedback"></div>
+    </div>
+
+    <div class="question" data-q="q5">
+        <p>5. When I was walking to school, it started to rain. → ¿Cuál es el uso de "when" en este contexto? (Escribe **a**, **b** o **c**)</p>
+        <p style="font-style: italic; font-size: 0.9em;">(a) Introduce una acción más larga.<br>(b) Introduce una acción más corta que interrumpe otra.<br>(c) Significa lo mismo que "while".</p>
+        <input type="text" name="q5" placeholder="Escribe a, b o c">
+        <div id="feedback-q5" class="feedback"></div>
+    </div>
+
+    <button type="button" onclick="checkAnswers()">Verificar Respuestas</button>
+</form>
+
+<div id="result"></div>
+</div>
+
+<script src="script_examen.js"></script>
+</body>
+</html>

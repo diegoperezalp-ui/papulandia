@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reflejos Gramaticales: El Disparador</title>
+    <link rel="stylesheet" href="mini juego supremo.css"> 
+</head>
+<body>
+    <div class="game-container">
+        <h1>Reflejos Gramaticales:Just Dog It</h1>
+        <p>Gana Disparos con tu gramática. ¡Usa los disparos para ganar puntos haciendo clic rápido!</p>
+        
+        <div id="stats-panel">
+            <h2>Puntuación: <span id="score">0</span></h2>
+            <h2>Vidas / Disparos: <span id="lives">3</span></h2>
+        </div>
+        
+        <div id="grammar-phase">
+            <h3>Fase 1: El Desafío Gramatical</h3>
+            <p id="question-text"></p>
+            <div id="options-container">
+                </div>
+            <div id="grammar-message" class="message-status"></div>
+        </div>
+
+        <div id="skill-phase" class="hidden">
+            <h3>Fase 2: ¡Dispara al Blanco!</h3>
+            <p id="skill-instruction">Presiona el botón de Disparo o espera a que el blanco aparezca.</p>
+            
+            <button class="button" id="trigger-btn">
+                Usar Disparo (<span id="trigger-cost">1</span>)
+            </button>
+            
+            <div id="game-board">
+                </div>
+            
+            <div id="skill-message" class="message-status"></div>
+        </div>
+        
+        <footer>
+            <button class="button reset-button" onclick="window.location.reload()">Reiniciar Juego</button>
+        </footer>
+    </div>
+    
+    <script src="mini juego supremo.js"></script>
+</body>
+</html>

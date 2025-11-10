@@ -1,0 +1,203 @@
+:root {
+    --color-primary-dark: #007bff;
+    --color-primary-light: #363cdd;
+    --color-accent-dark: hsl(271, 69%, 70%);
+    --color-accent-light: #ecc2f3;
+    --color-background: #F3F6FD;
+    --color-white: #FFFFFF;
+    --color-text-dark: #222222;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding-top: 60px;
+    color: var(--color-text-dark);
+    background-color: var(--color-background);
+    min-height: 100vh;
+}
+
+.header {
+    background-color: var(--color-primary-dark);
+    color: var(--color-white);
+    padding: 15px 5%;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 2000;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    width: fit-content;
+}
+
+.logo-name {
+    font-size: 1.8em;
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.dropdown-arrow {
+    transition: transform 0.3s ease;
+}
+
+.dropdown-arrow.open {
+    transform: rotate(180deg);
+}
+
+.dropdown-menu {
+    display: none;
+    position: fixed;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    background-color: var(--color-primary-light);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+    padding: 10px 0;
+    z-index: 1999;
+}
+
+.dropdown-menu.active {
+    display: flex;
+    flex-direction: column;
+}
+
+.dropdown-menu a {
+    color: var(--color-white);
+    padding: 12px 5%;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background-color 0.3s;
+}
+
+.dropdown-menu a:hover {
+    background-color: var(--color-accent-dark);
+}
+
+.contenido-principal {
+    width: 90%;
+    max-width: 1200px;
+    margin: 40px auto;
+    padding-top: 0;
+}
+
+.seccion-bienvenida {
+    text-align: center;
+    margin-bottom: 60px;
+    padding: 50px;
+    background-color: var(--color-white);
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    border-top: 6px solid var(--color-accent-dark);
+}
+
+.intro-text {
+    font-size: 1.1em;
+    color: #555;
+}
+
+.contenedor-apartados, .acerca-de {
+    margin-bottom: 60px;
+}
+
+.contenedor-apartados h2, .acerca-de h2 {
+    text-align: center;
+    color: var(--color-primary-dark);
+    margin-bottom: 30px;
+    border-bottom: 3px solid var(--color-accent-dark);
+    padding-bottom: 10px;
+}
+
+.apartado {
+    background-color: var(--color-white);
+    padding: 30px;
+    margin: 15px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    display: inline-block;
+    width: calc(50% - 30px);
+    box-sizing: border-box;
+    vertical-align: top;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-left: 5px solid var(--color-primary-light);
+}
+
+.apartado:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 700;
+    margin-top: 20px;
+    text-align: center;
+    transition: background-color 0.3s, transform 0.1s;
+    border: none;
+    text-transform: uppercase;
+}
+
+.btn-primario {
+    background-color: var(--color-primary-light);
+    color: var(--color-white);
+}
+
+.btn-primario:hover {
+    background-color: var(--color-primary-dark);
+}
+
+.btn-secundario {
+    background-color: var(--color-accent-dark);
+    color: var(--color-white);
+}
+
+.btn-secundario:hover {
+    background-color: #4A148C;
+}
+
+.footer {
+    background-color: var(--color-primary-dark);
+    color: var(--color-accent-light);
+    text-align: center;
+    padding: 20px 0;
+    font-size: 0.9em;
+}
+
+.footer a {
+    color: var(--color-accent-light);
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+.footer a:hover {
+    text-decoration: underline;
+}
+
+.reveal-element {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+
+.reveal-element.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+    .apartado {
+        width: 100%;
+        margin: 15px 0;
+    }
+    .dropdown-menu a {
+        padding: 10px 5%;
+    }
+}

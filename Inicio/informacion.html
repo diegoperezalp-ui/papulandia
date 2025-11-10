@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reglas Fundamentales: Past Continuous, When y While</title>
+    
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&display=swap');
+
+        :root {
+            --primary-blue-strong: #007bff;
+            --accent-purple-strong: #8A2BE2;
+            --background-light: #F0F8FF;
+            --card-bg: #ffffff;
+            --text-dark: #1e1e1e;
+            --text-secondary: #34495e;
+            --example-bg: #e6f0ff;
+        }
+
+        body { 
+            font-family: 'Quicksand', sans-serif; 
+            line-height: 1.6; 
+            margin: 0; 
+            padding: 0; 
+            background-color: var(--background-light); 
+            color: var(--text-dark); 
+        }
+        
+        /* ESTILO ACTUALIZADO: Botón "← Volver" Flotante */
+        .back-to-home {
+            position: fixed; /* Hace el botón flotante */
+            top: 20px; 
+            left: 20px; 
+            z-index: 5000; 
+            
+            /* Estilos visuales del botón */
+            display: inline-block; 
+            padding: 10px 15px;
+            text-decoration: none; 
+            color: var(--card-bg); 
+            background-color: var(--primary-blue-strong);
+            border-radius: 8px; 
+            font-weight: 600;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+            transition: background-color 0.3s, transform 0.2s;
+        }
+        .back-to-home:hover {
+            background-color: var(--accent-purple-strong);
+            transform: scale(1.05);
+        }
+
+        header {
+            text-align: center; 
+            padding: 40px 20px 30px 20px;
+            background-color: var(--accent-purple-strong);
+            color: var(--card-bg);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+            margin-bottom: 20px;
+            padding-top: 80px; /* Se añade espacio para los botones flotantes */
+        }
+        header h1 {
+            color: var(--card-bg); 
+            font-size: 2.5em;
+            margin: 0;
+        }
+        header p {
+            color: var(--background-light);
+            font-size: 1.1em;
+            margin-top: 5px;
+        }
+
+        main {
+            max-width: 900px; 
+            margin: 0 auto; 
+            padding: 20px;
+        }
+
+        hr {
+            border: none;
+            border-top: 2px dashed var(--accent-purple-strong);
+            margin: 30px 0;
+        }
+
+        section {
+            background-color: var(--card-bg); 
+            padding: 30px; 
+            border-radius: 12px; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            margin-bottom: 25px;
+            border-left: 6px solid var(--primary-blue-strong);
+        }
+        
+        section h2 {
+            color: var(--primary-blue-strong);
+            font-size: 2em;
+            font-weight: 700;
+            margin-top: 0;
+            margin-bottom: 15px;
+        }
+
+        section h3 {
+            color: var(--accent-purple-strong);
+            font-size: 1.3em;
+            font-weight: 600;
+            margin-top: 25px;
+        }
+        
+        section p {
+            font-size: 1.1em;
+            color: var(--text-dark);
+        }
+        
+        strong { 
+            color: var(--accent-purple-strong);
+            font-weight: 700;
+        }
+
+        .rule-box {
+            background-color: var(--example-bg); 
+            padding: 15px; 
+            border-radius: 8px;
+            border-left: 5px solid var(--primary-blue-strong);
+            font-weight: 600;
+            font-style: italic;
+            color: var(--text-secondary);
+            margin: 15px 0;
+        }
+        
+        .image-container {
+            text-align: center;
+            margin-top: 25px;
+            margin-bottom: 15px;
+        }
+
+        .image-container img {
+            display: inline-block;
+            width: 200px; 
+            height: 200px;
+            border-radius: 8px; 
+            object-fit: cover;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border: 3px solid var(--accent-purple-strong);
+        }
+
+        footer {
+            text-align: center; 
+            margin-top: 40px; 
+            padding: 20px 15px; 
+            background-color: var(--background-light); 
+        }
+        
+        .btn-footer {
+            display: inline-block;
+            background-color: var(--accent-purple-strong); 
+            color: var(--card-bg);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1em;
+            padding: 12px 25px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s, transform 0.2s;
+            margin-top: 10px;
+        }
+        .btn-footer:hover {
+            background-color: #6A0DAD;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Botón de Home Flotante */
+        .home-float-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            background-color: var(--primary-blue-strong);
+            color: var(--card-bg);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+            text-decoration: none;
+            font-size: 24px;
+            transition: background-color 0.3s, transform 0.2s;
+            z-index: 5000;
+        }
+
+        .home-float-btn:hover {
+            background-color: var(--accent-purple-strong);
+            transform: scale(1.1);
+        }
+
+        @media (max-width: 600px) {
+            header h1 {
+                font-size: 2em;
+            }
+            section h2 {
+                font-size: 1.5em;
+            }
+            header {
+                padding-top: 80px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="index.html" class="back-to-home">&larr; Volver al Inicio</a>
+    
+    <a href="index.html" class="home-float-btn" title="Ir a Inicio">
+        <span class="material-icons">
+            home
+        </span>
+    </a>
+
+    <header>
+        <h1>Reglas Fundamentales: Past Continuous, When y While</h1>
+        <p>Aprende a combinar acciones largas y cortas en el pasado.</p>
+    </header>
+
+    <main>
+        <hr>
+
+        <section>
+            <h2>1. Past Continuous (Pasado Continuo)</h2>
+            <p>Se usa para describir una <strong>acción que estaba en progreso</strong> en un momento específico del pasado. El énfasis está en la <strong>duración</strong>.</p>
+            
+            <h3>Estructura (Formación):</h3>
+            <p class="rule-box">
+                Sujeto + <strong>WAS / WERE</strong> + Verbo en <strong>-ING</strong>
+            </p>
+            
+            <h3>Ejemplo:</h3>
+            <p>
+                I <strong>was reading</strong> a book. (Yo estaba leyendo un libro.)
+            </p>
+            <div class="image-container">
+                <img src="LEYENDO UN LIBRO.jpg" alt="Persona leyendo un libro">
+            </div>
+        </section>
+
+        <hr>
+
+        <section>
+            <h2>2. Uso de "WHEN" (Cuando) </h2>
+            <p>Conecta una **acción larga** (fondo) con una **acción corta** (interrupción).</p>
+
+            <h3>Regla Clave:</h3>
+            <p class="rule-box" style="font-style: normal;">
+                La acción que sigue a <strong>WHEN</strong> casi siempre va en el <strong>Pasado Simple</strong>.
+            </p>
+
+            <h3>Estructura:</h3>
+            <p class="rule-box">
+                [Past Continuous] <strong>WHEN</strong> [Past Simple]
+            </p>
+
+            <h3>Ejemplo:</h3>
+            <p>
+                I <strong>was sleeping</strong> <strong>when</strong> the phone <strong>rang</strong>. 
+                <br>(Yo estaba durmiendo (larga) <strong>cuando</strong> el teléfono sonó (corta).)
+            </p>
+            <div class="image-container">
+                <img src="https://media.gq.com.mx/photos/67aa416fd50839f9ac181ffd/16:9/w_2560%2Cc_limit/Ilustracio%25CC%2581n_Hombre_Despertando_con_Smartphone%2520(1).jpg" alt="Teléfono sonando">
+            </div>
+        </section>
+
+        <hr>
+
+        <section>
+            <h2>3. Uso de "WHILE" (Mientras) </h2>
+            <p>Se usa para conectar <strong>dos acciones largas y simultáneas</strong> (que ocurren al mismo tiempo).</p>
+            
+            <h3>Regla Clave:</h3>
+            <p class="rule-box" style="font-style: normal;">
+                La acción que sigue a <strong>WHILE</strong> siempre va en el <strong>Past Continuous</strong>.
+            </p>
+
+            <h3>Estructura:</h3>
+            <p class="rule-box">
+                <strong>WHILE</strong> [Past Continuous], [Past Continuous]
+            </p>
+
+            <h3>Ejemplo:</h3>
+            <p>
+                <strong>While</strong> I <strong>was cleaning</strong>, he <strong>was watching</strong> TV.
+                <br>(<strong>Mientras</strong> yo estaba limpiando, el estaba viendo la televisión.)
+            </p> 
+            <div class="image-container">
+                <img src="mientras yo limpiaba el miraba la television.jpg" alt="Dos personas haciendo diferentes actividades simultáneamente">
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+       <a href="informacion 2.html" class="btn-footer">
+            Siguiente: Conectores de Tiempo: WHEN y WHILE
+        </a>
+    </footer>
+</body>
+</html>
