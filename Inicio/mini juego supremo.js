@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // --- Elementos DOM ---
+    
     const livesDisplay = document.getElementById('lives');
     const scoreDisplay = document.getElementById('score');
     const grammarPhase = document.getElementById('grammar-phase');
@@ -11,33 +11,53 @@ document.addEventListener('DOMContentLoaded', () => {
     const gameBoard = document.getElementById('game-board');
     const skillMessage = document.getElementById('skill-message');
     
-    // --- Variables de Estado ---
-    let lives = 3; // Intentos/Vidas iniciales
+    
+    const backgroundMusic = document.getElementById('musicaFondo');
+    backgroundMusic.loop = true; 
+
+    function playMusic() {
+        if (backgroundMusic.paused) {
+            backgroundMusic.play().catch(error => {
+                console.warn("Autoplay was blocked by the browser: ", error);
+            });
+        }
+    }
+
+    function stopMusic() {
+        backgroundMusic.pause();
+        backgroundMusic.currentTime = 0; 
+    }
+
+    
+    let lives = 3; // Initial Lives/Shots
     let score = 0;
     let isGameOver = false;
     let isGrammarPhaseActive = true;
     let currentQuestion = {};
     let targetSpawnTimer = null;
 
-    // --- Preguntas Gramaticales (Opción Múltiple) ---
+    
     const grammarQuestions = [
-        { text: "Yo **____** (Past Continuous) cuando la alarma sonó.", correct: "was sleeping", options: ["was sleeping", "were sleeping", "is sleeping", "slept"] },
-        { text: "Nosotros estábamos hablando **____** (Conector) él llegó.", correct: "when", options: ["when", "while", "but", "so"] },
-        { text: "Ellos estaban leyendo **____** (Conector) nosotros estábamos viendo TV.", correct: "while", options: ["while", "when", "after", "before"] },
-        { text: "Ella **____** (Past Continuous) cuando su perro ladró.", correct: "was jogging", options: ["was jogging", "were jogging", "jogged", "is jogging"] },
-        { text: "El ladrón estaba escapando **____** (Conector) la policía llegó.", correct: "when", options: ["when", "while", "though", "unless"] }
+        { text: "I **____** (Past Continuous) when the alarm rang.", correct: "was sleeping", options: ["was sleeping", "were sleeping", "is sleeping", "slept"] },
+        { text: "We were talking **____** (Connector) he arrived.", correct: "when", options: ["when", "while", "but", "so"] },
+        { text: "They were reading **____** (Connector) we were watching TV.", correct: "while", options: ["while", "when", "after", "before"] },
+        { text: "She **____** (Past Continuous) when her dog barked.", correct: "was jogging", options: ["was jogging", "were jogging", "jogged", "is jogging"] },
+        { text: "The thief was escaping **____** (Connector) the police arrived.", correct: "when", options: ["when", "while", "though", "unless"] }
     ];
-    let questionsPool = [...grammarQuestions]; // Copia de la lista para barajar
+    let questionsPool = [...grammarQuestions]; 
 
     // --- Game Flow Management ---
     function updateStatsDisplay() {
         livesDisplay.textContent = lives;
         scoreDisplay.textContent = score;
         triggerBtn.disabled = (lives <= 0);
-        triggerBtn.textContent = `Usar Disparo (${lives})`;
+        triggerBtn.textContent = `Use Shot (${lives})`; // Texto traducido
     }
 
     function loadGrammarPhase() {
+        // ⭐️ CONTROL DE MÚSICA: Detenemos la música al volver a la fase de gramática.
+        stopMusic(); 
+
         if (isGameOver) return;
         isGrammarPhaseActive = true;
         skillPhase.classList.add('hidden');
@@ -51,7 +71,7 @@ document.addEventListener('DOMContentLoaded', () => {
         
         questionText.innerHTML = currentQuestion.text;
         optionsContainer.innerHTML = '';
-        grammarMessage.textContent = 'Selecciona la opción correcta para ganar un Disparo.';
+        grammarMessage.textContent = 'Select the correct option to win a Shot.'; // Texto traducido
         grammarMessage.className = '';
 
         const shuffledOptions = [...currentQuestion.options].sort(() => Math.random() - 0.5);
@@ -70,11 +90,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (answer === currentQuestion.correct) {
             lives++; 
-            grammarMessage.textContent = `✅ ¡Correcto! Ganaste 1 Disparo. (${answer})`;
+            grammarMessage.textContent = `✅ Correct! You won 1 Shot. (${answer})`; // Texto traducido
             grammarMessage.className = 'correct';
+            // Se eliminó playMusic() de aquí
         } else {
             lives--; 
-            grammarMessage.textContent = `❌ ¡Incorrecto! Perdiste 1 Vida/Disparo. La respuesta era ${currentQuestion.correct}.`;
+            grammarMessage.textContent = `❌ Incorrect! You lost 1 Life/Shot. The answer was ${currentQuestion.correct}.`; // Texto traducido
             grammarMessage.className = 'incorrect';
         }
 
@@ -91,6 +112,10 @@ document.addEventListener('DOMContentLoaded', () => {
     
     function loadSkillPhase() {
         if (isGameOver) return;
+        
+        // ⭐️ CONTROL DE MÚSICA: INICIAMOS MÚSICA CADA VEZ QUE EMPIEZA LA FASE DE DISPARO ⭐️
+        playMusic(); 
+
         isGrammarPhaseActive = false;
         grammarPhase.classList.add('hidden');
         skillPhase.classList.remove('hidden');
@@ -116,20 +141,17 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 1000);
     }
     
-    // --- FUNCIÓN MODIFICADA: IMPLEMENTANDO GIF (RUTA CON ESPACIOS CORREGIDA) ---
     function spawnTarget() {
         gameBoard.innerHTML = '';
         const target = document.createElement('div');
         target.classList.add('target');
         
-        // ¡Ruta del GIF corregida para manejar los espacios!
         const imageSource = "PERRO%20DUCK%20HUNT.gif"; 
 
         target.innerHTML = `
             <img src="${imageSource}" alt="Blanco de habilidad" class="target-img-content">
         `;
 
-        // COMENTARIO 5: TAMAÑO DEL BOTÓN USADO PARA POSICIONAMIENTO.
         const targetWidth = 120; 
         const targetHeight = 70; 
         
@@ -142,7 +164,6 @@ document.addEventListener('DOMContentLoaded', () => {
         target.onclick = checkTargetClick;
         gameBoard.appendChild(target);
     }
-    // -------------------------------------------------------------------
 
     function checkTargetClick() {
         if (isGameOver) return;
@@ -153,8 +174,11 @@ document.addEventListener('DOMContentLoaded', () => {
         
         score++;
         updateStatsDisplay();
-        skillMessage.textContent = `🎯 ¡Éxito! Ganaste 1 punto.`;
+        skillMessage.textContent = `🎯 Success! You won 1 point.`; // Texto traducido
         skillMessage.className = 'correct';
+
+        // ⭐️ CONTROL DE MÚSICA: Detenemos la música para volver a la gramática
+        stopMusic();
 
         setTimeout(loadGrammarPhase, 1000);
     }
@@ -167,12 +191,15 @@ document.addEventListener('DOMContentLoaded', () => {
         triggerBtn.disabled = false; 
 
         if (reason === "time_out") {
-            skillMessage.textContent = '⏱️ ¡Tarde! El blanco desapareció. Disparo perdido.';
+            skillMessage.textContent = '⏱️ Too late! The target disappeared. Shot lost.'; // Texto traducido
         } else if (reason === "skill_no_lives") {
-             skillMessage.textContent = '🚫 ¡Necesitas recargar tu batería gramatical!';
+             skillMessage.textContent = '🚫 You need to recharge your grammatical battery!'; // Texto traducido
         }
         skillMessage.className = 'incorrect';
         
+        // ⭐️ CONTROL DE MÚSICA: Detenemos la música para volver a la gramática
+        stopMusic();
+
         setTimeout(loadGrammarPhase, 1000);
     }
 
@@ -181,11 +208,14 @@ document.addEventListener('DOMContentLoaded', () => {
         clearTimeout(targetSpawnTimer);
         triggerBtn.disabled = true;
         
+        // ⭐️ CONTROL DE MÚSICA: Detenemos la música, el juego ha terminado
+        stopMusic(); 
+        
         let finalMessage = '';
         if (reason === "grammar") {
-            finalMessage = `❌ ¡GAME OVER! Te quedaste sin Disparos al fallar la gramática. Puntuación final: ${score}`;
+            finalMessage = `❌ GAME OVER! You ran out of Shots after failing the grammar. Final Score: ${score}`; // Texto traducido
         } else if (reason === "skill_no_lives") {
-             finalMessage = `❌ ¡GAME OVER! Necesitas Disparos para continuar. Puntuación final: ${score}`;
+             finalMessage = `❌ GAME OVER! You need more Shots to continue. Final Score: ${score}`; // Texto traducido
         }
 
         grammarPhase.classList.remove('hidden');

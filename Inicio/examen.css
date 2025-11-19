@@ -1,0 +1,278 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap');
+
+/* --- 1. Definición de Variables y Transiciones --- */
+:root {
+    --color-primary-dark: #363cdd;       /* Azul profundo (Main CTA) */
+    --color-primary-light: #448AFF;      /* Azul claro (Fondo de enlaces/acciones) */
+    --color-accent-dark: #673AB7;        /* Morado (Color principal de botones) */
+    --color-accent-light: #E1BEE7; 
+    --color-background: #F3F6FD;         /* Fondo suave de la página */
+    --color-white: #FFFFFF;
+    --color-text-dark: #222222;
+    --color-text-secondary: #555555;
+    
+    --success-green: #2ecc71;            /* Verde para Correcto */
+    --failure-red: #e74c3c;              /* Rojo para Incorrecto */
+    --feedback-correct-bg: #e8f5e9;      /* Fondo suave verde */
+    --feedback-incorrect-bg: #ffebee;    /* Fondo suave rojo */
+
+    /* Sombras y Transiciones Mejoradas */
+    --shadow-soft: 0 4px 10px rgba(0, 0, 0, 0.1); 
+    --shadow-medium: 0 8px 20px rgba(0, 0, 0, 0.15);
+    --shadow-hover: 0 12px 30px rgba(0, 0, 0, 0.2);
+    --transition-fast: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+/* --- 2. Estilos Globales y Centrado General --- */
+body {
+    background-color: var(--color-background);
+    color: var(--color-text-dark);
+    font-family: 'Roboto', Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    display: flex; /* Flexbox para centrar todo el contenido */
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Contenedor principal del formulario como una "Tarjeta" centralizada */
+.container {
+    background-color: var(--color-white);
+    max-width: 800px;
+    width: 95%; /* Asegura que no sea demasiado ancho y que sea responsivo */
+    margin: 30px auto;
+    padding: 30px 40px;
+    border-radius: 12px;
+    box-shadow: var(--shadow-medium); /* Sombra elegante */
+    transition: var(--transition-fast);
+}
+
+h1 {
+    color: var(--color-accent-dark);
+    text-align: center;
+    font-weight: 900;
+    margin-bottom: 5px;
+}
+
+p {
+    text-align: center;
+    color: var(--color-text-secondary);
+    margin-bottom: 25px;
+}
+
+/* --- 3. Estilos de Preguntas (El Corazón del Formulario) --- */
+.question {
+    background-color: var(--color-background);
+    padding: 15px 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    border: 1px solid transparent; /* Borde base sutil */
+    transition: var(--transition-fast);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); /* Sombra muy sutil */
+}
+
+.question:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ligera elevación al pasar el ratón */
+}
+
+/* Borde visual de respuesta correcta/incorrecta */
+.question.correct-answer-border {
+    border-left: 5px solid var(--success-green);
+}
+
+.question.incorrect-answer-border {
+    border-left: 5px solid var(--failure-red);
+}
+
+.question p:first-child {
+    font-weight: 700;
+    font-size: 1.1em;
+    text-align: left;
+    margin-bottom: 10px;
+    color: var(--color-text-dark);
+}
+
+.question input[type="text"] {
+    width: 100%; /* El 90% en HTML se sentía pequeño, ahora usa el 100% del padding */
+    padding: 10px 15px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    box-sizing: border-box;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    font-size: 1em;
+}
+
+.question input[type="text"]:focus {
+    border-color: var(--color-primary-light);
+    box-shadow: 0 0 0 3px rgba(68, 138, 255, 0.2);
+    outline: none;
+}
+/* Estilo para inputs deshabilitados (bloqueados) */
+.question input[type="text"]:disabled {
+    background-color: #e9ecef;
+    color: #888;
+    cursor: not-allowed;
+}
+
+/* --- 4. Estilos de Feedback y Resultado --- */
+.feedback {
+    margin-top: 10px;
+    padding: 10px 15px;
+    border-radius: 6px;
+    font-size: 0.9em;
+    line-height: 1.4;
+    transition: var(--transition-fast);
+    text-align: left;
+}
+.feedback.correct {
+    background-color: var(--feedback-correct-bg); 
+    color: var(--success-green);
+    border: 1px solid var(--success-green);
+}
+.feedback.incorrect {
+    background-color: var(--feedback-incorrect-bg);
+    color: var(--failure-red); 
+    border: 1px solid var(--failure-red);
+}
+.correct-answer-text {
+    font-weight: 900;
+}
+
+#result {
+    text-align: center;
+    padding: 20px;
+    margin-top: 30px;
+    border-radius: 10px;
+    font-size: 1.2em;
+    font-weight: 700;
+    box-shadow: var(--shadow-medium);
+}
+.result-great {
+    background-color: var(--success-green);
+    color: var(--color-white);
+    box-shadow: 0 0 20px rgba(46, 204, 113, 0.5);
+}
+.result-pass {
+    background-color: #f1c40f; /* Amarillo */
+    color: var(--color-text-dark);
+}
+.result-fail {
+    background-color: var(--failure-red);
+    color: var(--color-white);
+}
+
+/* --- 5. Estilos de Botones (Agrupados y Dinámicos) --- */
+.button-group {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+
+button[type="button"] {
+    padding: 12px 25px;
+    border-radius: 8px;
+    font-size: 1.1em;
+    font-weight: 700;
+    cursor: pointer;
+    transition: var(--transition-fast);
+    text-transform: uppercase;
+}
+button[type="button"]:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+/* Botón Primario (Verificar) */
+.primary-button {
+    background-color: var(--color-accent-dark);
+    color: var(--color-white);
+    border: none;
+    box-shadow: 0 6px 15px rgba(103, 58, 183, 0.4); 
+}
+
+.primary-button:hover:not(:disabled) {
+    background-color: var(--color-primary-dark);
+    transform: translateY(-4px) scale(1.02); 
+    box-shadow: 0 10px 20px rgba(54, 60, 221, 0.6);
+}
+
+/* Botón Secundario (Reiniciar) */
+.secondary-button {
+    background-color: var(--color-white); 
+    color: var(--failure-red);
+    border: 2px solid var(--failure-red); 
+    box-shadow: 0 4px 10px rgba(231, 76, 60, 0.2); 
+}
+
+.secondary-button:hover:not(:disabled) {
+    background-color: var(--failure-red);
+    color: var(--color-white); 
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 0 8px 15px rgba(231, 76, 60, 0.4);
+}
+
+/* --- 6. Estilos de Botón Volver (Navegación) --- */
+.back-link-container {
+    width: 100%;
+    max-width: 800px; /* Igual que el contenedor principal */
+    margin: 20px auto 0 auto;
+    padding: 0 10px;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.back-to-home-button {
+    display: inline-block;
+    padding: 10px 18px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 1em;
+    font-weight: 700;
+    cursor: pointer;
+    transition: var(--transition-fast);
+    text-transform: uppercase;
+    
+    background-color: var(--color-primary-light);
+    color: var(--color-white);
+    border: 2px solid var(--color-primary-light);
+    box-shadow: 0 4px 10px rgba(68, 138, 255, 0.3);
+}
+
+.back-to-home-button:hover {
+    background-color: var(--color-primary-dark);
+    border-color: var(--color-primary-dark);
+    transform: translateY(-3px); 
+    box-shadow: 0 8px 15px rgba(68, 138, 255, 0.5);
+}
+
+/* --- 7. Responsividad para Móviles --- */
+@media (max-width: 650px) {
+    .container {
+        padding: 20px 15px;
+        margin: 15px auto;
+    }
+
+    .button-group {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    button[type="button"] {
+        width: 100%;
+        margin: 0;
+    }
+    
+    .question p:first-child {
+        font-size: 1em;
+    }
+    
+    .back-link-container {
+        text-align: center;
+    }
+}

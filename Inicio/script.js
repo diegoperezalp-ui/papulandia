@@ -1,29 +1,29 @@
-document.addEventListener('DOMContentLoaded', () => {
-    
-    const menuToggle = document.getElementById('menu-toggle');
-    const mainDropdown = document.getElementById('main-dropdown');
+       const menuToggle = document.getElementById('menuToggle');
 
-    menuToggle.addEventListener('click', () => {
-        // Alternar la clase 'active' para mostrar/ocultar el menú
-        mainDropdown.classList.toggle('active');
-        // Alternar la clase 'open' para rotar la flecha
-        menuToggle.classList.toggle('open');
-    });
+        const navLinks = document.getElementById('navLinks');
 
-    const revealElements = document.querySelectorAll('.reveal-element');
+        menuToggle.addEventListener('click', () => {
 
-    const checkVisibility = () => {
-        const windowHeight = window.innerHeight;
+            navLinks.classList.toggle('open');
 
-        revealElements.forEach(element => {
-            const elementTop = element.getBoundingClientRect().top;
-            
-            if (elementTop < windowHeight * 0.8) {
-                element.classList.add('active');
-            }
         });
-    };
 
-    window.addEventListener('scroll', checkVisibility);
-    checkVisibility(); 
-});
+        const observer = new IntersectionObserver((entries) => {
+
+            entries.forEach(entry => {
+
+                if (entry.isIntersecting) {
+
+                    entry.target.classList.add('revealed');
+
+                }
+
+            });
+
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.module-card, .about').forEach(el => {
+
+            observer.observe(el);
+
+        }); 

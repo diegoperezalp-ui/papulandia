@@ -1,5 +1,10 @@
 document.addEventListener('DOMContentLoaded', () => {
 
+    // HEX CODES DEL TEMA ACADÉMICO PARA CONSISTENCIA VISUAL EN EL JS:
+    const SUCCESS_COLOR = '#16A34A'; // var(--success) - Verde Éxito
+    const PRIMARY_COLOR = '#1D4ED8'; // var(--primary) - Azul Principal
+    const ERROR_COLOR = '#DC3545';   // Rojo estándar para el feedback inmediato de error
+    
     const questions = [
         {
             question: "Choose the correct Past Continuous form: 'I _____ (listen) to music when you arrived.'",
@@ -105,7 +110,9 @@ document.addEventListener('DOMContentLoaded', () => {
         answersContainer.innerHTML = '';
         feedbackElement.textContent = '';
         nextButton.style.display = 'none';
-
+        // Resetear color del texto de la pregunta (por si viene de endGame)
+        questionTextElement.style.color = 'var(--dark)'; // O simplemente no establecer color para que use el CSS
+        
         if (currentQuestionIndex >= questions.length) {
             endGame();
             return;
@@ -142,12 +149,12 @@ document.addEventListener('DOMContentLoaded', () => {
             score += scoreIncrement;
             selectedButton.classList.add('correct');
             feedbackElement.textContent = "Correct! Well done.";
-            feedbackElement.style.color = '#28A745';
+            feedbackElement.style.color = SUCCESS_COLOR; // Usa el color de éxito del tema
         } else {
             score = 0; // Reiniciar puntuación a 0
             selectedButton.classList.add('incorrect');
             feedbackElement.textContent = "Incorrect! Score reset to 0. Try again.";
-            feedbackElement.style.color = '#DC3545';
+            feedbackElement.style.color = ERROR_COLOR; // Usa el color de error
         }
         
         updateScore();
@@ -170,10 +177,10 @@ document.addEventListener('DOMContentLoaded', () => {
         let message = '';
         if (score >= maxScore) {
             message = "Congratulations! You mastered the Past Continuous! Max Score: 10 points.";
-            questionTextElement.style.color = '#28A745';
+            questionTextElement.style.color = SUCCESS_COLOR; // Usa el color de éxito del tema
         } else {
             message = `Game Over. Final Score: ${score.toFixed(0)} points. Click 'Restart' to try again!`;
-            questionTextElement.style.color = '#003366';
+            questionTextElement.style.color = PRIMARY_COLOR; // Usa el color primario del tema para el mensaje
         }
 
         questionTextElement.textContent = message;

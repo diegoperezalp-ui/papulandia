@@ -1,42 +1,64 @@
-</body>
-</html>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Past Continuous Quiz Challenge</title>
+    <title>Academic Grammar Pro | Past Continuous Challenge</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp" rel="stylesheet"/>
+    <link href="inicio.css" rel="stylesheet"/> 
     <link rel="stylesheet" href="quiz.css">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    
 </head>
 <body>
-    <div class="quiz-container">
-        <header class="quiz-header">
-            <h1 class="title">Past Continuous Challenge</h1>
-            <div class="score-area">
-                <p>Score: <span id="current-score">0</span> / 10</p>
-            </div>
-        </header>
-
-        <main id="quiz-main" class="quiz-main">
-            <h2 id="question-text" class="question-text"></h2>
-
-            <div id="answers-container" class="answers-container">
-                </div>
-
-            <p id="feedback" class="feedback"></p>
-        </main>
-
-        <div class="actions">
-            <button id="next-button" class="btn btn-action">Start Game</button>
+    
+    <header>
+        <nav class="navbar">
+            <div class="logo">Academic Grammar Pro</div>
+            <span class="material-symbols-sharp menu-toggle" id="menuToggle">menu</span>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="examen opcion multiple html.html"><span class="material-symbols-sharp">quiz</span> Exam</a></li>
+                <li><a href="informacion.html"><span class="material-symbols-sharp">school</span> Rules</a></li>
+                <li><a href="mini juego supremo.html"><span class="material-symbols-sharp">videogame_asset</span> Game 1</a></li>
+                <li><a href="quiz.html"><span class="material-symbols-sharp">extension</span> Game 2</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <main>
+        <div class="quiz-container module-card revealed">
             
-            <a href="index.html" id="home-button" class="btn btn-home" title="Go back to Home">
-                <span class="material-icons">home</span> Back to Home
-            </a>
-        </div>
-    </div>
+            <header class="quiz-header">
+                <h1 class="title">Past Continuous Challenge</h1>
+                <div class="score-area">
+                    <p>Score: <span id="current-score">0</span> / 10</p>
+                </div>
+            </header>
 
+            <section id="quiz-main" class="quiz-main">
+                <h2 id="question-text" class="question-text"></h2>
+
+                <div id="answers-container" class="answers-container">
+                    </div>
+
+                <p id="feedback" class="feedback"></p>
+            </section>
+
+            <div class="actions">
+                <button id="next-button" class="btn btn-primary">Start Game</button>
+            </div>
+            
+        </div>
+    </main>
+
+    <footer>
+        <p>© 2025 <strong>Academic Grammar Pro</strong> — Elite English Training</p>
+        <p><a href="Aviso Legal.html">Legal Notice</a> | <a href="Politica de Privacidad.html">Privacy Policy</a></p>
+    </footer>
+
+    <script src="script.js"></script>
     <script src="quiz.js"></script>
+
 </body>
 </html>

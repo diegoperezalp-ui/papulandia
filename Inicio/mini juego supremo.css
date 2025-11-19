@@ -1,160 +1,173 @@
-/* Paleta de colores */
-:root {
-    --purple-dark: #0d23a1; 
-    --purple-light: #363cdd; 
-    --blue-dark: #673AB7;
-    --blue-light: #a1a2f3;
-    --pink-light: #bdd0e3;
-    --color-white: #FFFFFF;
-    --color-text-dark: #222222;
-    --success-green: #4CAF50;
-    --error-red: #D32F2F;
-}
+/* *** Reuso de las Variables del inicio.css (Importante para que funcione el index.css) *** */
+        :root {
+            /* Las variables primarias serán importadas de inicio.css */
+            --primary: #1D4ED8;     /* Azul Académico Profundo */
+            --secondary: #EA580C;   /* Naranja Cálido (energía controlada) */
+            --accent: #7C3AED;      /* Morado Sofisticado */
+            --success: #16A34A;     /* Verde Éxito */
+            --light: #FAFAFA;       /* Fondo claro */
+            --dark: #1F2937;        /* Texto principal */
+            --gray: #E5E7EB;        /* Bordes */
+            --card-bg: #FFFFFF;     /* Tarjetas */
+            
+            /* Colores específicos del juego adaptados a la paleta */
+            --game-bg-color: #FAFAFA; /* Usamos light */
+            --stat-bg: #DBEAFE; /* Un azul claro de Tailwind, basado en el primario */
+            --stat-text: #1E40AF; /* Un azul oscuro, basado en el primario */
+            --stat-lives: var(--secondary); /* Usamos Naranja para las vidas */
+            --stat-score: var(--success); /* Usamos Verde para el score */
+            --option-bg: var(--primary);
+            --option-hover: #1e40af; /* Variante oscura del primario */
+        }
+        
+        /* ELIMINAMOS ESTILOS DE BODY, H1, H3, HEADER Y FOOTER.
+        AHORA SE REUTILIZAN DE INICIO.CSS 
+        */
 
-body {
-    font-family: 'Arial', sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    background-color: var(--pink-light);
-    margin: 0;
-}
+        /* El contenedor principal debe ser flexible para centrar el juego, pero
+           ahora se envuelve en la etiqueta <main> del index.html que tiene margen.
+           Le damos el estilo de la tarjeta principal (module-card) */
+        
+        main {
+            display: flex; /* Para centrar la tarjeta del juego */
+            justify-content: center;
+            align-items: center;
+            padding-top: 2rem; /* Asegura espacio si se ve sin el header fijo */
+        }
 
-.game-container {
-    background-color: var(--color-white);
-    padding: 30px;
-    border-radius: 12px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
-    text-align: center;
-    width: 90%;
-    max-width: 650px;
-}
+        .game-container {
+            /* Se ha asignado la clase 'module-card' en el HTML para el estilo principal. 
+               Adaptamos el contenedor al diseño de tarjeta. */
+            width: 90%;
+            max-width: 650px;
+            /* La clase .module-card se encarga del fondo, padding, border-radius y sombra. */
+            text-align: center;
+            /* Eliminamos estilos de body/juego genéricos ya que se usa la card */
+        }
 
-h1 { color: var(--purple-dark); margin-bottom: 15px; }
-h3 { color: var(--blue-dark); margin-top: 15px; }
+        /* --- Panel de Estadísticas (Ajustado a la Paleta Académica) --- */
+        #stats-panel {
+            background-color: var(--stat-bg);
+            color: var(--stat-text);
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+        #stats-panel h2 { margin: 5px 0; font-size: 1.2em; color: var(--stat-text); }
+        #lives { color: var(--stat-lives); font-weight: 700; }
+        #score { color: var(--stat-score); font-weight: 700; }
 
-/* --- Panel de Estadísticas --- */
-#stats-panel {
-    background-color: var(--blue-light);
-    color: var(--blue-dark);
-    padding: 10px;
-    border-radius: 8px;
-    margin-bottom: 20px;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-}
-#stats-panel h2 { margin: 5px 0; font-size: 1.2em; }
-#lives { color: var(--error-red); }
-#score { color: var(--success-green); }
+        /* --- Fase de Gramática --- */
+        #grammar-phase {
+            padding: 20px;
+            border: 2px dashed var(--gray); /* Usamos el gris de borde */
+            border-radius: 8px;
+            background-color: var(--light); /* Fondo claro para contraste */
+        }
+        #question-text { font-size: 1.1em; font-weight: 600; margin-bottom: 15px; color: var(--dark); }
 
-/* --- Fase de Gramática --- */
-#grammar-phase {
-    padding: 20px;
-    border: 1px dashed var(--purple-light);
-    border-radius: 8px;
-}
-#question-text { font-size: 1.1em; font-weight: bold; margin-bottom: 15px; }
+        #options-container {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        #options-container button {
+            padding: 10px 20px;
+            background-color: var(--option-bg);
+            color: var(--card-bg); /* Blanco */
+            border: none;
+            border-radius: 8px; /* Ligeramente más redondeado que el original */
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.2s ease;
+        }
+        #options-container button:hover {
+            background-color: var(--option-hover);
+            transform: translateY(-1px); /* Efecto sutil */
+        }
+        #options-container button:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+        }
 
-#options-container {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    margin-bottom: 15px;
-}
-#options-container button {
-    padding: 10px 20px;
-    background-color: var(--purple-light);
-    color: var(--color-white);
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-weight: bold;
-    transition: background-color 0.2s;
-}
-#options-container button:hover {
-    background-color: var(--purple-dark);
-}
+        /* --- Fase de Habilidad (El tablero del juego) --- */
+        #skill-phase {
+            padding: 20px 0;
+        }
+        #game-board {
+            width: 100%;
+            height: 150px;
+            border: 4px solid var(--primary); /* Borde con color primario */
+            margin: 15px 0;
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px; /* Borde redondeado */
+            
+            /* Fondo Específico del Juego */
+            background-image: url('fondo duck hunt.png'); 
+            background-size: cover; 
+            background-position: center; 
+            background-repeat: no-repeat; 
+            
+        }
 
+        /* --- ESTILOS DEL BLANCO --- */
+        .target {
+            position: absolute;
+            width: 120px; 
+            height: 70px;
+            background-color: transparent; 
+            border: none; 
+            cursor: pointer;
+            transition: opacity 0.1s;
+            opacity: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 10;
+        }
 
-/* --- Fase de Habilidad --- */
-#skill-phase {
-    padding: 20px;
-}
-#game-board {
-    width: 100%;
-    height: 150px;
-    border: 3px solid var(--purple-dark);
-    margin: 15px 0;
-    position: relative;
-    overflow: hidden;
-    
-    /* ***** CAMBIOS PARA EL FONDO DE DUCK HUNT ***** */
-    background-image: url('fondo duck hunt.png'); /* Ruta de tu imagen de fondo */
-    background-size: cover; 
-    background-position: center; 
-    background-repeat: no-repeat; 
-    /* ********************************************** */
-}
+        .target-img-content {
+            width: 100%; 
+            height: 100%; 
+            object-fit: contain; 
+            opacity: 1; 
+            z-index: 1; 
+        }
 
-/* --- ESTILOS DEL BLANCO CON IMAGEN/ICONO --- */
-.target {
-    position: absolute;
-    width: 120px; 
-    height: 70px;
-    
-    /* ELIMINACIÓN DE COLOR Y BORDE DE CAJA */
-    background-color: transparent; 
-    border: none; 
-    box-shadow: none; 
-    
-    border-radius: 10px;
-    cursor: pointer;
-    transition: opacity 0.1s;
-    opacity: 1;
+        /* --- Mensajes de Estado --- */
+        .message-status { margin-top: 10px; font-weight: bold; padding: 5px; min-height: 25px; border-radius: 4px;}
+        .correct { 
+            color: var(--stat-score); 
+            background-color: #bff7da; /* Verde muy claro */
+        }
+        .incorrect { 
+            color: var(--stat-lives); 
+            background-color: #f1c7c7; /* Rojo/Naranja muy claro */
+        }
+        .hidden { display: none !important; }
 
-    /* Contenido (Imagen) */
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    font-weight: bold;
-    font-size: 0.9em; 
-    color: var(--color-text-dark); 
-    position: relative; 
-    overflow: hidden;
-}
+        /* --- Botones --- */
+        /* Eliminamos .button ya que usamos .btn y .btn-primary/.btn-secondary */
+        /* La clase .reset-button es solo un marcador en el JS, el estilo es dado por .btn-secondary */
+        
+        .reset-button { 
+            margin-top: 15px;
+        }
 
-.target-img-content {
-    /* ESTE CÓDIGO HACE QUE EL GIF ABARQUE EL 100% DEL BOTÓN */
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%; 
-    height: 100%; 
-    object-fit: contain; 
-    opacity: 1; 
-    z-index: 1; 
-}
-
-/* Se elimina .target span ya que ya no hay texto. */
-/* Si mantienes la versión del CSS que me enviaste, solo hay que ignorar .target span */
-
-/* --- Mensajes de Estado --- */
-.message-status { margin-top: 10px; font-weight: bold; padding: 5px; min-height: 25px;}
-.correct { color: var(--success-green); }
-.incorrect { color: var(--error-red); }
-.hidden { display: none !important; }
-
-/* --- Botón (Mantenido y adaptado) --- */
-.button {
-    background: var(--blue-dark); color: var(--color-white);
-    padding: 12px 25px; border: none; border-radius: 50px; cursor: pointer;
-    font-weight: bold; transition: all 0.3s ease-in-out;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); position: relative;
-    overflow: hidden; z-index: 1; margin: 10px 0;
-}
-.button:disabled { cursor: not-allowed; opacity: 0.6; }
-
-.reset-button { background: var(--purple-dark); }
+        /* Responsive - mantiene el tamaño y centrado */
+        @media (max-width: 650px) {
+            .game-container {
+                padding: 20px 15px;
+            }
+            #options-container {
+                flex-direction: column;
+            }
+            #options-container button {
+                width: 100%;
+            }
+        }
