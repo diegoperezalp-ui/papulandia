@@ -63,7 +63,7 @@
         /* --- Fase de Gramática --- */
         #grammar-phase {
             padding: 20px;
-            border: 2px dashed var(--gray); /* Usamos el gris de borde */
+            border: 2px dashed var(--dark); /* Usamos el gris de borde */
             border-radius: 8px;
             background-color: var(--light); /* Fondo claro para contraste */
         }
@@ -78,7 +78,7 @@
         #options-container button {
             padding: 10px 20px;
             background-color: var(--option-bg);
-            color: var(--card-bg); /* Blanco */
+            color: var(--dark); /* Blanco */
             border: none;
             border-radius: 8px; /* Ligeramente más redondeado que el original */
             cursor: pointer;

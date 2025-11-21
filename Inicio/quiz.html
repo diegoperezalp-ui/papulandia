@@ -3,13 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Academic Grammar Pro | Past Continuous Challenge</title>
+    <title>Academic Grammar Pro | Past Continuous - LEVEL 1</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp" rel="stylesheet"/>
     <link href="inicio.css" rel="stylesheet"/> 
     <link rel="stylesheet" href="quiz.css">
-    
 </head>
 <body>
     
@@ -27,28 +26,33 @@
     </header>
     
     <main>
-        <div class="quiz-container module-card revealed">
+        <div class="quiz-container module-card revealed game-mode">
             
             <header class="quiz-header">
-                <h1 class="title">Past Continuous Challenge</h1>
+                <h1 class="title glitch" data-text="PAST CONTINUOUS">PAST CONTINUOUS</h1>
+                <div class="level-badge">LEVEL 1</div>
                 <div class="score-area">
-                    <p>Score: <span id="current-score">0</span> / 10</p>
+                    <span class="score-label">SCORE</span>
+                    <span id="current-score">000</span><span class="max-score"> / 100</span>
                 </div>
             </header>
 
             <section id="quiz-main" class="quiz-main">
                 <h2 id="question-text" class="question-text"></h2>
 
-                <div id="answers-container" class="answers-container">
-                    </div>
+                <div id="answers-container" class="answers-container"></div>
 
                 <p id="feedback" class="feedback"></p>
             </section>
 
             <div class="actions">
-                <button id="next-button" class="btn btn-primary">Start Game</button>
+                <button id="next-button" class="btn btn-primary pixel-btn">
+                    <span>► START MISSION</span>
+                </button>
             </div>
             
+            <!-- Efecto de partículas de fondo (solo visual) -->
+            <div class="particles"></div>
         </div>
     </main>
 
@@ -59,6 +63,5 @@
 
     <script src="script.js"></script>
     <script src="quiz.js"></script>
-
 </body>
 </html>

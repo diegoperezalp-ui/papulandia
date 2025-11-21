@@ -4,294 +4,85 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Conectores de Tiempo: WHEN y WHILE - Uso y Comprensión</title>
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
-
-    <style>
-        :root {
-            --primary-blue-strong: #007bff;
-            --accent-purple-strong: #8A2BE2;
-            --background-light: #F0F8FF;
-            --card-bg: #ffffff;
-            --text-dark: #1e1e1e;
-            --text-secondary: #34495e;
-            --example-bg: #e6f0ff;
-        }
-
-        body { 
-            font-family: 'Quicksand', sans-serif; 
-            line-height: 1.6; 
-            margin: 0; 
-            padding: 0; 
-            background-color: var(--background-light); 
-            color: var(--text-dark); 
-        }
-        
-        /* ESTILO ACTUALIZADO: Botón "← Volver" Flotante */
-        .back-to-home {
-            position: fixed; /* Hace el botón flotante */
-            top: 20px; /* Misma distancia superior que el botón Home */
-            left: 20px; /* Distancia del margen izquierdo */
-            z-index: 5000; /* Asegura que esté sobre el contenido */
-            
-            /* Estilos visuales del botón */
-            display: inline-block; 
-            padding: 10px 15px;
-            text-decoration: none; 
-            color: var(--card-bg); /* Texto blanco */
-            background-color: var(--primary-blue-strong);
-            border-radius: 8px; 
-            font-weight: 600;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
-            transition: background-color 0.3s, transform 0.2s;
-        }
-        .back-to-home:hover {
-            background-color: var(--accent-purple-strong);
-            transform: scale(1.05);
-        }
-
-        /* Adaptación de la cabecera del HTML: .header en lugar de header */
-        .header {
-            text-align: center; 
-            padding: 40px 20px 30px 20px;
-            background-color: var(--accent-purple-strong);
-            color: var(--card-bg);
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
-            margin-bottom: 20px;
-            padding-top: 80px; /* Se añade espacio para que los botones flotantes no tapen el título */
-        }
-        .header h1 {
-            color: var(--card-bg); 
-            font-size: 2.5em;
-            margin: 0;
-        }
-        .header p {
-            color: var(--background-light);
-            font-size: 1.1em;
-            margin-top: 5px;
-        }
-
-        /* Contenedor principal para centrar el contenido */
-        .container {
-            max-width: 900px; 
-            margin: 0 auto; /* Clave para centrar */
-            padding: 20px;
-        }
-
-        hr {
-            border: none;
-            border-top: 2px dashed var(--accent-purple-strong);
-            margin: 30px 0;
-        }
-
-        /* Adaptación de las secciones: .topic-section en lugar de section */
-        .topic-section {
-            background-color: var(--card-bg); 
-            padding: 30px; 
-            border-radius: 12px; 
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            margin-bottom: 25px;
-            border-left: 6px solid var(--primary-blue-strong);
-        }
-        
-        .topic-title { /* Uso de la clase del HTML en lugar de h2 directo en section */
-            color: var(--primary-blue-strong);
-            font-size: 2em;
-            font-weight: 700;
-            margin-top: 0;
-            margin-bottom: 15px;
-        }
-
-        .content-card h3 {
-            color: var(--accent-purple-strong);
-            font-size: 1.3em;
-            font-weight: 600;
-            margin-top: 25px;
-        }
-        
-        .content-card p, .topic-section p {
-            font-size: 1.1em;
-            color: var(--text-dark);
-        }
-        
-        .content-card ul {
-            list-style-type: disc;
-            margin-left: 20px;
-            padding-left: 0;
-            margin-bottom: 15px;
-        }
-
-        strong { 
-            color: var(--accent-purple-strong);
-            font-weight: 700;
-        }
-        
-        /* Adaptación de la caja de ejemplo del HTML */
-        .example {
-            background-color: var(--example-bg); 
-            padding: 15px; 
-            border-radius: 8px;
-            border-left: 5px solid var(--primary-blue-strong);
-            font-weight: 600;
-            font-style: italic;
-            color: var(--text-secondary);
-            margin: 15px 0 0 0;
-        }
-
-        .footer { /* Uso de la clase del HTML en lugar de footer */
-            text-align: center; 
-            margin-top: 40px; 
-            padding: 20px 15px; 
-            background-color: var(--background-light); 
-        }
-        
-        .btn-footer { /* Esta clase no está en el HTML, pero se mantiene si se necesita */
-            display: inline-block;
-            background-color: var(--accent-purple-strong); 
-            color: var(--card-bg);
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 1.1em;
-            padding: 12px 25px;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            transition: background-color 0.3s, transform 0.2s;
-            margin-top: 10px;
-        }
-        .btn-footer:hover {
-            background-color: #6A0DAD;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
-        }
-
-        /* Botón de Home Flotante (sin cambios de posición) */
-        .home-float-btn {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            width: 50px;
-            height: 50px;
-            background-color: var(--primary-blue-strong);
-            color: var(--card-bg);
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
-            text-decoration: none;
-            font-size: 24px;
-            transition: background-color 0.3s, transform 0.2s;
-            z-index: 5000;
-        }
-
-        .home-float-btn:hover {
-            background-color: var(--accent-purple-strong);
-            transform: scale(1.1);
-        }
-
-        @media (max-width: 600px) {
-            .header h1 {
-                font-size: 2em;
-            }
-            .topic-title {
-                font-size: 1.5em;
-            }
-            .header {
-                padding-top: 80px;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp">
 </head>
 <body>
-    
-    <a href="informacion.html" class="back-to-home">&larr; Volver</a>
 
-    <a href="index.html" class="home-float-btn" title="Ir a Inicio">
-        <span class="material-icons">
-            home
-        </span>
-    </a>
-    <div class="header">
-        <h1>Conectores de Tiempo: WHEN y WHILE</h1>
-        <p>Aprende a combinar el Pasado Continuo y el Pasado Simple para contar historias.</p>
-    </div>
+    <!-- Navbar fija -->
+    <nav class="navbar">
+        <div class="logo">Academic Grammar Pro</div>
+        <span class="material-symbols-sharp menu-toggle" onclick="document.querySelector('.nav-links').classList.toggle('active')">menu</span>
+        <ul class="nav-links">
+            <li><a href="examen opcion multiple html.html"><span class="material-symbols-sharp">quiz</span> Examen</a></li>
+            <li><a href="informacion.html"><span class="material-symbols-sharp">school</span> Reglas</a></li>
+            <li><a href="mini juego supremo.html"><span class="material-symbols-sharp">videogame_asset</span> Juego 1</a></li>
+            <li><a href="quiz.html"><span class="material-symbols-sharp">extension</span> Juego 2</a></li>
+        </ul>
+    </nav>
 
-    <div class="container">
-        <section class="topic-section">
-            <h2 class="topic-title">1. Uso de WHEN: Interrupción y Pasado Simple</h2>
-            <div class="content-card">
-                <p>**WHEN** (Cuando) se utiliza para señalar una **acción corta** de Pasado Simple que sucede o interrumpe una acción más larga que estaba en curso (Pasado Continuo).</p>
-                <p>La cláusula introducida por **WHEN** siempre usa el **Pasado Simple** para denotar el momento específico de la interrupción.</p>
-                <ul>
-                    <li>**Acción Larga (en curso):** Siempre en Pasado Continuo (was/were + Verbo-ing).</li>
-                    <li>**Acción Corta (interrupción):** Siempre en Pasado Simple (Verbo en -ed o irregular).</li>
-                    <li>Puedes usar **WHEN** al inicio o en el medio de la oración.</li>
-                </ul>
-                <div class="example">Ejemplo A: We **were having** dinner **when** the lights **went** out. (La cena fue interrumpida).</div>
-                <div class="example">Ejemplo B: **When** the teacher **came** in, the students **were talking**. (La acción de hablar fue terminada por la llegada).</div>
+    <main>
+        <div class="module-card">
+            <h1>Conectores de Tiempo: WHEN y WHILE</h1>
+            <p style="text-align:center; font-size:1.2rem; color:#555; margin-bottom:2.5rem;">
+                Domina la diferencia entre interrupciones y acciones paralelas en el pasado.
+            </p>
+
+            <h2>1. Reglas Generales de WHEN</h2>
+            <p>Se usa para unir una <strong>acción larga</strong> (Past Continuous) con una <strong>acción corta</strong> (Past Simple) que la interrumpe.</p>
+            <div class="rule-box">Past Continuous + <strong>WHEN</strong> + Past Simple</div>
+            <p><strong>Ejemplos:</strong></p>
+            <ul style="margin:1rem 0; padding-left:2rem;">
+                <li>I <strong>was having</strong> dinner <strong>when</strong> you <strong>called</strong>.</li>
+                <li>The lights <strong>went out</strong> <strong>when</strong> we <strong>were watching</strong> the movie.</li>
+            </ul>
+
+            <h2>2. Reglas Generales de WHILE</h2>
+            <p>Se usa exclusivamente para <strong>dos acciones largas</strong> que ocurren <strong>simultáneamente</strong>.</p>
+            <div class="rule-box">Past Continuous + <strong>WHILE</strong> + Past Continuous</div>
+            <p><strong>Ejemplos:</strong></p>
+            <ul style="margin:1rem 0; padding-left:2rem;">
+                <li><strong>While</strong> I <strong>was studying</strong>, my brother <strong>was playing</strong> video games.</li>
+                <li>The sun <strong>was shining</strong> <strong>while</strong> the birds <strong>were singing</strong>.</li>
+            </ul>
+
+            <h2>3. Resumen Rápido: ¿Cuándo usar cada uno?</h2>
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:2rem; margin:2rem 0;">
+                <div style="background:#e0f2fe; padding:1.5rem; border-radius:12px; border-left:6px solid var(--primary);">
+                    <h3 style="margin-top:0; color:var(--primary);">WHEN</h3>
+                    <p><strong>Interrupción</strong><br>Acción corta que corta una larga</p>
+                    <p><strong>Ejemplo:</strong> I was sleeping <strong>when</strong> the alarm rang.</p>
+                </div>
+                <div style="background:#f0e5ff; padding:1.5rem; border-radius:12px; border-left:6px solid var(--accent);">
+                    <h3 style="margin-top:0; color:var(--accent);">WHILE</h3>
+                    <p><strong>Simultáneo</strong><br>Dos acciones largas al mismo tiempo</p>
+                    <p><strong>Ejemplo:</strong> <strong>While</strong> I was cooking, she was reading.</p>
+                </div>
             </div>
-        </section>
 
-        <section class="topic-section">
-            <h2 class="topic-title">2. Estructura y Reglas Clave con WHEN</h2>
-            <div class="content-card">
-                <p>Es vital recordar que la cláusula con **WHEN** contiene la acción que actúa como un punto en el tiempo.</p>
-                <ul>
-                    <li>**Estructura Central:** Pasado Continuo (Larga) + **WHEN** + Pasado Simple (Corta/Punto).</li>
-                    <li>**Uso de la Coma:** Si **WHEN** inicia la oración, se debe usar una coma para separar las dos cláusulas.</li>
-                    <li>**¡Cuidado!** También puedes usar Pasado Simple + **WHEN** + Pasado Simple, para acciones consecutivas (ej. *I finished my work **when** I saved the file*).</li>
-                </ul>
-                <div class="example">Ejemplo: **When** I **saw** the snake, I **was walking** in the forest. (Pasado Simple al inicio, se requiere coma).</div>
-                <div class="example">Ejemplo: She **broke** the glass **when** she **dropped** the plate. (Dos acciones cortas y consecutivas).</div>
+            <h2>Truco Mnemotécnico</h2>
+            <div class="rule-box" style="font-size:1.3rem; text-align:center;">
+                WHILE → siempre lleva verbo en <strong>-ING</strong> después<br>
+                (¡W-H-I-L-E tiene 5 letras, como el -ING!)
             </div>
-        </section>
 
-        <section class="topic-section">
-            <h2 class="topic-title">3. Uso de WHILE: Acciones Paralelas y Pasado Continuo</h2>
-            <div class="content-card">
-                <p>**WHILE** (Mientras) se usa exclusivamente para conectar **dos acciones de larga duración** que sucedieron **simultáneamente** en el pasado sin interrumpirse entre sí.</p>
-                <p>La cláusula introducida por **WHILE** siempre utiliza el **Pasado Continuo** para enfatizar la duración paralela de ambas actividades.</p>
-                <ul>
-                    <li>**Acciones Simultáneas:** Ambas cláusulas están en Pasado Continuo.</li>
-                    <li>**Énfasis en Duración:** La idea principal es que las dos cosas estaban pasando *al mismo tiempo*.</li>
-                    <li>**Traducción:** Se traduce como "mientras" o "al mismo tiempo que".</li>
-                </ul>
-                <div class="example">Ejemplo A: My brother **was playing** video games **while** I **was doing** my homework. (Ambos en Pasado Continuo).</div>
-                <div class="example">Ejemplo B: The sun **was shining** **while** the birds **were singing**. (Dos acciones continuas en la naturaleza).</div>
+            <div style="text-align:center; margin:3rem 0;">
+                <a href="examen opcion multiple html.html" class="btn-primary" style="font-size:1.3rem; padding:18px 40px;">
+                    ¡Poner a prueba lo aprendido! → Ir al Examen
+                </a>
             </div>
-        </section>
-
-        <section class="topic-section">
-            <h2 class="topic-title">4. Estructura y Posicionamiento de WHILE</h2>
-            <div class="content-card">
-                <p>Al igual que **WHEN**, **WHILE** puede ir al inicio o en el medio, pero su función gramatical es siempre unir dos Pasado Continuo.</p>
-                <ul>
-                    <li>**Estructura Central:** Pasado Continuo + **WHILE** + Pasado Continuo.</li>
-                    <li>**Uso de la Coma:** Si **WHILE** inicia la oración, se debe usar una coma para separar las dos cláusulas de Pasado Continuo.</li>
-                    <li>**Ocasión Excepcional:** En un lenguaje muy informal o arcaico, **WHILE** puede usarse como **WHEN**, pero es mejor evitarlo y ceñirse a la regla de Pasado Continuo.</li>
-                </ul>
-                <div class="example">Ejemplo: **While** the chef **was preparing** the meal, the waiter **was cleaning** the tables. (Acciones simultáneas en la cocina).</div>
-                <div class="example">Ejemplo: My phone **was ringing** **while** I **was taking** a shower. (Ambas acciones largas y paralelas).</div>
-            </div>
-        </section>
-
-        <section class="topic-section">
-            <h2 class="topic-title">5. Resumen: Cómo Elegir entre WHEN y WHILE</h2>
-            <div class="content-card">
-                <p>La elección correcta depende de la relación de tiempo entre las dos acciones:</p>
-                <ul>
-                    <li>**Si hay Interrupción o un evento puntual:** Usa **WHEN** para introducir la acción en Pasado Simple.</li>
-                    <li>**Si son dos acciones a la vez (paralelas):** Usa **WHILE** para unir ambas cláusulas en Pasado Continuo.</li>
-                    <li>**Mnemotécnico:** **WHILE** siempre le sigue un verbo en **-ING** (Pasado Continuo).</li>
-                </ul>
-                <div class="example">Diferencia: I **met** him **when** I **was going** to the library. (Punto/Interrupción).</div>
-                <div class="example">Diferencia: I **was listening** to music **while** I **was jogging**. (Paralelo).</div>
-            </div>
-        </section>
-
-        <div class="footer">
-            <p>¡Practica estas estructuras para dominar la narración de eventos pasados!</p>
         </div>
-    </div>
+    </main>
+
+<!-- Botón Home flotante – ARRIBA A LA DERECHA -->
+<a href="index.html" class="home-float-top">
+    <span class="material-symbols-sharp">home</span>
+</a>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2025 <strong>Academic Grammar Pro</strong> — Elite English Training</p>
+        <p><a href="Aviso Legal.html">Aviso Legal</a> | <a href="Politica de Privacidad.html">Política de Privacidad</a></p>
+    </footer>
 </body>
 </html>
