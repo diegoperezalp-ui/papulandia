@@ -1,29 +1,42 @@
-       const menuToggle = document.getElementById('menuToggle');
+document.addEventListener('DOMContentLoaded', () => {
 
-        const navLinks = document.getElementById('navLinks');
+    const menuBtn = document.getElementById('menuBtn');
+    const fullMenu = document.getElementById('fullMenu');
+    const header = document.getElementById('header');
 
-        menuToggle.addEventListener('click', () => {
+    // Menú hamburguesa
+    menuBtn.addEventListener('click', () => {
+        menuBtn.classList.toggle('active');
+        fullMenu.classList.toggle('active');
+    });
 
-            navLinks.classList.toggle('open');
-
+    // Cerrar al hacer clic en enlace
+    document.querySelectorAll('.full-menu a').forEach(link => {
+        link.addEventListener('click', () => {
+            menuBtn.classList.remove('active');
+            fullMenu.classList.remove('active');
         });
+    });
 
-        const observer = new IntersectionObserver((entries) => {
+    // Header al hacer scroll
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 80) {
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
+        }
+    });
 
-            entries.forEach(entry => {
+    // Animaciones de tarjetas
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('revealed');
+            }
+        });
+    }, { threshold: 0.15 });
 
-                if (entry.isIntersecting) {
-
-                    entry.target.classList.add('revealed');
-
-                }
-
-            });
-
-        }, { threshold: 0.1 });
-
-        document.querySelectorAll('.module-card, .about').forEach(el => {
-
-            observer.observe(el);
-
-        }); 
+    document.querySelectorAll('.module-card').forEach(card => {
+        observer.observe(card);
+    });
+});

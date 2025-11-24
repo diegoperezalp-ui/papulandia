@@ -1,32 +1,44 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Academic Grammar Pro | Reflejos Gramaticales</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet"/>
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp" rel="stylesheet"/>
-    
-    <link href="inicio.css" rel="stylesheet"/> 
-    <link rel="stylesheet" href="mini juego supremo.css"> 
+    <title>Mini Juego Supremo | Academic Grammar Pro</title>
+
+    <!-- ESTILO BASE DE TU WEB -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp">
+
+    <!-- TU NUEVO CSS ÉPICO (abajo) -->
+    <link rel="stylesheet" href="mini juego supremo.css">
 </head>
 <body>
-    
-    <header>
-        <nav class="navbar">
-            <div class="logo">Academic Grammar Pro</div>
-            <span class="material-symbols-sharp menu-toggle" id="menuToggle">menu</span>
-            <ul class="nav-links" id="navLinks">
-                <li><a href="examen opcion multiple html.html"><span class="material-symbols-sharp">quiz</span> Exam</a></li>
-                <li><a href="informacion.html"><span class="material-symbols-sharp">school</span> Rules</a></li>
-                <li><a href="mini juego supremo.html"><span class="material-symbols-sharp">videogame_asset</span> Game 1</a></li>
-                <li><a href="quiz.html"><span class="material-symbols-sharp">extension</span> Game 2</a></li>
-            </ul>
-        </nav>
-    </header>
-    
-    <main>
 
+<!-- NAVBAR FIJA – AHORA EXACTAMENTE IGUAL QUE EN quiz.html -->
+<nav class="navbar">
+    <div class="logo">Academic Grammar Pro</div>
+    <span class="material-symbols-sharp menu-toggle" onclick="document.querySelector('.nav-links').classList.toggle('active')">menu</span>
+    <ul class="nav-links">
+        <li><a href="examen opcion multiple html.html">
+            <span class="material-symbols-sharp">quiz</span> Examen
+        </a></li>
+        <li><a href="informacion.html">
+            <span class="material-symbols-sharp">school</span> Reglas
+        </a></li>
+        <li><a href="mini juego supremo.html">
+            <span class="material-symbols-sharp">videogame_asset</span> Juego 1
+        </a></li>
+        <li><a href="quiz.html">
+            <span class="material-symbols-sharp">extension</span> Juego 2
+        </a></li>
+    </ul>
+</nav>
+    <!-- BOTÓN HOME ARRIBA DERECHA -->
+    <a href="index.html" class="home-float-top">
+        <span class="material-symbols-sharp">home</span>
+    </a>
+
+    <main>
         <div class="game-container module-card revealed">
             
             <h1>Reflejos Gramaticales: Just Dog It</h1>
@@ -40,8 +52,7 @@
             <div id="grammar-phase">
                 <h3>Fase 1: El Desafío Gramatical</h3>
                 <p id="question-text"></p>
-                <div id="options-container">
-                    </div>
+                <div id="options-container"></div>
                 <div id="grammar-message" class="message-status"></div>
             </div>
 
@@ -49,36 +60,33 @@
                 <h3>Fase 2: ¡Dispara al Blanco!</h3>
                 <p id="skill-instruction">Presiona el botón de Disparo o espera a que el blanco aparezca.</p>
                 
-                <button class="btn btn-primary" id="trigger-btn">
+                <button class="btn-primary" id="trigger-btn">
                     Usar Disparo (<span id="trigger-cost">1</span>)
                 </button>
                 
-                <div id="game-board">
-                    </div>
+                <div id="game-board"></div>
                 
                 <div id="skill-message" class="message-status"></div>
             </div>
             
             <footer>
-                <button class="btn btn-secondary reset-button" onclick="window.location.reload()">
+                <button class="btn-secondary reset-button" onclick="window.location.reload()">
                     <span class="material-symbols-sharp">refresh</span> Reiniciar Juego
                 </button>
             </footer>
         </div>
-
     </main>
 
     <footer>
         <p>© 2025 <strong>Academic Grammar Pro</strong> — Elite English Training</p>
-        <p><a href="Aviso Legal.html">Legal Notice</a> | <a href="Politica de Privacidad.html">Privacy Policy</a></p>
+        <p><a href="Aviso Legal.html">Aviso Legal</a> | <a href="Politica de Privacidad.html">Política de Privacidad</a></p>
     </footer>
 
-    <audio id="musicaFondo"> <source src="musicaFondo.mp3" type="audio/mpeg">
-        Tu navegador no soporta el elemento de audio.
+    <audio id="musicaFondo" loop>
+        <source src="musicaFondo.mp3" type="audio/mpeg">
     </audio>
 
-    <script src="script.js"></script>
+    <!-- TU JS ORIGINAL 100 % SIN TOCAR -->
     <script src="mini juego supremo.js"></script>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp:FILL@1&wght@500"/>
 </body>
 </html>

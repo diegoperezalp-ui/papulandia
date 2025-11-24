@@ -1,121 +1,113 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Evaluación - When y While en Pasado Continuo</title>
-<link rel="stylesheet" href="examen.css"> 
-<style>
-
-    .feedback {
-        margin-top: 5px;
-        padding: 10px;
-        border-radius: 5px;
-        font-size: 0.9em;
-        line-height: 1.4;
-    }
-    .correct-answer-text {
-        font-weight: bold;
-    }
-    
-    .question.incorrect-answer-border .feedback.incorrect {
-        border: 1px solid #b71c1c;
-    }
-
-    .question input[type="text"] {
-        width: 90%;
-        padding: 8px;
-        margin-top: 5px;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-        box-sizing: border-box;
-    }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Evaluación - When y While en Past Continuous</title>
+    <link rel="stylesheet" href="examen.css">
 </head>
 <body>
-    <div class="back-link-container">
-        <a href="index.html" class="back-to-home-button">
-            &larr; Volver al Inicio
-        </a>
+
+    <!-- NAVBAR FIJA (igual que en todas las páginas) -->
+    <nav class="navbar">
+        <div class="logo">Academic Grammar Pro</div>
+        <span class="material-symbols-sharp menu-toggle" onclick="document.querySelector('.nav-links').classList.toggle('active')">menu</span>
+        <ul class="nav-links">
+            <li><a href="examen opcion multiple html.html"><span class="material-symbols-sharp">quiz</span> Examen</a></li>
+            <li><a href="informacion.html"><span class="material-symbols-sharp">school</span> Reglas</a></li>
+            <li><a href="mini juego supremo.html"><span class="material-symbols-sharp">videogame_asset</span> Juego 1</a></li>
+            <li><a href="quiz.html"><span class="material-symbols-sharp">extension</span> Juego 2</a></li>
+        </ul>
+    </nav>
+
+    <!-- Botón Home arriba derecha -->
+    <a href="index.html" class="home-float-top">
+        <span class="material-symbols-sharp">home</span>
+    </a>
+
+    <!-- TU CONTENIDO ORIGINAL (sin tocar nada) -->
+    <div class="container">
+        <h1>Usos de <em>When</em> y <em>While</em> en Past Continuous</h1>
+        <p>Responde las siguientes preguntas (escribe **when** o **while** para las de llenar el espacio) y haz clic en "Verificar Respuestas".</p>
+
+        <form id="quizForm">
+            <div class="question" data-q="q1">
+                <p>1. I was cooking dinner <span class="placeholder">_____</span> the phone rang.</p>
+                <input type="text" name="q1" placeholder="Escribe aquí tu respuesta">
+                <div id="feedback-q1" class="feedback"></div>
+            </div>
+
+            <div class="question" data-q="q2">
+                <p>2. <span class="placeholder">_____</span> I was studying, my friends were playing football.</p>
+                <input type="text" name="q2" placeholder="Escribe aquí tu respuesta">
+                <div id="feedback-q2" class="feedback"></div>
+            </div>
+
+            <div class="question" data-q="q3">
+                <p>3. I was sleeping <span class="placeholder">_____</span> my mom arrived.</p>
+                <input type="text" name="q3" placeholder="Escribe aquí tu respuesta">
+                <div id="feedback-q3" class="feedback"></div>
+            </div>
+
+            <div class="question" data-q="q4">
+                <p>4. ¿Cuál de las siguientes frases es correcta? Escribe **solo** la frase correcta.</p>
+                <p style="font-style: italic; font-size: 0.9em;">(a) While I was watched TV, my brother came.<br>(b) While I was watching TV, my brother was doing homework.<br>(c) When I watching TV, my brother came.</p>
+                <input type="text" name="q4" placeholder="Escribe aquí tu respuesta">
+                <div id="feedback-q4" class="feedback"></div>
+            </div>
+
+            <div class="question" data-q="q5">
+                <p>5. When I was walking to school, it started to rain. → ¿Cuál es el uso de "when" en este contexto? (Escribe **a**, **b** o **c**)</p>
+                <p style="font-style: italic; font-size: 0.9em;">(a) Introduce una acción más larga.<br>(b) Introduce una acción más corta que interrumpe otra.<br>(c) Significa lo mismo que "while".</p>
+                <input type="text" name="q5" placeholder="Escribe a, b o c">
+                <div id="feedback-q5" class="feedback"></div>
+            </div>
+
+            <div class="question" data-q="q6">
+                <p>6. They were talking <span class="placeholder">_____</span> the teacher entered the room.</p>
+                <input type="text" name="q6" placeholder="Escribe aquí tu respuesta">
+                <div id="feedback-q6" class="feedback"></div>
+            </div>
+
+            <div class="question" data-q="q7">
+                <p>7. <span class="placeholder">_____</span> my parents were driving, I was reading a book.</p>
+                <input type="text" name="q7" placeholder="Escribe aquí tu respuesta">
+                <div id="feedback-q7" class="feedback"></div>
+            </div>
+
+            <div class="question" data-q="q8">
+                <p>8. The light went out <span class="placeholder">_____</span> we were watching the movie.</p>
+                <input type="text" name="q8" placeholder="Escribe aquí tu respuesta">
+                <div id="feedback-q8" class="feedback"></div>
+            </div>
+
+            <div class="question" data-q="q9">
+                <p>9. ¿Qué conector se usa a menudo para acciones simultáneas en pasado continuo? (Escribe **when** o **while**)</p>
+                <input type="text" name="q9" placeholder="Escribe aquí tu respuesta">
+                <div id="feedback-q9" class="feedback"></div>
+            </div>
+
+            <div class="question" data-q="q10">
+                <p>10. I was running **when** I fell down. → ¿Qué tiempo verbal sigue a "when" en este caso? (Escribe **a** o **b**)</p>
+                <p style="font-style: italic; font-size: 0.9em;">(a) Pasado Continuo (Past Continuous).<br>(b) Pasado Simple (Simple Past).</p>
+                <input type="text" name="q10" placeholder="Escribe a o b">
+                <div id="feedback-q10" class="feedback"></div>
+            </div>
+
+            <div class="button-group">
+                <button type="button" onclick="checkAnswers()" class="primary-button">Verificar Respuestas</button>
+                <button type="button" onclick="resetInputs()" class="secondary-button">Reiniciar Examen</button>
+            </div>
+        </form>
+
+        <div id="result"></div>
     </div>
-    
-<div class="container">
-<h1>Usos de <em>When</em> y <em>While</em> en Pasado Continuo</h1>
-<p>Responde las siguientes preguntas (escribe **when** o **while** para las de llenar el espacio) y haz clic en "Verificar Respuestas".</p>
 
-<form id="quizForm">
-    <div class="question" data-q="q1">
-        <p>1. I was cooking dinner <span class="placeholder">_____</span> the phone rang.</p>
-        <input type="text" name="q1" placeholder="Escribe aquí tu respuesta">
-        <div id="feedback-q1" class="feedback"></div>
-    </div>
+    <footer>
+        <p>© 2025 <strong>Academic Grammar Pro</strong> — Elite English Training</p>
+        <p><a href="Aviso Legal.html">Aviso Legal</a> | <a href="Politica de Privacidad.html">Política de Privacidad</a></p>
+    </footer>
 
-    <div class="question" data-q="q2">
-        <p>2. <span class="placeholder">_____</span> I was studying, my friends were playing football.</p>
-        <input type="text" name="q2" placeholder="Escribe aquí tu respuesta">
-        <div id="feedback-q2" class="feedback"></div>
-    </div>
-
-    <div class="question" data-q="q3">
-        <p>3. I was sleeping <span class="placeholder">_____</span> my mom arrived.</p>
-        <input type="text" name="q3" placeholder="Escribe aquí tu respuesta">
-        <div id="feedback-q3" class="feedback"></div>
-    </div>
-
-    <div class="question" data-q="q4">
-        <p>4. ¿Cuál de las siguientes frases es correcta? Escribe **solo** la frase correcta.</p>
-        <p style="font-style: italic; font-size: 0.9em;">(a) While I was watched TV, my brother came.<br>(b) While I was watching TV, my brother was doing homework.<br>(c) When I watching TV, my brother came.</p>
-        <input type="text" name="q4" placeholder="Escribe la frase correcta aquí">
-        <div id="feedback-q4" class="feedback"></div>
-    </div>
-
-    <div class="question" data-q="q5">
-        <p>5. When I was walking to school, it started to rain. → ¿Cuál es el uso de "when" en este contexto? (Escribe **a**, **b** o **c**)</p>
-        <p style="font-style: italic; font-size: 0.9em;">(a) Introduce una acción más larga.<br>(b) Introduce una acción más corta que interrumpe otra.<br>(c) Significa lo mismo que "while".</p>
-        <input type="text" name="q5" placeholder="Escribe a, b o c">
-        <div id="feedback-q5" class="feedback"></div>
-    </div>
-
-    <div class="question" data-q="q6">
-        <p>6. They were talking <span class="placeholder">_____</span> the teacher entered the room.</p>
-        <input type="text" name="q6" placeholder="Escribe aquí tu respuesta">
-        <div id="feedback-q6" class="feedback"></div>
-    </div>
-
-    <div class="question" data-q="q7">
-        <p>7. <span class="placeholder">_____</span> my parents were driving, I was reading a book.</p>
-        <input type="text" name="q7" placeholder="Escribe aquí tu respuesta">
-        <div id="feedback-q7" class="feedback"></div>
-    </div>
-
-    <div class="question" data-q="q8">
-        <p>8. The light went out <span class="placeholder">_____</span> we were watching the movie.</p>
-        <input type="text" name="q8" placeholder="Escribe aquí tu respuesta">
-        <div id="feedback-q8" class="feedback"></div>
-    </div>
-
-    <div class="question" data-q="q9">
-        <p>9. ¿Qué conector se usa a menudo para acciones simultáneas en pasado continuo? (Escribe **when** o **while**)</p>
-        <input type="text" name="q9" placeholder="Escribe aquí tu respuesta">
-        <div id="feedback-q9" class="feedback"></div>
-    </div>
-
-    <div class="question" data-q="q10">
-        <p>10. I was running **when** I fell down. → ¿Qué tiempo verbal sigue a "when" en este caso? (Escribe **a** o **b**)</p>
-        <p style="font-style: italic; font-size: 0.9em;">(a) Pasado Continuo (Past Continuous).<br>(b) Pasado Simple (Simple Past).</p>
-        <input type="text" name="q10" placeholder="Escribe a o b">
-        <div id="feedback-q10" class="feedback"></div>
-    </div>
-
-    <div class="button-group">
-        <button type="button" onclick="checkAnswers()" class="primary-button">✅ Verificar Respuestas</button>
-        <button type="button" onclick="resetInputs()" class="secondary-button">🔄 Reiniciar Examen</button>
-    </div>
-</form>
-
-<div id="result"></div>
-</div>
-
-<script src="examen opcion multiple.js"></script>
+    <script src="examen opcion multiple.js"></script>
 </body>
 </html>
