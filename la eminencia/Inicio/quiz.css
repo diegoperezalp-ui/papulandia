@@ -1,0 +1,187 @@
+/* quiz.css - FONDO LONDRES 100% VISIBLE + DISEÑO ÉPICO */
+.quiz-main-container {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 120px 20px 60px;
+    background: url('') center/cover fixed;
+    position: relative;
+}
+
+/* Capa sutil para mejorar legibilidad sin tapar el GIF */
+.quiz-main-container::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.45); /* Solo 45% de oscuridad → se ve el GIF perfecto */
+    backdrop-filter: blur(2px);
+    z-index: 1;
+}
+
+.quiz-card {
+    position: relative;
+    z-index: 2;
+    background: rgba(255, 255, 255, 0.92); /* Casi blanco pero ligeramente transparente */
+    backdrop-filter: blur(20px);
+    border-radius: 30px;
+    padding: 50px 40px;
+    width: 100%;
+    max-width: 900px;
+    box-shadow: 0 30px 80px rgba(0,0,0,0.5);
+    border: 3px solid #60a5fa;
+    overflow: hidden;
+}
+
+.quiz-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; height: 8px;
+    background: linear-gradient(90deg, #1D4ED8, #60a5fa, #EA580C, #60a5fa, #1D4ED8);
+    background-size: 200%;
+    animation: gradient-move 6s linear infinite;
+}
+
+@keyframes gradient-move {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 200% 50%; }
+}
+
+/* Resto del estilo (sin cambios, solo más bonito) */
+.quiz-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.quiz-header h1 {
+    font-family: 'Cinzel', serif;
+    font-size: 3.8rem;
+    color: #1D4ED8;
+    text-shadow: 0 0 25px rgba(96,165,250,0.7);
+    letter-spacing: 4px;
+    margin: 0;
+}
+
+.level {
+    display: inline-block;
+    background: #EA580C;
+    color: white;
+    padding: 12px 35px;
+    border-radius: 50px;
+    font-weight: bold;
+    font-size: 1.3rem;
+    margin: 20px 0;
+    box-shadow: 0 12px 30px rgba(234,88,12,0.5);
+}
+
+.score-display {
+    font-size: 3rem;
+    font-weight: 700;
+    color: #1D4ED8;
+}
+
+.score-display span {
+    display: block;
+    font-size: 1rem;
+    color: #666;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+}
+
+#score {
+    font-family: 'Courier New', monospace;
+    color: #EA580C;
+    text-shadow: 0 0 20px rgba(234,88,12,0.7);
+    font-size: 3.5rem;
+}
+
+.question-container {
+    text-align: center;
+    margin: 40px 0;
+}
+
+#question-text {
+    font-size: 1.7rem;
+    color: #1f2937;
+    line-height: 1.7;
+    font-weight: 600;
+}
+
+.answers-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 22px;
+    margin: 50px 0;
+}
+
+@media (min-width: 640px) {
+    .answers-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+.answer-btn {
+    background: linear-gradient(135deg, #1e40af, #1d4ed8);
+    color: white;
+    border: 4px solid #60a5fa;
+    padding: 22px;
+    border-radius: 20px;
+    font-size: 1.35rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    box-shadow: 0 12px 30px rgba(29,78,216,0.4);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+}
+
+.answer-btn:hover {
+    transform: translateY(-12px) scale(1.02);
+    box-shadow: 0 25px 50px rgba(29,78,216,0.6);
+}
+
+.answer-btn.correct {
+    background: linear-gradient(135deg, #166534, #16a34a) !important;
+    border-color: #22c55e !important;
+    animation: pulse 1.2s infinite;
+}
+
+.answer-btn.incorrect {
+    background: linear-gradient(135deg, #991b1b, #dc3545) !important;
+    border-color: #ef4444 !important;
+}
+
+@keyframes pulse {
+    0%, 100% { box-shadow: 0 0 25px #16a34a; }
+    50% { box-shadow: 0 0 50px #16a34a; }
+}
+
+.feedback {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: bold;
+    margin: 40px 0;
+    min-height: 70px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+}
+
+.start-btn {
+    display: block;
+    margin: 50px auto 0;
+    background: linear-gradient(135deg, #ea580c, #f97316);
+    color: white;
+    border: 5px solid #fbbf24;
+    padding: 22px 70px;
+    font-size: 1.8rem;
+    font-weight: bold;
+    border-radius: 60px;
+    cursor: pointer;
+    box-shadow: 0 20px 40px rgba(234,88,12,0.6);
+    transition: all 0.4s;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.start-btn:hover {
+    transform: translateY(-12px);
+    box-shadow: 0 30px 60px rgba(234,88,12,0.8);
+}

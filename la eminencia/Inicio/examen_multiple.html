@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Examen de Opción Múltiple - When y While</title>
+
+    <!-- MENÚ ÉPICO (usa el mismo inicio.css que el resto) -->
+    <link rel="stylesheet" href="inicio.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp">
+
+    <!-- TU CSS ORIGINAL DEL EXAMEN (lo mantenemos) -->
+    <link rel="stylesheet" href="examen_multiple.css">
+</head>
+<body>
+
+    <!-- MENÚ HAMBURGUESA ÉPICO IGUAL QUE EN TODAS LAS PÁGINAS -->
+    <header id="header">
+        <nav class="navbar">
+            <div class="logo">Academic Grammar Pro</div>
+            <div class="menu-btn" id="menuBtn">
+                <span></span><span></span><span></span>
+            </div>
+        </nav>
+    </header>
+
+     <div class="full-menu" id="fullMenu">
+        <ul>
+            <li><a href="informacion.html">
+                <span class="material-symbols-sharp">school</span> Teoría y Reglas
+            </a></li>
+            <li><a href="mini juego supremo.html">
+                <span class="material-symbols-sharp">videogame_asset</span> Juego 1
+            </a></li>
+            <li><a href="quiz.html">
+                <span class="material-symbols-sharp">extension</span> Juego 2
+            </a></li>
+            <li><a href="examen abierto.html">
+                <span class="material-symbols-sharp">quiz</span> Examen 1
+            </a></li>
+            <li><a href="examen_multiple.html">
+                <span class="material-symbols-sharp">assignment_turned_in</span> Examen 2 (Avanzado)
+            </a></li>
+        </ul>
+    </div>
+
+    <!-- BOTÓN HOME FLOTANTE ÉPICO -->
+    <a href="index.html" class="home-float-top">
+        <span class="material-symbols-sharp">home</span>
+    </a>
+
+    <!-- TU CONTENIDO DEL EXAMEN 100% ORIGINAL -->
+    <div class="container">
+        <h1>Examen de Opción Múltiple<br><em>When</em> y <em>While</em> en Past Continuous</h1>
+        <p>Selecciona la opción correcta en cada pregunta.</p>
+
+        <form id="quizForm">
+            <!-- Pregunta 1 -->
+            <div class="question" data-q="q1">
+                <p>1. We were having dinner ______ the lights went out.</p>
+                <label><input type="radio" name="q1" value="a"> a) when</label>
+                <label><input type="radio" name="q1" value="b"> b) while</label>
+                <label><input type="radio" name="q1" value="c"> c) both are correct</label>
+                <div id="feedback-q1" class="feedback"></div>
+            </div>
+
+            <div class="question" data-q="q2">
+                <p>2. ______ Sarah was sleeping, someone knocked on the door.</p>
+                <label><input type="radio" name="q2" value="a"> a) When</label>
+                <label><input type="radio" name="q2" value="b"> b) While</label>
+                <label><input type="radio" name="q2" value="c"> c) Both are correct</label>
+                <div id="feedback-q2" class="feedback"></div>
+            </div>
+
+            <div class="question" data-q="q3">
+                <p>3. My parents were talking on the phone ______ I was doing my homework.</p>
+                <label><input type="radio" name="q3" value="a"> a) when</label>
+                <label><input type="radio" name="q3" value="b"> b) while</label>
+                <label><input type="radio" name="q3" value="c"> c) both are correct</label>
+                <div id="feedback-q3" class="feedback"></div>
+            </div>
+
+            <div class="question" data-q="q4">
+                <p>4. Which sentence is grammatically correct?</p>
+                <label><input type="radio" name="q4" value="a"> a) When I was studying, my dog barked.</label>
+                <label><input type="radio" name="q4" value="b"> b) While I studied, my dog was barking.</label>
+                <label><input type="radio" name="q4" value="c"> c) Both are correct</label>
+                <div id="feedback-q4" class="feedback"></div>
+            </div>
+
+            <div class="question" data-q="q5">
+                <p>5. I ______ TV when the earthquake started.</p>
+                <label><input type="radio" name="q5" value="a"> a) watched</label>
+                <label><input type="radio" name="q5" value="b"> b) was watching</label>
+                <label><input type="radio" name="q5" value="c"> c) was watch</label>
+                <div id="feedback-q5" class="feedback"></div>
+            </div>
+
+            <div class="question" data-q="q6">
+                <p>6. What is the typical structure when we use "when" with Past Continuous?</p>
+                <label><input type="radio" name="q6" value="a"> a) Past Continuous + when + Past Continuous</label>
+                <label><input type="radio" name="q6" value="b"> b) Past Continuous + when + Past Simple</label>
+                <label><input type="radio" name="q6" value="c"> c) Past Simple + when + Past Continuous</label>
+                <div id="feedback-q6" class="feedback"></div>
+            </div>
+
+            <div class="question" data-q="q7">
+                <p>7. ______ were you doing when I called you last night?</p>
+                <label><input type="radio" name="q7" value="a"> a) What</label>
+                <label><input type="radio" name="q7" value="b"> b) When</label>
+                <label><input type="radio" name="q7" value="c"> c) While</label>
+                <div id="feedback-q7" class="feedback"></div>
+            </div>
+
+            <div class="question" data-q="q8">
+                <p>8. She was cooking dinner ______ her husband was playing video games.</p>
+                <label><input type="radio" name="q8" value="a"> a) when</label>
+                <label><input type="radio" name="q8" value="b"> b) while</label>
+                <label><input type="radio" name="q8" value="c"> c) both possible</label>
+                <div id="feedback-q8" class="feedback"></div>
+            </div>
+
+            <div class="question" data-q="q9">
+                <p>9. Choose the correct completion:<br>I met an old friend ______ I was shopping yesterday.</p>
+                <label><input type="radio" name="q9" value="a"> a) when</label>
+                <label><input type="radio" name="q9" value="b"> b) while</label>
+                <label><input type="radio" name="q9" value="c"> c) both are correct</label>
+                <div id="feedback-q9" class="feedback"></div>
+            </div>
+
+            <div class="question" data-q="q10">
+                <p>10. Which connector is usually used for two long actions happening at the same time?</p>
+                <label><input type="radio" name="q10" value="a"> a) when</label>
+                <label><input type="radio" name="q10" value="b"> b) while</label>
+                <label><input type="radio" name="q10" value="c"> c) both are always interchangeable</label>
+                <div id="feedback-q10" class="feedback"></div>
+            </div>
+
+            <div class="button-group">
+                <button type="button" onclick="checkAnswers()" class="primary-button">Verificar Respuestas</button>
+                <button type="button" onclick="resetQuiz()" class="secondary-button">Reiniciar Examen</button>
+            </div>
+        </form>
+
+        <div id="result"></div>
+    </div>
+
+    <footer>
+        <p>© 2025 <strong>Academic Grammar Pro</strong> — Elite English Training</p>
+    </footer>
+
+    <!-- SCRIPT DEL MENÚ + TU JS ORIGINAL -->
+    <script>
+        document.getElementById('menuBtn').addEventListener('click', function() {
+            this.classList.toggle('active');
+            document.getElementById('fullMenu').classList.toggle('active');
+        });
+    </script>
+    <script src="examen_multiple.js"></script>
+</body>
+</html>

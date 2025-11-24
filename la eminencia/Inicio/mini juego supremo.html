@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mini Juego Supremo | Academic Grammar Pro</title>
+
+    <!-- TU CSS BASE (el mismo que usas en información) -->
+    <link rel="stylesheet" href="inicio.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp">
+
+    <!-- CSS ESPECÍFICO DEL JUEGO (mantienes tu estilo épico) -->
+    <link rel="stylesheet" href="mini juego supremo.css">
+</head>
+<body>
+
+    <!-- HEADER + HAMBURGUESA FULL-SCREEN (IGUAL QUE EN INFORMACIÓN) -->
+    <header id="header">
+        <nav class="navbar">
+            <div class="logo">Academic Grammar Pro</div>
+            <div class="menu-btn" id="menuBtn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- MENÚ FULL-SCREEN (mismo tono oscuro elegante que información) -->
+   <div class="full-menu" id="fullMenu">
+        <ul>
+            <li><a href="informacion.html">
+                <span class="material-symbols-sharp">school</span> Teoría y Reglas
+            </a></li>
+            <li><a href="mini juego supremo.html">
+                <span class="material-symbols-sharp">videogame_asset</span> Juego 1
+            </a></li>
+            <li><a href="quiz.html">
+                <span class="material-symbols-sharp">extension</span> Juego 2
+            </a></li>
+            <li><a href="examen abierto.html">
+                <span class="material-symbols-sharp">quiz</span> Examen 1
+            </a></li>
+            <li><a href="examen_multiple.html">
+                <span class="material-symbols-sharp">assignment_turned_in</span> Examen 2 (Avanzado)
+            </a></li>
+        </ul>
+    </div>
+
+    <!-- BOTÓN HOME (mantiene tu estilo del juego) -->
+    <a href="index.html" class="home-float-top">
+        <span class="material-symbols-sharp">home</span>
+    </a>
+
+    <main>
+        <div class="game-container module-card revealed">
+            <h1>Reflejos Gramaticales: Just Dog It</h1>
+            <p>Gana Disparos con tu gramática. ¡Usa los disparos para ganar puntos haciendo clic rápido!</p>
+            
+            <div id="stats-panel">
+                <h2>Puntuación: <span id="score">0</span></h2>
+                <h2>Vidas / Disparos: <span id="lives">3</span></h2>
+            </div>
+            
+            <div id="grammar-phase">
+                <h3>Fase 1: El Desafío Gramatical</h3>
+                <p id="question-text"></p>
+                <div id="options-container"></div>
+                <div id="grammar-message" class="message-status"></div>
+            </div>
+
+            <div id="skill-phase" class="hidden">
+                <h3>Fase 2: ¡Dispara al Blanco!</h3>
+                <p id="skill-instruction">Presiona el botón de Disparo o espera a que el blanco aparezca.</p>
+                
+                <button class="btn-primary" id="trigger-btn">
+                    Usar Disparo (<span id="trigger-cost">1</span>)
+                </button>
+                
+                <div id="game-board"></div>
+                
+                <div id="skill-message" class="message-status"></div>
+            </div>
+            
+            <footer>
+                <button class="btn-secondary reset-button" onclick="window.location.reload()">
+                    <span class="material-symbols-sharp">refresh</span> Reiniciar Juego
+                </button>
+            </footer>
+        </div>
+    </main>
+
+    <footer>
+        <p>© 2025 <strong>Academic Grammar Pro</strong> — Elite English Training</p>
+        <p><a href="Aviso Legal.html">Aviso Legal</a> | <a href="Politica de Privacidad.html">Política de Privacidad</a></p>
+    </footer>
+
+    <audio id="musicaFondo" loop>
+        <source src="musicaFondo.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- JavaScript del menú + tu juego -->
+    <script>
+        // Menú hamburguesa (igual que en información)
+        document.getElementById('menuBtn').addEventListener('click', function() {
+            this.classList.toggle('active');
+            document.getElementById('fullMenu').classList.toggle('active');
+        });
+    </script>
+    <script src="mini juego supremo.js"></script>
+</body>
+</html>

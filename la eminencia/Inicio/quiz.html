@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Academic Grammar Pro | Past Continuous Challenge</title>
+    
+    <link rel="stylesheet" href="inicio.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Montserrat:wght@400;500;600;700&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp" rel="stylesheet">
+    <link rel="stylesheet" href="quiz.css">
+</head>
+<body>
+
+    <!-- MENÚ HAMBURGUESA ÉPICO (igual que index) -->
+    <header id="header">
+        <nav class="navbar">
+            <div class="logo">Academic Grammar Pro</div>
+            <div class="menu-btn" id="menuBtn">
+                <span></span><span></span><span></span>
+            </div>
+        </nav>
+    </header>
+
+    <div class="full-menu" id="fullMenu">
+        <ul>
+            <li><a href="informacion.html"><span class="material-symbols-sharp">school</span> Reglas</a></li>
+            <li><a href="examen opcion multiple html.html"><span class="material-symbols-sharp">quiz</span> Examen</a></li>
+            <li><a href="examen2.html"><span class="material-symbols-sharp">assignment</span> Examen 2</a></li>
+            <li><a href="mini juego supremo.html"><span class="material-symbols-sharp">videogame_asset</span> Mini Juego 1</a></li>
+            <li><a href="quiz.html"><span class="material-symbols-sharp">extension</span> Mini Juego 2</a></li>
+        </ul>
+    </div>
+
+    <a href="index.html" class="home-float-top">
+        <span class="material-symbols-sharp">home</span>
+    </a>
+
+    <!-- JUEGO PRINCIPAL -->
+    <main class="quiz-main-container">
+        <div class="quiz-card">
+            <div class="quiz-header">
+                <h1>PAST CONTINUOUS CHALLENGE</h1>
+                <div class="level">LEVEL 1</div>
+                <div class="score-display">
+                    <span>SCORE</span>
+                    <div id="score">000</div>
+                </div>
+            </div>
+
+            <div class="question-container">
+                <h2 id="question-text">¡Haz clic en START MISSION para comenzar!</h2>
+            </div>
+
+            <div id="answers" class="answers-grid"></div>
+
+            <div id="feedback" class="feedback"></div>
+
+            <button id="next-btn" class="start-btn">START MISSION</button>
+        </div>
+    </main>
+
+    <footer>
+        <p>© 2025 <strong>Academic Grammar Pro</strong> — Elite English Training</p>
+    </footer>
+
+    <script>
+        // Menú hamburguesa
+        document.getElementById('menuBtn').addEventListener('click', function() {
+            this.classList.toggle('active');
+            document.getElementById('fullMenu').classList.toggle('active');
+        });
+    </script>
+    <script src="quiz.js"></script>
+</body>
+</html>

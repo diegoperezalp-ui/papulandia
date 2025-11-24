@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aviso Legal - Academia Grammar Pro</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    
+    <style>
+        /* Variables de Color (Tomadas de tu paleta) */
+        :root {
+            --color-primary: #003366; /* Azul Oscuro */
+            --color-secondary: #1F6BFF; /* Azul Vivo */
+            --color-accent: #28A745; /* Verde */
+            --color-light: #F8F8F8; /* Fondo muy claro */
+            --color-white: #FFFFFF;
+        }
+
+        /* --- Estilos Globales y Base --- */
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding-top: 60px; /* Espacio para la cabecera fija */
+            background-color: var(--color-light);
+            color: #333333;
+            min-height: 100vh;
+        }
+
+        /* --- Estilos de Cabecera (Necesario para diseño fijo) --- */
+        .header {
+            background-color: var(--color-primary);
+            color: var(--color-white);
+            padding: 10px 5%;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+            position: fixed; 
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 2000;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-name {
+            font-size: 1.6em;
+            font-weight: bold;
+        }
+
+        /* --- Estilos Específicos para Contenido Legal --- */
+        .contenido-legal {
+            width: 90%;
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 30px;
+            background-color: var(--color-white);
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            border-top: 5px solid var(--color-primary);
+        }
+
+        .contenido-legal h1 {
+            color: var(--color-primary);
+            border-bottom: 2px solid var(--color-secondary);
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .seccion-legal {
+            margin-bottom: 30px;
+            padding: 15px;
+            border-left: 3px solid var(--color-accent);
+            background-color: #FAFAFA;
+            border-radius: 4px;
+        }
+
+        .seccion-legal h2 {
+            color: var(--color-secondary);
+            margin-top: 0;
+            font-size: 1.5em;
+        }
+
+        .seccion-legal ul, .seccion-legal p {
+            line-height: 1.7;
+            color: #444;
+        }
+
+        .seccion-legal ul {
+            margin-left: 20px;
+            list-style-type: disc;
+        }
+
+        /* --- Estilos de Footer --- */
+        .footer {
+            background-color: #333333;
+            color: var(--color-light);
+            text-align: center;
+            padding: 20px 0;
+            font-size: 0.9em;
+            margin-top: 50px;
+        }
+
+        /* --- Estilo de Botón Flotante (Regreso a Inicio) --- */
+        .home-float-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background-color: var(--color-accent);
+            color: var(--color-white);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+            text-decoration: none;
+            font-size: 24px;
+            transition: background-color 0.3s, transform 0.2s;
+            z-index: 5000;
+            cursor: pointer;
+        }
+
+        .home-float-btn:hover {
+            background-color: #1e7e34;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="logo-container">
+            <span class="logo-name">Academia Grammar Pro</span>
+        </div>
+    </header>
+
+    <main class="contenido-legal">
+        <h1>Aviso Legal y Condiciones de Uso 📜</h1>
+        
+        <section class="seccion-legal">
+            <h2>1. Datos del Titular del Sitio Web</h2>
+            <p>Este sitio web es propiedad y está operado por:</p>
+            <ul>
+                <li>**Nombre del Titular:** [Tu Nombre o Nombre de la Entidad]</li>
+                <li>**Contacto:** info@academiagrammarpro.com (Email de contacto para consultas legales)</li>
+            </ul>
+        </section>
+
+        <section class="seccion-legal">
+            <h2>2. Propiedad Intelectual e Industrial</h2>
+            <p>El contenido de este sitio web, incluyendo textos, gráficos, imágenes, así como el diseño y la estructura, están protegidos por derechos de autor y propiedad intelectual. Su uso, reproducción o distribución sin autorización expresa del titular está prohibido.</p>
+            <p>Los mini-juegos y el material didáctico están diseñados para uso personal y educativo dentro de la plataforma.</p>
+        </section>
+
+        <section class="seccion-legal">
+            <h2>3. Condiciones de Uso</h2>
+            <p>El acceso y uso de este portal implica la aceptación plena y sin reservas de las siguientes condiciones:</p>
+            <ul>
+                <li>El usuario se compromete a hacer un uso adecuado de los contenidos y servicios, sin incurrir en actividades ilícitas o contrarias a la buena fe.</li>
+                <li>El titular se reserva el derecho de modificar la información y servicios en cualquier momento sin previo aviso.</li>
+            </ul>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2025 Academia Grammar Pro. Todos los derechos reservados.</p>
+    </footer>
+
+    <a href="index.html" class="home-float-btn" title="Volver al Inicio">
+        <span class="material-icons">
+            home
+        </span>
+    </a>
+</body>
+</html>

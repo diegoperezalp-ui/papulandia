@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Política de Privacidad - Academia Grammar Pro</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    
+    <style>
+        /* Variables de Color (Tomadas de tu paleta) */
+        :root {
+            --color-primary: #003366; /* Azul Oscuro */
+            --color-secondary: #1F6BFF; /* Azul Vivo */
+            --color-accent: #28A745; /* Verde */
+            --color-light: #F8F8F8; /* Fondo muy claro */
+            --color-white: #FFFFFF;
+        }
+
+        /* --- Estilos Globales y Base --- */
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding-top: 60px; /* Espacio para la cabecera fija */
+            background-color: var(--color-light);
+            color: #333333;
+            min-height: 100vh;
+        }
+
+        /* --- Estilos de Cabecera (Necesario para diseño fijo) --- */
+        .header {
+            background-color: var(--color-primary);
+            color: var(--color-white);
+            padding: 10px 5%;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+            position: fixed; 
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 2000;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-name {
+            font-size: 1.6em;
+            font-weight: bold;
+        }
+
+        /* --- Estilos Específicos para Contenido Legal --- */
+        .contenido-legal {
+            width: 90%;
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 30px;
+            background-color: var(--color-white);
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            border-top: 5px solid var(--color-primary);
+        }
+
+        .contenido-legal h1 {
+            color: var(--color-primary);
+            border-bottom: 2px solid var(--color-secondary);
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .fecha-actualizacion {
+            text-align: right;
+            font-size: 0.9em;
+            color: #888;
+            margin-bottom: 30px;
+        }
+
+        .seccion-legal {
+            margin-bottom: 30px;
+            padding: 15px;
+            border-left: 3px solid var(--color-accent);
+            background-color: #FAFAFA;
+            border-radius: 4px;
+        }
+
+        .seccion-legal h2 {
+            color: var(--color-secondary);
+            margin-top: 0;
+            font-size: 1.5em;
+        }
+
+        .seccion-legal h3 {
+            color: var(--color-primary);
+            margin-top: 15px;
+            font-size: 1.2em;
+        }
+        
+        .seccion-legal ul, .seccion-legal ol, .seccion-legal p {
+            line-height: 1.7;
+            color: #444;
+        }
+
+        .seccion-legal ul, .seccion-legal ol {
+            margin-left: 20px;
+        }
+
+        /* --- Estilos de Footer --- */
+        .footer {
+            background-color: #333333;
+            color: var(--color-light);
+            text-align: center;
+            padding: 20px 0;
+            font-size: 0.9em;
+            margin-top: 50px;
+        }
+
+        /* --- Estilo de Botón Flotante (Regreso a Inicio) --- */
+        .home-float-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background-color: var(--color-accent);
+            color: var(--color-white);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+            text-decoration: none;
+            font-size: 24px;
+            transition: background-color 0.3s, transform 0.2s;
+            z-index: 5000;
+            cursor: pointer;
+        }
+
+        .home-float-btn:hover {
+            background-color: #1e7e34;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="logo-container">
+            <span class="logo-name">Academia Grammar Pro</span>
+        </div>
+    </header>
+
+    <main class="contenido-legal">
+        <h1>Política de Privacidad 🔒</h1>
+        <p class="fecha-actualizacion">Fecha de última actualización: 5 de Noviembre de 2025</p>
+
+        <section class="seccion-legal">
+            <h2>1. Introducción y Recopilación de Datos</h2>
+            <p>En **Academia Grammar Pro**, nos comprometemos a proteger la privacidad de nuestros usuarios. Esta política explica qué información recopilamos y cómo la utilizamos, especialmente al ser una plataforma educativa.</p>
+            
+            <h3>Datos Recopilados:</h3>
+            <ul>
+                <li>**Datos de Registro:** Nombre de usuario (pseudónimo), correo electrónico.</li>
+                <li>**Datos de Uso y Progreso:** Puntuaciones de juegos, tiempo dedicado a módulos, respuestas correctas/incorrectas.</li>
+                <li>**Datos Técnicos:** Dirección IP, tipo de navegador, sistema operativo (para mejorar la compatibilidad).</li>
+            </ul>
+        </section>
+
+        <section class="seccion-legal">
+            <h2>2. Uso de la Información</h2>
+            <p>Los datos recopilados se utilizan exclusivamente para los siguientes fines educativos y operativos:</p>
+            <ol>
+                <li>**Seguimiento del Aprendizaje:** Personalizar la experiencia y mostrar el progreso del usuario.</li>
+                <li>**Mejora de Contenido:** Analizar el rendimiento de los módulos para optimizar la enseñanza.</li>
+                <li>**Comunicaciones:** Enviar notificaciones relacionadas con la cuenta o actualizaciones de la plataforma (si el usuario lo autoriza).</li>
+            </ol>
+        </section>
+        
+        <section class="seccion-legal">
+            <h2>3. Compartición de Datos y Seguridad</h2>
+            <p>Academia Grammar Pro **no vende ni alquila** sus datos personales a terceros. La información de progreso se mantiene confidencial y se almacena en servidores seguros.</p>
+            <p>Solo compartiremos datos si es legalmente requerido o si necesitamos usar servicios de terceros (como análisis web), asegurando que estos terceros cumplan con estándares estrictos de protección de datos.</p>
+        </section>
+
+        <section class="seccion-legal">
+            <h2>4. Derechos del Usuario</h2>
+            <p>Usted tiene derecho a acceder, rectificar o eliminar sus datos personales. Para ejercer estos derechos, póngase en contacto con nosotros a través de la dirección de correo proporcionada en el Aviso Legal.</p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2025 Academia Grammar Pro. Todos los derechos reservados.</p>
+    </footer>
+
+    <a href="index.html" class="home-float-btn" title="Volver al Inicio">
+        <span class="material-icons">
+            home
+        </span>
+    </a>
+</body>
+</html>
