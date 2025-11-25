@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Academic Grammar Pro</title>
+    <link rel="stylesheet" href="INTRODUCCION.css">
+</head>
+<body>
+
+    <!-- Fondo con tu GIF original -->
+    <div class="space-bg"></div>
+
+    <!-- DARTH VADER - Protagonista absoluto -->
+    <div class="vader-container">
+        <img src="dartvader.png" alt="Darth Vader" id="vader" onerror="this.style.display='none'">
+    </div>
+
+    <!-- Estrella USA detrás de Vader (como su poder) -->
+    <div class="usa-star" id="usaStar"></div>
+
+    <!-- Texto que se "escribe" con sable de luz rojo -->
+    <div class="lightsaber-text">
+        <h1 id="title1">ACADEMIC</h1>
+        <h1 id="title2">GRAMMAR PRO</h1>
+        <h2 id="subtitle">Master the Past Continuous</h2>
+    </div>
+
+    <!-- Mensaje final sutil -->
+    <div class="enter-hint">Pulsa la estrella para unirte al lado oscuro del inglés</div>
+
+    <!-- Confeti USA -->
+    <canvas id="confetti"></canvas>
+
+    <!-- Link invisible -->
+    <a href="index.html" id="enterLink"></a>
+
+    <!-- Sonidos -->
+    <audio id="vaderBreath" loop preload="auto">
+        <source src="https://assets.mixkit.co/sfx/preview/mixkit-darth-vader-breathing-1052.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="lightsaber" preload="auto">
+        <source src="https://assets.mixkit.co/sfx/preview/mixkit-lightsaber-turn-on-2109.mp3" type="audio/mpeg">
+    </audio>
+
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <script src="INTRODUCCION.js"></script>
+</body>
+</html>
