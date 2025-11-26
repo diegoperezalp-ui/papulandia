@@ -1,0 +1,214 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #f3e8ff, #e0d4ff, #cdd8ff);
+    color: #4c1d95;
+    min-height: 100vh;
+    display: flex;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 260px;
+    background: rgba(139, 92, 246, 0.15);
+    backdrop-filter: blur(12px);
+    padding: 2rem 1.5rem;
+    border-right: 1px solid rgba(147, 51, 234, 0.2);
+    box-shadow: 4px 0 20px rgba(0,0,0,0.05);
+}
+.sidebar h2 {
+    color: #6b21a8;
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 1.8rem;
+}
+.sidebar button {
+    width: 100%;
+    padding: 14px;
+    margin: 10px 0;
+    background: #c4b5fd;
+    border: none;
+    border-radius: 12px;
+    color: #4c1d95;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.sidebar button:hover {
+    background: #a78bfa;
+    color: white;
+}
+
+/* Área principal */
+.main-game {
+    flex: 1;
+    padding: 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+header {
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+header h1 {
+    font-size: 3rem;
+    color: #6b21a8;
+    margin-bottom: 0.5rem;
+}
+.subtitle {
+    color: #7c3aed;
+    font-size: 1.2rem;
+}
+
+/* Stats */
+.stats {
+    display: flex;
+    justify-content: center;
+    gap: 4rem;
+    background: rgba(196, 181, 253, 0.4);
+    padding: 1rem 2rem;
+    border-radius: 16px;
+    margin-bottom: 2rem;
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: #5b21b6;
+}
+
+/* Área de juego horizontal */
+.game-area {
+    display: flex;
+    gap: 2rem;
+    height: 580px;
+}
+.panel {
+    flex: 1;
+    background  background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 2rem;
+    box-shadow: 0 10px 30px rgba(124, 58, 237, 0.1);
+    border: 1px solid rgba(147, 51, 234, 0.2);
+    transition: all 0.4s;
+}
+.panel h3 {
+    text-align: center;
+    color: #6b21a8;
+    margin-bottom: 1.5rem;
+    font-size: 1.6rem;
+}
+
+/* Pregunta */
+#question-text {
+    background: rgba(196, 181, 253, 0.3);
+    padding: 1.5rem;
+    border-radius: 14px;
+    text-align: center;
+    font-size: 1.35rem;
+    margin-bottom: 1.5rem;
+    color: #5b21b6;
+    font-weight: 500;
+}
+
+/* Botones de opciones */
+#options-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+#options-container button {
+    padding: 1.1rem;
+    background: white;
+    border: 2px solid #c4b5fd;
+    border-radius: 14px;
+    font-size: 1.1rem;
+    color: #6b21a8;
+    cursor: pointer;
+    transition: 0.3s;
+}
+#options-container button:hover {
+    background: #ddd6fe;
+    border-color: #a78bfa;
+    transform: translateY(-4px);
+}
+
+/* Zona de disparo */
+#game-board {
+    height: 380px;
+    background: url('fondo duck hunt.png') center/cover no-repeat;
+    border-radius: 16px;
+    margin: 1.5rem 0;
+    position: relative;
+    overflow: hidden;
+    border: 4px solid #c4b5fd;
+    cursor: crosshair;
+}
+.target {
+    position: absolute;
+    width: 140px;
+    height: 100px;
+    animation: float 3s ease-in-out infinite;
+}
+.target img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+}
+
+.shoot-btn {
+    display: block;
+    margin: 0 auto 1rem;
+    padding: 14px 40px;
+    background: #a78bfa;
+    color: white;
+    border: none;
+    border-radius: 50px;
+    font-size: 1.4rem;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 8px 20px rgba(167, 139, 250, 0.3);
+}
+.shoot-btn:hover:not(:disabled) {
+    background: #9333ea;
+    transform: translateY(-3px);
+}
+.shoot-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* Mensajes */
+.msg {
+    text-align: center;
+    padding: 1rem;
+    border-radius: 12px;
+    margin-top: 1rem;
+    font-weight: 600;
+    min-height: 50px;
+    font-size: 1.2rem;
+}
+.correct {
+    background: rgba(34, 197, 94, 0.2);
+    color: #166534;
+    border: 2px solid #86efac;
+}
+.incorrect {
+    background: rgba(239, 68, 68, 0.2);
+    color: #7f1d1d;
+    border: 2px solid #fca5a5;
+}
+
+/* Responsive */
+@media (max-width: 1000px) {
+    .game-area { flex-direction: column; height: auto; }
+    .panel { min-height: 500px; }
+    header h1 { font-size: 2.4rem; }
+    .stats { flex-direction: column; gap: 1rem; text-align: center; }
+}
+@media (max-width: 600px) {
+    body { flex-direction: column; }
+    .sidebar { width: 100%; padding: 1rem; text-align: center; }
+}

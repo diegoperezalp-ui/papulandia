@@ -1,67 +1,106 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Academic Grammar Pro | Past Continuous - LEVEL 1</title>
-    
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet"/>
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp" rel="stylesheet"/>
-    <link href="inicio.css" rel="stylesheet"/> 
-    <link rel="stylesheet" href="quiz.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Academic Grammar Pro</title>
+
+  <!-- TailwindCDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <link rel="stylesheet" href="quiz.css" />
 </head>
-<body>
-    
-    <header>
-        <nav class="navbar">
-            <div class="logo">Academic Grammar Pro</div>
-            <span class="material-symbols-sharp menu-toggle" id="menuToggle">menu</span>
-            <ul class="nav-links" id="navLinks">
-                <li><a href="examen abierto.html"><span class="material-symbols-sharp">quiz</span> Exam</a></li>
-                <li><a href="informacion.html"><span class="material-symbols-sharp">school</span> Rules</a></li>
-                <li><a href="mini juego supremo.html"><span class="material-symbols-sharp">videogame_asset</span> Game 1</a></li>
-                <li><a href="quiz.html"><span class="material-symbols-sharp">extension</span> Game 2</a></li>
-            </ul>
-        </nav>
-    </header>
-    
-    <main>
-        <div class="quiz-container module-card revealed game-mode">
-            
-            <header class="quiz-header">
-                <h1 class="title glitch" data-text="PAST CONTINUOUS">PAST CONTINUOUS</h1>
-                <div class="level-badge">LEVEL 1</div>
-                <div class="score-area">
-                    <span class="score-label">SCORE</span>
-                    <span id="current-score">000</span><span class="max-score"> / 100</span>
-                </div>
-            </header>
 
-            <section id="quiz-main" class="quiz-main">
-                <h2 id="question-text" class="question-text"></h2>
+<body class="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white">
 
-                <div id="answers-container" class="answers-container"></div>
+  <!-- Header -->
+  <header class="bg-slate-900/80 backdrop-blur-sm border-b-4 border-blue-600 sticky top-0 z-50">
+    <nav class="container mx-auto px-4 py-4 flex items-center justify-between">
 
-                <p id="feedback" class="feedback"></p>
-            </section>
+      <div class="text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
+        Academic Grammar Pro
+      </div>
 
-            <div class="actions">
-                <button id="next-button" class="btn btn-primary pixel-btn">
-                    <span>► START MISSION</span>
-                </button>
-            </div>
-            
-            <!-- Efecto de partículas de fondo (solo visual) -->
-            <div class="particles"></div>
+      <button id="menuButton" class="md:hidden p-2 hover:bg-slate-700 rounded-lg transition-colors">
+        ☰
+      </button>
+
+      <ul id="menu"
+        class="hidden md:flex flex-col md:flex-row absolute md:relative top-full left-0 right-0 md:top-auto bg-slate-800 md:bg-transparent p-4 md:p-0 gap-2 md:gap-6 shadow-lg md:shadow-none">
+
+        <li>
+          <a href="examen abierto.html" class="flex items-center gap-2 px-4 py-2 hover:bg-blue-600 rounded-lg">
+            🎖 Exam
+          </a>
+        </li>
+
+        <li>
+          <a href="informacion.html" class="flex items-center gap-2 px-4 py-2 hover:bg-blue-600 rounded-lg">
+            📚 Rules
+          </a>
+        </li>
+
+        <li>
+          <a href="mini juego supremo.html" class="flex items-center gap-2 px-4 py-2 hover:bg-blue-600 rounded-lg">
+            🎮 Game 1
+          </a>
+        </li>
+
+        <li>
+          <a href="quiz.html" class="flex items-center gap-2 px-4 py-2 bg-purple-600 rounded-lg">
+            🧩 Game 2
+          </a>
+        </li>
+
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Main -->
+  <main class="container mx-auto px-4 py-8 max-w-4xl">
+    <div class="bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl border-4 border-blue-500 shadow-2xl shadow-blue-500/50 p-8 relative overflow-hidden">
+
+      <!-- Decorative -->
+      <div class="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none">
+        <div class="absolute top-10 left-10 text-6xl animate-pulse">◆</div>
+        <div class="absolute bottom-10 right-10 text-6xl animate-pulse delay-1000">★</div>
+      </div>
+
+      <!-- Header -->
+      <div class="relative z-10 border-b-4 border-dashed border-blue-500 pb-6 mb-8">
+        <h1 class="text-5xl md:text-6xl font-bold text-center mb-4 animate-pulse">
+          <span class="bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
+            PAST CONTINUOUS
+          </span>
+        </h1>
+
+        <div class="absolute -top-4 right-4 bg-orange-500 px-6 py-2 rounded-b-2xl shadow-lg font-bold text-lg tracking-wider">
+          LEVEL 1
         </div>
-    </main>
 
-    <footer>
-        <p>© 2025 <strong>Academic Grammar Pro</strong> — Elite English Training</p>
-        <p><a href="Aviso Legal.html">Legal Notice</a> | <a href="Politica de Privacidad.html">Privacy Policy</a></p>
-    </footer>
+        <div class="text-center">
+          <div class="text-sm text-slate-400 tracking-widest mb-2">SCORE</div>
+          <div id="scoreDisplay" class="text-5xl font-bold font-mono text-green-400 drop-shadow-[0_0_15px_rgba(34,197,94,0.8)]">
+            000
+          </div>
+          <span class="text-slate-500 text-xl">/ 10</span>
+        </div>
+      </div>
 
-    <script src="script.js"></script>
-    <script src="quiz.js"></script>
+      <!-- Game Wrapper -->
+      <div id="gameContainer" class="relative z-10"></div>
+
+    </div>
+  </main>
+
+  <footer class="bg-slate-900 border-t-2 border-slate-700 py-6 mt-12 text-center text-slate-400">
+    <p class="mb-2">© 2025 <strong class="text-blue-400">Academic Grammar Pro</strong> – Elite English Training</p>
+    <p>
+      <a href="Aviso Legal.html" class="hover:text-blue-400">Legal Notice</a> |
+      <a href="Politica de Privacidad.html" class="hover:text-blue-400">Privacy Policy</a>
+    </p>
+  </footer>
+
+  <script src="quiz.js"></script>
 </body>
 </html>
