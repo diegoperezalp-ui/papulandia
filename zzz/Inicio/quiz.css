@@ -3,7 +3,8 @@ html, body { height: 100%; overflow: hidden; }
 
 body {
   font-family: 'Poppins', sans-serif;
-  background: linear-gradient(135deg, #0C1B33 0%, #0A1629 50%, #6D5DA8 100%);
+  /* NUEVO FONDO MORADO-AZUL PROFUNDO */
+  background: linear-gradient(135deg, #1A0B3D 0%, #2D1B69 50%, #6E5BFF 100%);
   color: #F4F7FA;
   display: flex;
   justify-content: center;
@@ -21,27 +22,27 @@ body {
   overflow: hidden;
 }
 
-/* Glassmorphism */
+/* Glassmorphism (igual pero con tinte violeta) */
 .sidebar, .question-panel, .progress-panel, .top-bar {
   background: rgba(255, 255, 255, 0.12);
   backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.18);
+  border: 1px solid rgba(180, 140, 255, 0.25);
   border-radius: 16px;
-  box-shadow: 0 8px 32px rgba(12, 27, 51, 0.6);
+  box-shadow: 0 8px 32px rgba(80, 40, 180, 0.6);
 }
 
-/* Sidebar compacto */
+/* Sidebar */
 .sidebar {
   width: 210px;
   padding: 20px;
   display: flex;
   flex-direction: column;
   gap: 16px;
-  border-left: 5px solid #8B1E3F;
+  border-left: 5px solid #9D4EDD;   /* morado brillante */
 }
 
 .brand h2 { font-size: 1.6rem; font-weight: 900; }
-.brand small { font-size: 0.8rem; color: #5C9CE5; }
+.brand small { font-size: 0.8rem; color: #A0C4FF; }
 
 .controls { gap: 10px; display: flex; flex-direction: column; }
 .controls .magic-btn { font-size: 13px; padding: 10px 16px; }
@@ -58,7 +59,7 @@ header h1 {
   font-size: 2.8rem;
   text-align: center;
   font-weight: 900;
-  background: linear-gradient(90deg, #8B1E3F, white, #5C9CE5);
+  background: linear-gradient(90deg, #9D4EDD, #E0D9FF, #6E5BFF, #5C9EFF);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -75,7 +76,7 @@ header h1 {
   text-align: center;
   font-weight: 700;
   font-size: 1.1rem;
-  color: #5C9CE5;
+  color: #A0C4FF;
 }
 
 .game-wrapper {
@@ -103,7 +104,7 @@ header h1 {
   font-size: 1.4rem;
   font-weight: 600;
   padding: 20px;
-  border: 2px dashed rgba(255,255,255,0.2);
+  border: 2px dashed rgba(180, 140, 255, 0.3);
   border-radius: 14px;
 }
 
@@ -139,7 +140,7 @@ header h1 {
 
 .star-progress {
   width: 32px; height: 32px;
-  background: rgba(255,255,255,0.15);
+  background: rgba(180, 140, 255, 0.25);
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -148,9 +149,9 @@ header h1 {
 }
 
 .star-progress.active {
-  background: white;
+  background: #E0D9FF;
   transform: scale(1.3);
-  box-shadow: 0 0 20px rgba(255,255,255,0.8);
+  box-shadow: 0 0 20px rgba(157, 78, 221, 0.9);
 }
 
 .progress-bar {
@@ -164,7 +165,7 @@ header h1 {
 .progress-fill {
   height: 100%;
   width: 0%;
-  background: linear-gradient(90deg, #8B1E3F, white, #5C9CE5);
+  background: linear-gradient(90deg, #9D4EDD, #C0B3FF, #5C9EFF);
   transition: width 0.6s ease;
 }
 
@@ -173,7 +174,7 @@ header h1 {
   font-weight: 800;
   text-align: center;
   min-height: 40px;
-  color: #5C9CE5;
+  color: #C0B3FF;
 }
 
 .game-over-message {
@@ -182,39 +183,41 @@ header h1 {
   transform: translate(-50%, -50%);
   font-size: 5rem;
   font-weight: 900;
-  color: #8B1E3F;
-  background: rgba(0,0,0,0.9);
+  color: #E8E1FF;
+  background: rgba(60, 30, 140, 0.94);
   padding: 30px 80px;
   border-radius: 20px;
-  border: 5px solid #8B1E3F;
+  border: 5px solid #9D4EDD;
   opacity: 0;
   pointer-events: none;
   z-index: 100;
 }
-
 .game-over-message.visible { opacity: 1; }
 
-/* Botón mágico (mismo de antes, pero más compacto) */
+/* BOTONES: MISMO DISEÑO, NUEVO COLOR MORADO-AZUL */
 .magic-btn {
   position: relative;
   padding: 12px 20px;
-  background: #8B1E3F;
+  background: linear-gradient(135deg, #7B5EFF, #9D4EDD);
   color: white;
   font-size: 15px;
   font-weight: 600;
-  border: 3px solid #8B1E3F;
+  border: 3px solid #9D4EDD;
   border-radius: 12px;
   cursor: pointer;
   overflow: hidden;
   text-transform: uppercase;
   letter-spacing: 1px;
   transition: all 0.4s;
+  text-decoration: none !important;
+  display: inline-block;
+  text-align: center;
 }
 
 .magic-btn:hover {
   background: transparent;
   color: white;
-  box-shadow: 0 0 25px #8B1E3Fcc;
+  box-shadow: 0 0 30px #9D4EDDcc;
 }
 
 .magic-btn .btn-text { position: relative; z-index: 2; }
@@ -225,16 +228,16 @@ header h1 {
   pointer-events: none;
   opacity: 0.9;
 }
-.magic-btn .star svg { width: 100%; height: 100%; fill: white; }
+.magic-btn .star svg { width: 100%; height: 100%; fill: #E0D9FF; }
 
-/* Hover estrellas (mismas animaciones) */
+/* Animación estrellitas hover (mismo efecto) */
 .magic-btn:hover .star-1 { top: -80%; left: -30%; }
 .magic-btn:hover .star-2 { top: -25%; left: 10%; }
 .magic-btn:hover .star-3 { top: 55%; left: 25%; }
 .magic-btn:hover .star-4 { top: 30%; left: 80%; }
 .magic-btn:hover .star-5 { top: 25%; left: 115%; }
 
-/* Responsive */
+/* Responsive (100% igual) */
 @media (max-width: 1100px) {
   .container { flex-direction: column; height: 96vh; }
   .sidebar { width: 100%; flex-direction: row; justify-content: space-around; padding: 16px; }

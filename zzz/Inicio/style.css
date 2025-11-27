@@ -5,114 +5,262 @@ body {
     background: url('USA\ 2.jpg') no-repeat center center fixed;
     background-size: cover;
     min-height: 100vh;
+    position: relative;
+    overflow-x: hidden;
+    font-size: 20px;
 }
 
+/* Filtro morado-azul con más vida */
+body::before {
+    content: "center";
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: linear-gradient(135deg, 
+        rgba(120, 60, 255, 0.38), 
+        rgba(70, 100, 255, 0.42), 
+        rgba(100, 50, 200, 0.35));
+    pointer-events: none;
+    z-index: 1;
+    animation: pulse 20s infinite alternate;
+}
+@keyframes pulse { 0%, 100% { opacity: 0.35; } 50% { opacity: 0.48; } }
+
 .overlay {
-    background: rgba(0, 0, 0, 0.30);
+    background: rgba(90, 60, 170, 0.28);
     min-height: 100vh;
+    position: relative;
+    z-index: 2;
+    backdrop-filter: blur(4px);
 }
 
 .container {
-    max-width: 1000px;
+    max-width: 1100px;
     margin: 0 auto;
     padding: 20px;
+    position: relative;
+    z-index: 3;
 }
 
-/* MENÚ */
+/* MENÚ con efecto cristal y glow */
 .menu {
-    background: rgba(0, 40, 104, 0.95);
+    background: rgba(100, 60, 200, 0.75);
     padding: 14px 0;
     text-align: center;
-    border-radius: 12px;
-    margin-bottom: 20px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+    border-radius: 20px;
+    margin-bottom: 30px;
+    box-shadow: 0 8px 32px rgba(100, 60, 200, 0.4);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(180, 140, 255, 0.3);
 }
 
 .menu a {
     color: white;
     text-decoration: none;
-    margin: 0 25px;
-    font-weight: bold;
+    margin: 0 18px;
+    font-weight: 600;
     font-size: 1.15em;
-    transition: all 0.3s;
+    padding: 10px 24px;
+    border-radius: 50px;
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
 }
 
-.menu a:hover { color: #BF0A30; text-decoration: underline; }
+.menu a::before {
+    content: '';
+    position: absolute;
+    top: 0; left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+    transition: 0.7s;
+}
 
-/* TÍTULO Y ÁGUILA */
+.menu a:hover {
+    background: rgba(255, 255, 255, 0.25);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(120, 70, 255, 0.5);
+}
+
+.menu a:hover::before {
+    left: 100%;
+}
+
+/* TÍTULO con más magia */
 .header-title {
+    display: flex;
+    flex-direction: column;
+    align-items: center;        /* ← centra horizontalmente TODO */
+    justify-content: center;
     text-align: center;
-    margin-bottom: 20px;
+    margin: 30px 0 40px;
+    width: 100%;
 }
 
 .header-title h1 {
+    margin: 0 !important;
+    padding: 0 !important;
+    line-height: 1.2;           /* evita espacios raros */
+    font-size: 2.2em;
     color: white;
-    font-size: 4.2em;
-    text-shadow: 4px 4px 12px rgba(0,0,0,0.8);
-    letter-spacing: 2px;
+    text-shadow: 0 4px 15px rgba(0,0,0,0.6);
+    letter-spacing: 3px;
 }
 
-.eagle {
+.header-title .eagle {
+    margin: 12px 0 0 0;         /* solo margen superior, el resto lo centra flex */
+}
+.header-title .eagle {
     width: 140px;
-    filter: drop-shadow(0 0 15px white);
-    margin-top: -10px;
+    animation: float 6s infinite ease-in-out;
 }
+@keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
 
-/* CAJA DE CONTENIDO CRISTAL */
+/* CAJA DE CONTENIDO con vidrio premium */
 .content-box {
-    background: rgba(255, 255, 255, 0.96);
-    padding: 35px;
-    border-radius: 18px;
-    box-shadow: 0 15px 40px rgba(0,0,0,0.5);
-    backdrop-filter: blur(5px);
+    background: rgba(255, 255, 255, 0.95);
+    padding: 45px;
+    border-radius: 24px;
+    box-shadow: 
+        0 20px 50px rgba(100, 60, 200, 0.35),
+        0 0 30px rgba(150, 100, 255, 0.2);
+    backdrop-filter: blur(14px);
+    border: 1px solid rgba(180, 140, 255, 0.3);
 }
 
 h2 {
-    color: #002868;
-    font-size: 1.8em;
-    margin: 25px 0 15px;
-    border-bottom: 4px solid #BF0A30;
-    padding-bottom: 8px;
-    display: inline-block;
+    color: #5e35d4;
+    font-size: 2em;
+    margin: 35px 0 18px;
+    position: relative;
+    padding-bottom: 10px;
 }
 
-p, li { line-height: 1.7; margin: 12px 0; font-size: 1.1em; }
+h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0;
+    width: 80px;
+    height: 5px;
+    background: linear-gradient(90deg, #8a6bff, #5c9eff);
+    border-radius: 3px;
+    box-shadow: 0 0 15px rgba(130, 100, 255, 0.6);
+}
+
+p, li { 
+    line-height: 1.85; 
+    margin: 15px 0; 
+    font-size: 1.18em; 
+    color: #2a2a4e;
+}
 
 table {
     width: 100%;
-    margin: 20px 0;
-    border-collapse: collapse;
-    background: white;
+    margin: 30px 0;
+    border-collapse: separate;
+    border-spacing: 0 12px;
 }
 
 th, td {
-    border: 2px solid #002868;
-    padding: 12px;
+    padding: 16px;
     text-align: center;
-}
-
-th { background: #002868; color: white; font-size: 1.1em; }
-
-.example-box {
-    background: #f0f6ff;
-    padding: 18px;
-    border-left: 8px solid #BF0A30;
-    border-radius: 10px;
-    margin: 20px 0;
-    font-size: 1.15em;
-}
-
-.img-placeholder {
-    background: #e0e0e0;
-    height: 220px;
-    margin: 25px 0;
+    background: rgba(150, 120, 255, 0.12);
+    border: none;
     border-radius: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #555;
-    font-style: italic;
-    font-size: 1.2em;
+}
+
+th {
+    background: linear-gradient(135deg, #7a50d4, #5e6bff);
+    color: white;
+    font-weight: bold;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
+
+/* ====== CONTROL TOTAL DE LAS CAJITAS DE EJEMPLO ====== */
+.example-box {
+    max-width: 780px;                    /* ancho bonito (puedes dejarlo) */
+    margin: 16px auto;                   /* ← menos espacio arriba y abajo */
+    padding: 14px 22px;                  /* ← menos relleno = menos altura */
+    background: linear-gradient(135deg, #f2eaff, #e8f0ff);
+    border-left: 6px solid #8a6bff;
+    border-radius: 14px;
+    font-size: 1.00em;                   /* ← letra clara pero más pequeña */
+    line-height: 1.55;                   /* ← líneas más juntas */
     text-align: center;
-    border: 3px dashed #999;
+    box-shadow: 0 6px 20px rgba(130,100,255,0.16);
+}
+
+.example-box::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 5px;
+    height: 100%;
+    background: linear-gradient(#9a73ff, #5c9eff);
+}
+
+/* IMÁGENES con marco neón */
+.img-center {
+    text-align: center;
+    margin: 40px 0;
+    padding: 10px;
+}
+
+.img-center img {
+    max-width: 560px;
+    border-radius: 18px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+    border: 3px solid transparent;
+    background: linear-gradient(white, white) padding-box,
+                linear-gradient(135deg, #9a73ff, #5c9eff) border-box;
+    transition: transform 0.4s ease;
+}
+
+.img-center img:hover {
+    transform: scale(1.03);
+}
+
+/* BOTONES MODERNOS (ya no son gigantes) */
+.next-btn {
+    display: inline-block;
+    padding: 14px 36px;
+    margin: 20px 12px;
+    background: linear-gradient(135deg, #8a6bff, #5c9eff);
+    color: white;
+    text-decoration: none;
+    font-size: 1.3em;
+    font-weight: 600;
+    border-radius: 50px;
+    box-shadow: 0 8px 25px rgba(120, 80, 255, 0.4);
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.2);
+}
+
+.next-btn::before {
+    content: '';
+    position: absolute;
+    top: 50%; left: 50%;
+    width: 0; height: 0;
+    background: rgba(255,255,255,0.3);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.next-btn:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+.next-btn:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 15px 40px rgba(120, 80, 255, 0.6);
+    background: linear-gradient(135deg, #9a73ff, #6bb0ff);
+}
+
+.next-btn:active {
+    transform: translateY(-2px);
 }
