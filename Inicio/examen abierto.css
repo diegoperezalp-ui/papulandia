@@ -20,7 +20,7 @@
 
 body {
     font-family: 'Montserrat', sans-serif;
-    background: linear-gradient(135deg, #f8fafc 0%, #e0e7ff 100%);
+    background: linear-gradient(rgba(26,35,126,0.85), rgba(124,58,237,0.7)), url('londres.gif') center/cover fixed;
     color: var(--dark);
     line-height: 1.7;
     padding-top: 80px;

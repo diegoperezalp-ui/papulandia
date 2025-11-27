@@ -85,30 +85,33 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    function checkGrammarAnswer(answer) {
-        if (isGameOver || !isGrammarPhaseActive) return;
+function checkGrammarAnswer(answer) {
+    if (isGameOver || !isGrammarPhaseActive) return;
 
-        if (answer === currentQuestion.correct) {
-            lives++; 
-            grammarMessage.textContent = `✅ Correct! You won 1 Shot. (${answer})`; // Texto traducido
-            grammarMessage.className = 'correct';
-            // Se eliminó playMusic() de aquí
-        } else {
-            lives--; 
-            grammarMessage.textContent = `❌ Incorrect! You lost 1 Life/Shot. The answer was ${currentQuestion.correct}.`; // Texto traducido
-            grammarMessage.className = 'incorrect';
-        }
+    const clickedButton = event.target;
 
-        updateStatsDisplay();
-
-        if (lives <= 0) {
-            gameOver("grammar");
-            return;
-        }
-
-        optionsContainer.querySelectorAll('button').forEach(btn => btn.disabled = true);
-        setTimeout(loadSkillPhase, 1500);
+    if (answer === currentQuestion.correct) {
+        lives++;
+        grammarMessage.textContent = `¡PERFECTO! ¡DISPARA!`;
+        grammarMessage.className = 'correct msg';
+        clickedButton.classList.add('correct-answer'); // ← EFECTO ÉPICO
+    } else {
+        lives--;
+        grammarMessage.textContent = `¡Ups! Intenta otra vez`;
+        grammarMessage.className = 'incorrect msg';
+        clickedButton.style.animation = 'shake 0.5s';
     }
+
+    updateStatsDisplay();
+
+    if (lives <= 0) {
+        gameOver("grammar");
+        return;
+    }
+
+    optionsContainer.querySelectorAll('button').forEach(btn => btn.disabled = true);
+    setTimeout(loadSkillPhase, 1800);
+}
     
     function loadSkillPhase() {
         if (isGameOver) return;
@@ -141,29 +144,36 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 1000);
     }
     
-    function spawnTarget() {
-        gameBoard.innerHTML = '';
-        const target = document.createElement('div');
-        target.classList.add('target');
-        
-        const imageSource = "PERRO%20DUCK%20HUNT.gif"; 
+function spawnTarget() {
+    gameBoard.innerHTML = '';
+    const target = document.createElement('div');
+    target.classList.add('target');
 
-        target.innerHTML = `
-            <img src="${imageSource}" alt="Blanco de habilidad" class="target-img-content">
-        `;
+    const imageSource = "PERRO%20DUCK%20HUNT.gif";
 
-        const targetWidth = 120; 
-        const targetHeight = 70; 
-        
-        const maxX = gameBoard.clientWidth - targetWidth; 
-        const maxY = gameBoard.clientHeight - targetHeight; 
-        
-        target.style.left = `${Math.random() * maxX}px`;
-        target.style.top = `${Math.random() * maxY}px`;
+    target.innerHTML = `
+        <img src="${imageSource}" alt="Perro gramatical" class="target-img-content">
+    `;
 
-        target.onclick = checkTargetClick;
-        gameBoard.appendChild(target);
-    }
+    // Tamaño del perro (coincide con el CSS)
+    const targetWidth = 80;
+    const targetHeight = 60;
+
+    // Márgenes para que nunca se salga del tablero
+    const margin = 20;
+    const maxX = gameBoard.clientWidth - targetWidth - margin;
+    const maxY = gameBoard.clientHeight - targetHeight - margin;
+
+    // Posición completamente aleatoria pero siempre visible
+    const randomX = margin + Math.random() * (maxX - margin);
+    const randomY = margin + Math.random() * (maxY - margin);
+
+    target.style.left = `${randomX}px`;
+    target.style.top = `${randomY}px`;
+
+    target.onclick = checkTargetClick;
+    gameBoard.appendChild(target);
+}
 
     function checkTargetClick() {
         if (isGameOver) return;
@@ -233,6 +243,34 @@ document.addEventListener('DOMContentLoaded', () => {
         updateStatsDisplay();
         loadGrammarPhase();
     }
+    
+    // EFECTOS CREATIVOS AL RESPONDER
+function showAnswerFeedback(isCorrect, button) {
+    if (isCorrect) {
+        button.classList.add('correct-answer');
+        document.getElementById('grammar-message').textContent = "¡PERFECTO! ¡DISPARA!";
+        document.getElementById('grammar-message').classList.add('correct');
+        
+        // Sonido épico (si tienes uno)
+        // new Audio('correct.mp3').play();
+    } else {
+        button.style.animation = 'shake 0.5s';
+        document.getElementById('grammar-message').textContent = "¡Ups! Intenta otra vez";
+        document.getElementById('grammar-message').classList.add('incorrect');
+    }
+    }
 
+    // Animación de shake para fallos
+    const style = document.createElement('style');
+    style.textContent = `
+    @keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-10px); }
+    75% { transform: translateX(10px); }
+   }
+   `;
+document.head.append(style);
+
+    
     initGame();
 });

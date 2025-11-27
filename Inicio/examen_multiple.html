@@ -8,17 +8,21 @@
 </head>
 <body>
 
-    <!-- NAVBAR (igual que antes) -->
-    <nav class="navbar">
-        <div class="logo">Academic Grammar Pro</div>
-        <span class="material-symbols-sharp menu-toggle" onclick="document.querySelector('.nav-links').classList.toggle('active')">menu</span>
-        <ul class="nav-links">
-            <li><a href="examen abierto.html"><span class="material-symbols-sharp">text_fields</span> Examen Abierto</a></li>
-            <li><a href="informacion.html"><span class="material-symbols-sharp">school</span> Reglas</a></li>
-            <li><a href="mini juego supremo.html"><span class="material-symbols-sharp">videogame_asset</span> Juego 1</a></li>
-            <li><a href="quiz.html"><span class="material-symbols-sharp">extension</span> Juego 2</a></li>
-        </ul>
-    </nav>
+<nav class="navbar">
+    <div class="logo">Academic Grammar Pro</div>
+    <span class="material-symbols-sharp menu-toggle" 
+          onclick="document.body.classList.toggle('menu-open'); document.querySelector('.nav-links').classList.toggle('active')">
+        menu
+    </span>
+    <ul class="nav-links">
+        <li><a href="index.html"><span class="material-symbols-sharp">home</span> Inicio</a></li>
+        <li><a href="informacion.html"><span class="material-symbols-sharp">school</span> Teoría</a></li>
+        <li><a href="mini juego supremo.html"><span class="material-symbols-sharp">videogame_asset</span> Juego 1</a></li>
+        <li><a href="quiz.html"><span class="material-symbols-sharp">extension</span> Juego 2</a></li>
+        <li><a href="examen abierto.html"><span class="material-symbols-sharp">text_fields</span> Examen Abierto</a></li>
+        <li><a href="examen_multiple.html"><span class="material-symbols-sharp">quiz</span> Examen Múltiple</a></li>
+    </ul>
+</nav>
 
     <a href="index.html" class="home-float-top">
         <span class="material-symbols-sharp">home</span>
