@@ -1,9 +1,245 @@
-/* Animación Pulse */
-@keyframes pulse {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.5; }
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { height: 100%; overflow: hidden; }
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #0C1B33 0%, #0A1629 50%, #6D5DA8 100%);
+  color: #F4F7FA;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 12px;
 }
 
-.animate-pulse {
-  animation: pulse 2s infinite;
+.container {
+  display: flex;
+  width: 100%;
+  max-width: 1400px;
+  height: 94vh;
+  gap: 16px;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+/* Glassmorphism */
+.sidebar, .question-panel, .progress-panel, .top-bar {
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(12, 27, 51, 0.6);
+}
+
+/* Sidebar compacto */
+.sidebar {
+  width: 210px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  border-left: 5px solid #8B1E3F;
+}
+
+.brand h2 { font-size: 1.6rem; font-weight: 900; }
+.brand small { font-size: 0.8rem; color: #5C9CE5; }
+
+.controls { gap: 10px; display: flex; flex-direction: column; }
+.controls .magic-btn { font-size: 13px; padding: 10px 16px; }
+
+/* Main game */
+.main-game {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+header h1 {
+  font-size: 2.8rem;
+  text-align: center;
+  font-weight: 900;
+  background: linear-gradient(90deg, #8B1E3F, white, #5C9CE5);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.subtitle {
+  text-align: center;
+  font-size: 0.95rem;
+  opacity: 0.9;
+}
+
+.top-bar {
+  padding: 10px 20px;
+  text-align: center;
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: #5C9CE5;
+}
+
+.game-wrapper {
+  display: flex;
+  gap: 16px;
+  flex: 1;
+  min-height: 0;
+}
+
+/* Pregunta */
+.question-panel {
+  flex: 1;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.question-text {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 1.4rem;
+  font-weight: 600;
+  padding: 20px;
+  border: 2px dashed rgba(255,255,255,0.2);
+  border-radius: 14px;
+}
+
+.options-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: auto;
+}
+
+.options-grid .magic-btn {
+  padding: 16px 10px;
+  font-size: 15px;
+}
+
+/* Progreso */
+.progress-panel {
+  width: 300px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: center;
+}
+
+.stars {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+  max-width: 200px;
+}
+
+.star-progress {
+  width: 32px; height: 32px;
+  background: rgba(255,255,255,0.15);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.4s;
+}
+
+.star-progress.active {
+  background: white;
+  transform: scale(1.3);
+  box-shadow: 0 0 20px rgba(255,255,255,0.8);
+}
+
+.progress-bar {
+  width: 100%;
+  height: 12px;
+  background: rgba(255,255,255,0.2);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #8B1E3F, white, #5C9CE5);
+  transition: width 0.6s ease;
+}
+
+.feedback {
+  font-size: 1.4rem;
+  font-weight: 800;
+  text-align: center;
+  min-height: 40px;
+  color: #5C9CE5;
+}
+
+.game-over-message {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 5rem;
+  font-weight: 900;
+  color: #8B1E3F;
+  background: rgba(0,0,0,0.9);
+  padding: 30px 80px;
+  border-radius: 20px;
+  border: 5px solid #8B1E3F;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 100;
+}
+
+.game-over-message.visible { opacity: 1; }
+
+/* Botón mágico (mismo de antes, pero más compacto) */
+.magic-btn {
+  position: relative;
+  padding: 12px 20px;
+  background: #8B1E3F;
+  color: white;
+  font-size: 15px;
+  font-weight: 600;
+  border: 3px solid #8B1E3F;
+  border-radius: 12px;
+  cursor: pointer;
+  overflow: hidden;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all 0.4s;
+}
+
+.magic-btn:hover {
+  background: transparent;
+  color: white;
+  box-shadow: 0 0 25px #8B1E3Fcc;
+}
+
+.magic-btn .btn-text { position: relative; z-index: 2; }
+.magic-btn .star {
+  position: absolute;
+  width: 10px !important;
+  height: 10px !important;
+  pointer-events: none;
+  opacity: 0.9;
+}
+.magic-btn .star svg { width: 100%; height: 100%; fill: white; }
+
+/* Hover estrellas (mismas animaciones) */
+.magic-btn:hover .star-1 { top: -80%; left: -30%; }
+.magic-btn:hover .star-2 { top: -25%; left: 10%; }
+.magic-btn:hover .star-3 { top: 55%; left: 25%; }
+.magic-btn:hover .star-4 { top: 30%; left: 80%; }
+.magic-btn:hover .star-5 { top: 25%; left: 115%; }
+
+/* Responsive */
+@media (max-width: 1100px) {
+  .container { flex-direction: column; height: 96vh; }
+  .sidebar { width: 100%; flex-direction: row; justify-content: space-around; padding: 16px; }
+  .controls { flex-direction: row; gap: 12px; }
+  .game-wrapper { flex-direction: column; }
+  .progress-panel { width: 100%; max-width: 500px; margin: 0 auto; }
+  .options-grid { grid-template-columns: 1fr; }
 }

@@ -233,34 +233,6 @@ document.addEventListener('DOMContentLoaded', () => {
         updateStatsDisplay();
         loadGrammarPhase();
     }
-    
-    // EFECTOS CREATIVOS AL RESPONDER
-function showAnswerFeedback(isCorrect, button) {
-    if (isCorrect) {
-        button.classList.add('correct-answer');
-        document.getElementById('grammar-message').textContent = "¡PERFECTO! ¡DISPARA!";
-        document.getElementById('grammar-message').classList.add('correct');
-        
-        // Sonido épico (si tienes uno)
-        // new Audio('correct.mp3').play();
-    } else {
-        button.style.animation = 'shake 0.5s';
-        document.getElementById('grammar-message').textContent = "¡Ups! Intenta otra vez";
-        document.getElementById('grammar-message').classList.add('incorrect');
-    }
-    }
 
-    // Animación de shake para fallos
-    const style = document.createElement('style');
-    style.textContent = `
-    @keyframes shake {
-    0%, 100% { transform: translateX(0); }
-    25% { transform: translateX(-10px); }
-    75% { transform: translateX(10px); }
-   }
-   `;
-document.head.append(style);
-
-    
     initGame();
 });

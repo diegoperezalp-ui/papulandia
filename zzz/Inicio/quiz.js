@@ -1,187 +1,154 @@
-// ------------------ MENU ------------------
-const menuButton = document.getElementById("menuButton");
-const menu = document.getElementById("menu");
-
-menuButton.addEventListener("click", () => {
-  menu.classList.toggle("hidden");
-});
-
-// ------------------ DATA ------------------
+// ==================== PREGUNTAS ====================
 const questions = [
-  {
-    question: "Choose the correct Past Continuous form: 'I _____ (listen) to music when you arrived.'",
-    answers: ["was listen", "was listening", "am listening"],
-    correct: 1
-  },
-  {
-    question: "What was he doing at 8 PM yesterday?",
-    answers: ["He watched TV.", "He was watching TV.", "He is watching TV."],
-    correct: 1
-  },
-  {
-    question: "Complete the sentence: 'While they _____ (talk), the teacher entered the classroom.'",
-    answers: ["were talking", "are talking", "talked"],
-    correct: 0
-  },
-  {
-    question: "The students _____ (not study) when the fire alarm rang.",
-    answers: ["was not studying", "were not studying", "did not study"],
-    correct: 1
-  },
-  {
-    question: "Translate: '¿Estaba ella durmiendo cuando llamaste?'",
-    answers: ["Did she sleep when you called?", "Was she sleeping when you called?", "Is she sleeping when you called?"],
-    correct: 1
-  },
-  {
-    question: "My parents _____ (drive) home while I was reading a book.",
-    answers: ["drove", "were driving", "was driving"],
-    correct: 1
-  },
-  {
-    question: "We _____ (not pay) attention during the lecture.",
-    answers: ["wasn't paying", "aren't paying", "weren't paying"],
-    correct: 2
-  },
-  {
-    question: "The dog _____ (bark) all night long.",
-    answers: ["was barking", "is barking", "barked"],
-    correct: 0
-  },
-  {
-    question: "_____ you _____ (clean) your room this morning?",
-    answers: ["Did / clean", "Were / cleaning", "Are / cleaning"],
-    correct: 1
-  },
-  {
-    question: "I hurt my leg when I _____ (play) basketball.",
-    answers: ["was playing", "played", "am playing"],
-    correct: 0
-  }
+  { q: "I was cooking dinner ___ the phone rang.", options: ["while", "during", "because", "when"], answer: 3 },
+  { q: "She was studying ___ her brother was playing video games.", options: ["when", "after", "while", "before"], answer: 2 },
+  { q: "He broke his arm ___ he was skating.", options: ["while", "and", "during", "when"], answer: 3 },
+  { q: "They were watching TV ___ their mom was making food.", options: ["while", "when", "before", "during"], answer: 0 },
+  { q: "I was walking to school ___ I saw a big dog.", options: ["because", "after", "while", "when"], answer: 3 },
+  { q: "___ I was eating, the lights went out.", options: ["When", "After", "Because", "While"], answer: 3 },
+  { q: "He shouted ___ he was talking to his friend.", options: ["because", "when", "while", "after"], answer: 1 },
+  { q: "The kids were playing outside ___ it started to rain.", options: ["before", "while", "during", "when"], answer: 3 },
+  { q: "She was listening to music ___ she was doing her homework.", options: ["when", "while", "after", "because"], answer: 1 },
+  { q: "___ I was running, I fell.", options: ["While", "Because", "After", "Then"], answer: 0 }
 ];
 
-// ------------------ GAME STATE ------------------
-let index = 0;
-let score = 0;
-let selected = null;
+// ==================== VARIABLES ====================
+let current = 0, score = 0, soundOn = true;
 
-const gameContainer = document.getElementById("gameContainer");
-const scoreDisplay = document.getElementById("scoreDisplay");
+const elQuestion = document.getElementById('question-text');
+const elOptions = document.getElementById('options-container');
+const elScore = document.getElementById('score');
+const elQnum = document.getElementById('qnum');
+const elFeedback = document.getElementById('feedback');
+const elStars = document.getElementById('stars');
+const elProgressFill = document.getElementById('progress-fill');
+const elEndActions = document.getElementById('end-actions');
+const elEndTitle = document.getElementById('end-title');
+const elEndText = document.getElementById('end-text');
+const elGameOver = document.getElementById('game-over-message');
 
-// ------------------ RENDER FUNCTIONS ------------------
+// ==================== BOTÓN MÁGICO CON ESTRELLAS PEQUEÑAS Y DISCRETAS ====================
+function createMagicButton(text, isGhost = false) {
+  const btn = document.createElement('button');
+  btn.className = 'magic-btn';
+  if (isGhost) btn.classList.add('ghost');
 
-function renderStart() {
-  gameContainer.innerHTML = `
-    <div class="text-center space-y-6">
-      <p class="text-xl text-slate-300 px-4">
-        Welcome to the Past Continuous Challenge! Answer 10 questions correctly to win.<br>
-        An incorrect answer resets your score to 0.
-      </p>
-
-      <button id="startButton"
-        class="bg-gradient-to-r from-orange-500 to-orange-600 px-8 py-4 rounded-xl font-bold text-xl border-4 border-yellow-400 shadow-lg hover:-translate-y-1 transition-all">
-        ▶ START GAME
-      </button>
-    </div>
+  btn.innerHTML = `
+    <span class="btn-text">${text}</span>
+    <span class="star star-1"><svg viewBox="0 0 14 14"><path class="fil0" d="M7 1.5l1.6 3.6 4 .3-3 2.7.8 4-3.4-2-3.4 2 .8-4-3-2.7 4-.3z"/></svg></span>
+    <span class="star star-2"><svg viewBox="0 0 14 14"><path class="fil0" d="M7 1.5l1.6 3.6 4 .3-3 2.7.8 4-3.4-2-3.4 2 .8-4-3-2.7 4-.3z"/></svg></span>
+    <span class="star star-3"><svg viewBox="0 0 14 14"><path class="fil0" d="M7 1.5l1.6 3.6 4 .3-3 2.7.8 4-3.4-2-3.4 2 .8-4-3-2.7 4-.3z"/></svg></span>
+    <span class="star star-4"><svg viewBox="0 0 14 14"><path class="fil0" d="M7 1.5l1.6 3.6 4 .3-3 2.7.8 4-3.4-2-3.4 2 .8-4-3-2.7 4-.3z"/></svg></span>
+    <span class="star star-5"><svg viewBox="0 0 14 14"><path class="fil0" d="M7 1.5l1.6 3.6 4 .3-3 2.7.8 4-3.4-2-3.4 2 .8-4-3-2.7 4-.3z"/></svg></span>
   `;
 
-  document.getElementById("startButton").onclick = startGame;
+  return btn;
 }
 
+// ==================== ESTRELLAS DE PROGRESO ====================
+function createStars() {
+  elStars.innerHTML = '';
+  for (let i = 0; i < questions.length; i++) {
+    const s = document.createElement('div');
+    s.className = 'star-progress';
+    s.innerHTML = `<svg viewBox="0 0 24 24"><path fill="white" d="M12 2.5l3.1 6.3 6.9.9-5 4.9 1.2 6.9L12 17.8l-6.2 3.2 1.2-6.9-5-4.9 6.9-.9L12 2.5z"/></svg>`;
+    elStars.appendChild(s);
+  }
+}
+
+// ==================== SONIDO ====================
+function beep(freq = 800, dur = 100) {
+  if (!soundOn) return;
+  const ctx = new (window.AudioContext || window.webkitAudioContext)();
+  const o = ctx.createOscillator();
+  const g = ctx.createGain();
+  o.type = 'sine';
+  o.frequency.setValueAtTime(freq, ctx.currentTime);
+  g.gain.setValueAtTime(0.08, ctx.currentTime);
+  o.connect(g);
+  g.connect(ctx.destination);
+  o.start();
+  o.stop(ctx.currentTime + dur / 1000);
+}
+
+// ==================== MOSTRAR PREGUNTA ====================
 function renderQuestion() {
-  const q = questions[index];
+  elEndActions.hidden = true;
+  elGameOver.classList.remove('visible');  // ← Siempre oculto al inicio
+  elFeedback.textContent = '';
 
-  gameContainer.innerHTML = `
-    <div class="bg-slate-700/50 border-2 border-blue-400 rounded-xl p-6 mb-8">
-      <h2 class="text-xl md:text-2xl font-semibold text-blue-200">
-        Question ${index + 1}: ${q.question}
-      </h2>
-    </div>
+  const q = questions[current];
+  elQuestion.textContent = q.q;
+  elQnum.textContent = current + 1;
 
-    <div id="answerList" class="grid gap-4 mb-8"></div>
-
-    <div id="feedback" class="text-center text-xl font-bold uppercase tracking-wider mb-6"></div>
-  `;
-
-  const answerList = document.getElementById("answerList");
-
-  q.answers.forEach((text, i) => {
-    const btn = document.createElement("button");
-    btn.className =
-      "bg-blue-700 hover:bg-blue-600 px-6 py-4 rounded-xl font-semibold text-lg border-4 border-blue-400 uppercase";
-    btn.textContent = text;
-
-    btn.onclick = () => handleAnswer(i, btn);
-
-    answerList.appendChild(btn);
+  elOptions.innerHTML = '';
+  q.options.forEach((opt, i) => {
+    const btn = createMagicButton(opt);
+    btn.onclick = () => selectAnswer(i, btn);
+    elOptions.appendChild(btn);
   });
 }
 
-function renderGameOver() {
-  gameContainer.innerHTML = `
-    <div class="text-center space-y-6">
-      <p class="text-2xl font-bold text-blue-400">
-        Game Over. Final Score: ${score}
-      </p>
+// ==================== RESPUESTA ====================
+function selectAnswer(selected, btn) {
+  [...elOptions.children].forEach(b => b.style.pointerEvents = 'none');
 
-      <button id="restartBtn"
-        class="bg-gradient-to-r from-orange-500 to-orange-600 px-8 py-4 rounded-xl font-bold text-xl border-4 border-yellow-400 shadow-lg hover:-translate-y-1 transition-all">
-        ⟳ RESTART GAME
-      </button>
-    </div>
-  `;
+  const correct = questions[current].answer;
 
-  document.getElementById("restartBtn").onclick = restartGame;
-}
-
-// ------------------ GAME LOGIC ------------------
-
-function startGame() {
-  index = 0;
-  score = 0;
-  scoreDisplay.textContent = "000";
-  renderQuestion();
-}
-
-function restartGame() {
-  startGame();
-}
-
-function handleAnswer(i, btn) {
-  const q = questions[index];
-  const feedback = document.getElementById("feedback");
-
-  if (i === q.correct) {
+  if (selected === correct) {
     score++;
-    scoreDisplay.textContent = score.toString().padStart(3, "0");
-
-    btn.classList.add("bg-green-600", "border-green-400");
-    feedback.classList.add("text-green-400");
-    feedback.textContent = "Correct! Well done.";
+    elScore.textContent = score;
+    btn.classList.add('correct');
+    elFeedback.textContent = '¡CORRECTO!';
+    beep(1000, 180);
+    elStars.children[current].classList.add('active');
+    elProgressFill.style.width = `${((current + 1) / questions.length) * 100}%`;
 
     setTimeout(() => {
-      index++;
-      if (index >= questions.length) {
-        renderGameOver();
-      } else {
-        renderQuestion();
-      }
+      current++;
+      if (current >= questions.length) finishGame();
+      else renderQuestion();
     }, 900);
 
   } else {
-    score = 0;
-    scoreDisplay.textContent = "000";
-
-    btn.classList.add("bg-red-600", "border-red-400");
-    feedback.classList.add("text-red-400");
-    feedback.textContent = "Incorrect! Score reset to 0.";
-
-    setTimeout(() => {
-      index = 0;
-      renderQuestion();
-    }, 1000);
+    btn.classList.add('incorrect');
+    elFeedback.textContent = '¡ERROR! Reiniciando...';
+    beep(180, 600);
+    elGameOver.classList.add('visible');  // ← SOLO aparece si pierdes
+    setTimeout(resetGame, 2000);
   }
 }
 
-// ------------------ INIT ------------------
-renderStart();
+// ==================== GANAR ====================
+function finishGame() {
+  elEndActions.hidden = false;
+  elEndTitle.textContent = '¡FELICIDADES!';
+  elEndText.textContent = `Completaste el quiz: ${score}/${questions.length}`;
+  beep(1200, 500);
+}
+
+// ==================== REINICIAR ====================
+function resetGame() {
+  current = 0;
+  score = 0;
+  elScore.textContent = '0';
+  elQnum.textContent = '1';
+  elProgressFill.style.width = '0%';
+  [...elStars.children].forEach(s => s.classList.remove('active'));
+  renderQuestion();
+}
+
+// ==================== BOTONES DEL MENÚ ====================
+document.getElementById('btn-new').onclick = () => resetGame();
+document.getElementById('btn-restart').onclick = () => resetGame();
+
+document.getElementById('btn-sound').onclick = () => {
+  soundOn = !soundOn;
+  document.getElementById('btn-sound').querySelector('.btn-text').textContent = soundOn ? 'SONIDO: ON' : 'SONIDO: OFF';
+};
+
+document.getElementById('play-again').onclick = () => resetGame();
+
+// ==================== INICIO ====================
+createStars();
+resetGame();
