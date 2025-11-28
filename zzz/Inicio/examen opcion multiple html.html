@@ -3,109 +3,162 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Evaluación - When y While en Past Continuous</title>
-    <link rel="stylesheet" href="examen.css">
+    <title>When vs While | Academic Grammar Pro</title>
+    <link rel="stylesheet" href="examen_multiple.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Cinzel:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Symbols+Sharp">
 </head>
 <body>
 
-    <!-- NAVBAR FIJA (igual que en todas las páginas) -->
-    <nav class="navbar">
-        <div class="logo">Academic Grammar Pro</div>
-        <span class="material-symbols-sharp menu-toggle" onclick="document.querySelector('.nav-links').classList.toggle('active')">menu</span>
-        <ul class="nav-links">
-            <li><a href="examen opcion multiple html.html"><span class="material-symbols-sharp">quiz</span> Examen</a></li>
-            <li><a href="informacion.html"><span class="material-symbols-sharp">school</span> Reglas</a></li>
-            <li><a href="mini juego supremo.html"><span class="material-symbols-sharp">videogame_asset</span> Juego 1</a></li>
-            <li><a href="quiz.html"><span class="material-symbols-sharp">extension</span> Juego 2</a></li>
-        </ul>
-    </nav>
+    <!-- MENÚ FLOTANTE REDONDO -->
+    <div class="floating-menu">
+        <div class="menu-btn" id="menuBtn">
+            <span class="material-symbols-sharp">menu</span>
+        </div>
+        <nav class="menu-panel" id="menuPanel">
+            <a href="index.html">Inicio</a>
+            <a href="#">Examen When/While</a>
+            <a href="informacion.html">Reglas Gramaticales</a>
+            <a href="mini juego supremo.html">Duck Hunt</a>
+            <a href="quiz.html">Quiz Interactivo</a>
+            <a href="Aviso Legal.html">Aviso Legal</a>
+            <a href="Politica de Privacidad.html">Privacidad</a>
+        </nav>
+    </div>
 
-    <!-- Botón Home arriba derecha -->
-    <a href="index.html" class="home-float-top">
+    <!-- BOTÓN HOME NARANJA -->
+    <a href="index.html" class="home-btn">
         <span class="material-symbols-sharp">home</span>
     </a>
 
-    <!-- TU CONTENIDO ORIGINAL (sin tocar nada) -->
-    <div class="container">
-        <h1>Usos de <em>When</em> y <em>While</em> en Past Continuous</h1>
-        <p>Responde las siguientes preguntas (escribe **when** o **while** para las de llenar el espacio) y haz clic en "Verificar Respuestas".</p>
+    <main class="main-container">
+        <header class="header">
+            <h1>When & While</h1>
+            <p>Past Continuous • 10 preguntas</p>
+        </header>
 
-        <form id="quizForm">
-            <div class="question" data-q="q1">
-                <p>1. I was cooking dinner <span class="placeholder">_____</span> the phone rang.</p>
-                <input type="text" name="q1" placeholder="Escribe aquí tu respuesta">
-                <div id="feedback-q1" class="feedback"></div>
+        <form id="quizForm" class="quiz-form">
+
+            <!-- 1 -->
+            <div class="question-card" data-q="q1">
+                <p class="q-text">1. I was cooking dinner _____ the phone rang.</p>
+                <input type="text" name="q1" placeholder="when / while" autocomplete="off">
+                <div class="feedback" id="fb-q1"></div>
             </div>
 
-            <div class="question" data-q="q2">
-                <p>2. <span class="placeholder">_____</span> I was studying, my friends were playing football.</p>
-                <input type="text" name="q2" placeholder="Escribe aquí tu respuesta">
-                <div id="feedback-q2" class="feedback"></div>
+            <!-- 2 -->
+            <div class="question-card" data-q="q2">
+                <p class="q-text">2. _____ I was studying, my friends were playing football.</p>
+                <input type="text" name="q2" placeholder="when / while" autocomplete="off">
+                <div class="feedback" id="fb-q2"></div>
             </div>
 
-            <div class="question" data-q="q3">
-                <p>3. I was sleeping <span class="placeholder">_____</span> my mom arrived.</p>
-                <input type="text" name="q3" placeholder="Escribe aquí tu respuesta">
-                <div id="feedback-q3" class="feedback"></div>
+            <!-- 4 - RADIO BUTTON ÉPICO -->
+            <div class="question-card" data-q="q4">
+                <p class="q-text">4. ¿Cuál frase está 100% correcta?</p>
+                <div class="radio-container">
+                    <label class="radio-label">
+                        <input type="radio" name="q4" value="a">
+                        <span class="radio-check"></span>
+                        <span class="radio-text">While I was watched TV, my brother came.</span>
+                    </label>
+                    <label class="radio-label">
+                        <input type="radio" name="q4" value="b">
+                        <span class="radio-check"></span>
+                        <span class="radio-text">While I was watching TV, my brother was doing homework.</span>
+                    </label>
+                    <label class="radio-label">
+                        <input type="radio" name="q4" value="c">
+                        <span class="radio-check"></span>
+                        <span class="radio-text">When I watching TV, my brother came.</span>
+                    </label>
+                </div>
+                <div class="feedback" id="fb-q4"></div>
             </div>
 
-            <div class="question" data-q="q4">
-                <p>4. ¿Cuál de las siguientes frases es correcta? Escribe **solo** la frase correcta.</p>
-                <p style="font-style: italic; font-size: 0.9em;">(a) While I was watched TV, my brother came.<br>(b) While I was watching TV, my brother was doing homework.<br>(c) When I watching TV, my brother came.</p>
-                <input type="text" name="q4" placeholder="Escribe aquí tu respuesta">
-                <div id="feedback-q4" class="feedback"></div>
+            <!-- 5 - RADIO BUTTON ÉPICO -->
+            <div class="question-card" data-q="q5">
+                <p class="q-text">5. “When I was walking, it started to rain.” → Función de <em>when</em>:</p>
+                <div class="radio-container">
+                    <label class="radio-label">
+                        <input type="radio" name="q5" value="a">
+                        <span class="radio-check"></span>
+                        <span class="radio-text">Acción larga de fondo</span>
+                    </label>
+                    <label class="radio-label">
+                        <input type="radio" name="q5" value="b">
+                        <span class="radio-check"></span>
+                        <span class="radio-text">Acción corta que interrumpe</span>
+                    </label>
+                    <label class="radio-label">
+                        <input type="radio" name="q5" value="c">
+                        <span class="radio-check"></span>
+                        <span class="radio-text">Equivalente a while</span>
+                    </label>
+                </div>
+                <div class="feedback" id="fb-q5"></div>
             </div>
 
-            <div class="question" data-q="q5">
-                <p>5. When I was walking to school, it started to rain. → ¿Cuál es el uso de "when" en este contexto? (Escribe **a**, **b** o **c**)</p>
-                <p style="font-style: italic; font-size: 0.9em;">(a) Introduce una acción más larga.<br>(b) Introduce una acción más corta que interrumpe otra.<br>(c) Significa lo mismo que "while".</p>
-                <input type="text" name="q5" placeholder="Escribe a, b o c">
-                <div id="feedback-q5" class="feedback"></div>
+            <!-- 10 - RADIO BUTTON ÉPICO (2 opciones) -->
+            <div class="question-card" data-q="q10">
+                <p class="q-text">10. I was running <strong>when</strong> I fell down. → Tiempo después de “when”:</p>
+                <div class="radio-container">
+                    <label class="radio-label">
+                        <input type="radio" name="q10" value="a">
+                        <span class="radio-check"></span>
+                        <span class="radio-text">Past Continuous</span>
+                    </label>
+                    <label class="radio-label">
+                        <input type="radio" name="q10" value="b">
+                        <span class="radio-check"></span>
+                        <span class="radio-text">Simple Past</span>
+                    </label>
+                </div>
+                <div class="feedback" id="fb-q10"></div>
             </div>
 
-            <div class="question" data-q="q6">
-                <p>6. They were talking <span class="placeholder">_____</span> the teacher entered the room.</p>
-                <input type="text" name="q6" placeholder="Escribe aquí tu respuesta">
-                <div id="feedback-q6" class="feedback"></div>
+            <!-- Resto de preguntas texto (q3, q6-q9) -->
+            <div class="question-card" data-q="q3">
+                <p class="q-text">3. I was sleeping _____ my mom arrived.</p>
+                <input type="text" name="q3" placeholder="when / while" autocomplete="off">
+                <div class="feedback" id="fb-q3"></div>
             </div>
 
-            <div class="question" data-q="q7">
-                <p>7. <span class="placeholder">_____</span> my parents were driving, I was reading a book.</p>
-                <input type="text" name="q7" placeholder="Escribe aquí tu respuesta">
-                <div id="feedback-q7" class="feedback"></div>
+            <div class="question-card" data-q="q6">
+                <p class="q-text">6. They were talking _____ the teacher entered.</p>
+                <input type="text" name="q6" placeholder="when / while" autocomplete="off">
+                <div class="feedback" id="fb-q6"></div>
             </div>
 
-            <div class="question" data-q="q8">
-                <p>8. The light went out <span class="placeholder">_____</span> we were watching the movie.</p>
-                <input type="text" name="q8" placeholder="Escribe aquí tu respuesta">
-                <div id="feedback-q8" class="feedback"></div>
+            <div class="question-card" data-q="q7">
+                <p class="q-text">7. _____ my parents were driving, I was reading a book.</p>
+                <input type="text" name="q7" placeholder="when / while" autocomplete="off">
+                <div class="feedback" id="fb-q7"></div>
             </div>
 
-            <div class="question" data-q="q9">
-                <p>9. ¿Qué conector se usa a menudo para acciones simultáneas en pasado continuo? (Escribe **when** o **while**)</p>
-                <input type="text" name="q9" placeholder="Escribe aquí tu respuesta">
-                <div id="feedback-q9" class="feedback"></div>
+            <div class="question-card" data-q="q8">
+                <p class="q-text">8. The lights went out _____ we were watching the movie.</p>
+                <input type="text" name="q8" placeholder="when / while" autocomplete="off">
+                <div class="feedback" id="fb-q8"></div>
             </div>
 
-            <div class="question" data-q="q10">
-                <p>10. I was running **when** I fell down. → ¿Qué tiempo verbal sigue a "when" en este caso? (Escribe **a** o **b**)</p>
-                <p style="font-style: italic; font-size: 0.9em;">(a) Pasado Continuo (Past Continuous).<br>(b) Pasado Simple (Simple Past).</p>
-                <input type="text" name="q10" placeholder="Escribe a o b">
-                <div id="feedback-q10" class="feedback"></div>
+            <div class="question-card" data-q="q9">
+                <p class="q-text">9. ¿Qué conector usamos para dos acciones largas simultáneas?</p>
+                <input type="text" name="q9" placeholder="when / while" autocomplete="off">
+                <div class="feedback" id="fb-q9"></div>
             </div>
 
-            <div class="button-group">
-                <button type="button" onclick="checkAnswers()" class="primary-button">Verificar Respuestas</button>
-                <button type="button" onclick="resetInputs()" class="secondary-button">Reiniciar Examen</button>
+            <div class="actions">
+                <button type="button" id="checkBtn" class="btn-check">Verificar Respuestas</button>
+                <button type="button" id="resetBtn" class="btn-reset">Reiniciar</button>
             </div>
         </form>
 
-        <div id="result"></div>
-    </div>
+        <div id="result" class="result"></div>
+    </main>
 
     <footer>
         <p>© 2025 <strong>Academic Grammar Pro</strong> — Elite English Training</p>
-        <p><a href="Aviso Legal.html">Aviso Legal</a> | <a href="Politica de Privacidad.html">Política de Privacidad</a></p>
     </footer>
 
     <script src="examen opcion multiple.js"></script>

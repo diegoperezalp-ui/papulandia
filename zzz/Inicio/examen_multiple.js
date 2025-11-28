@@ -1,94 +1,76 @@
-const correctAnswers = {
-    q1: { answer: "a", explanation: "Una acción corta (lights went out) interrumpe una acción larga → usamos **when**." },
-    q2: { answer: "a", explanation: "La acción corta (someone knocked) interrumpe la acción larga (Sarah was sleeping) → **when**." },
-    q3: { answer: "b", explanation: "Dos acciones largas simultáneas (talking + doing homework) → **while**." },
-    q4: { answer: "c", explanation: "Ambas son correctas: (a) = interrupción con when; (b) = acciones simultáneas con while." },
-    q5: { answer: "b", explanation: "Con 'when' + acción corta que interrumpe, la acción larga va en Past Continuous: was watching." },
-    q6: { answer: "b", explanation: "Estructura típica: Past Continuous + when + Past Simple (acción corta)." },
-    q7: { answer: "a", explanation: "Pregunta típica con 'What were you doing when...' (interrupción)." },
-    q8: { answer: "b", explanation: "Dos acciones largas al mismo tiempo → **while** es la opción natural." },
-    q9: { answer: "b", explanation: "Encontrarse con alguien es una acción corta, pero aquí se usa **while** porque 'shopping' es larga y el encuentro ocurre durante ese tiempo." },
-    q10: { answer: "b", explanation: "**While** es el conector típico para acciones largas simultáneas." }
+document.getElementById('menuBtn').onclick = () => {
+    document.getElementById('menuPanel').classList.toggle('active');
 };
 
-function disableInputs(disabled) {
-    document.querySelectorAll('input[type="radio"]').forEach(r => r.disabled = disabled);
-    document.querySelector('.primary-button').disabled = disabled;
-}
+// Respuestas correctas (a = when, b = while)
+const correctas = {q1:"a", q2:"b", q3:"b", q4:"a", q5:"b", q6:"a", q7:"a", q8:"a", q9:"b", q10:"a"};
 
-function scrollToResult() {
-    document.getElementById('result').scrollIntoView({ behavior: 'smooth', block: 'end' });
-}
+const explicaciones = {
+    q1: "Acción corta (doorbell rang) interrumpe una acción larga → <strong>when</strong>",
+    q2: "Dos acciones largas simultáneas → <strong>while</strong>",
+    q3: "Acción larga + acción corta puntual → <strong>while</strong>",
+    q4: "Acción corta (lights went out) interrumpe → <strong>when</strong>",
+    q5: "Dos acciones largas al mismo tiempo → <strong>while</strong>",
+    q6: "Acción corta que interrumpe una larga → <strong>when</strong>",
+    q7: "Acción larga interrumpida repentinamente → <strong>when</strong>",
+    q8: "Acción corta (arrived) interrumpe → <strong>when</strong>",
+    q9: "Dos acciones largas paralelas → <strong>while</strong>",
+    q10: "Acción corta (called) interrumpe → <strong>when</strong>"
+};
 
-function resetQuiz() {
-    document.getElementById('quizForm').reset();
-    document.querySelectorAll('.question').forEach(q => {
-        q.classList.remove('correct-answer-border', 'incorrect-answer-border');
-        const fb = q.querySelector('.feedback');
-        fb.innerHTML = ''; fb.classList.remove('correct', 'incorrect'); fb.style.display = 'none';
-    });
-    document.getElementById('result').innerHTML = '';
-    disableInputs(false);
-}
+document.getElementById('enviar').onclick = () => {
+    let buenas = 0;
+    let todasContestadas = true;
 
-function checkAnswers() {
-    // Verificar que TODAS las preguntas tengan una opción seleccionada
-    const total = Object.keys(correctAnswers).length;
-    let answeredCount = 0;
+    document.querySelectorAll('.card').forEach(card => {
+        const name = card.querySelector('input').name;
+        const seleccionado = card.querySelector('input:checked');
+        const retro = card.querySelector('.retro');
 
-    for (const q in correctAnswers) {
-        if (document.querySelector(`input[name="${q}"]:checked`)) answeredCount++;
-    }
-
-    if (answeredCount < total) {
-        document.getElementById('result').className = 'result-fail';
-        document.getElementById('result').innerHTML = `
-            <div style="font-size: 1.7em; margin-bottom: 12px; font-weight: 700;">
-                Por favor, responde TODAS las preguntas antes de verificar.
-            </div>
-            <p style="font-size: 1.1em; opacity: 0.9;">Faltan ${total - answeredCount} pregunta(s).</p>
-        `;
-        scrollToResult();
-        return;
-    }
-
-    // Si está completo → corregir normalmente
-    let score = 0;
-
-    document.querySelectorAll('.question').forEach(qDiv => {
-        qDiv.classList.remove('correct-answer-border', 'incorrect-answer-border');
-        const fb = qDiv.querySelector('.feedback');
-        fb.innerHTML = ''; fb.classList.remove('correct', 'incorrect'); fb.style.display = 'none';
-
-        const questionName = qDiv.dataset.q;
-        const selected = document.querySelector(`input[name="${questionName}"]:checked`);
-        const data = correctAnswers[questionName];
-
-        if (selected && selected.value === data.answer) {
-            score++;
-            qDiv.classList.add('correct-answer-border');
-            fb.classList.add('correct');
-            fb.innerHTML = 'Correcto';
-        } else {
-            qDiv.classList.add('incorrect-answer-border');
-            fb.classList.add('incorrect');
-            fb.innerHTML = `Incorrecto<br>Respuesta correcta: <strong>${data.answer.toUpperCase()}</strong><br>${data.explanation}`;
+        if (!seleccionado) {
+            todasContestadas = false;
+            retro.innerHTML = `<span style="color:#fbbf24;font-weight:700">Contesta esta pregunta para enviar</span>`;
+            retro.classList.add('show');
+            card.style.borderLeft = "12px solid #fbbf24";
+            return;
         }
-        fb.style.display = 'block';
+
+        const valor = seleccionado.value;
+        card.querySelectorAll('input').forEach(i => i.disabled = true);
+
+        if (valor === correctas[name]) {
+            buenas++;
+            card.style.borderLeft = "12px solid #22c55e";
+            retro.innerHTML = `<span style="color:#22c55e">¡Correcto!</span><br>${explicaciones[name]}`;
+        } else {
+            card.style.borderLeft = "12px solid #ef4444";
+            retro.innerHTML = `<span style="color:#ef4444">Incorrecto</span><br>Correcta: <strong>${correctas[name]==="a"?"when":"while"}</strong><br>${explicaciones[name]}`;
+        }
+        retro.classList.add('show');
     });
 
-    disableInputs(true);
+    if (!todasContestadas) return;
 
-    const percentage = (score / total) * 100;
-    const resultClass = percentage === 100 ? 'result-great' : percentage >= 70 ? 'result-pass' : 'result-fail';
-    const messages = { 'result-great': 'Perfecto! Dominas when y while.', 'result-pass': 'Muy bien! Casi perfecto.', 'result-fail': 'Repasa un poco más! Tú puedes.' };
-
-    document.getElementById('result').className = resultClass;
-    document.getElementById('result').innerHTML = `
-        <div style="font-size: 1.8em; margin-bottom: 8px;">${messages[resultClass]}</div>
-        <div style="font-size: 2.6em; margin: 18px 0; font-weight: 900;">${score} / ${total}</div>
-        <div style="font-size: 1.3em;">Puntaje: ${percentage.toFixed(0)}%</div>
+    const porcentaje = Math.round((buenas / 10) * 100);
+    document.getElementById('resultado').innerHTML = `
+        <h2 style="font-size:8rem;color:#fff;margin:0">${buenas}/10</h2>
+        <h3 style="font-size:4.5rem;color:#ddd6fe">${porcentaje}%</h3>
+        <p style="font-size:3rem;color:#fff;margin-top:40px">
+            ${buenas === 10 ? '¡PERFECCIÓN ESTELAR!' : buenas >= 7 ? '¡Excelente trabajo!' : '¡Sigue practicando!'}
+        </p>
     `;
+    document.getElementById('resultado').classList.add('show');
 
-    scrollToResult();
-}
+    if (buenas === 10) {
+        confetti({ particleCount: 500, spread: 130, origin: { y: 0.6 } });
+        const audio = new Audio('https://assets.mixkit.co/sfx/preview/mixkit-achievement-bell-600.mp3');
+        audio.play();
+    }
+
+    document.getElementById('enviar').disabled = true;
+    document.getElementById('enviar').textContent = "Enviado";
+};
+
+document.getElementById('reiniciar').onclick = () => {
+    if (confirm("¿Quieres reiniciar el examen?")) location.reload();
+};

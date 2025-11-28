@@ -3,134 +3,170 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Examen Múltiple - When y While</title>
+    <title>When vs While • Examen</title>
     <link rel="stylesheet" href="examen_multiple.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Cinzel:wght@900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Symbols+Sharp">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
 </head>
 <body>
 
-    <!-- NAVBAR (igual que antes) -->
-    <nav class="navbar">
-        <div class="logo">Academic Grammar Pro</div>
-        <span class="material-symbols-sharp menu-toggle" onclick="document.querySelector('.nav-links').classList.toggle('active')">menu</span>
-        <ul class="nav-links">
-            <li><a href="examen abierto.html"><span class="material-symbols-sharp">text_fields</span> Examen Abierto</a></li>
-            <li><a href="informacion.html"><span class="material-symbols-sharp">school</span> Reglas</a></li>
-            <li><a href="mini juego supremo.html"><span class="material-symbols-sharp">videogame_asset</span> Juego 1</a></li>
-            <li><a href="quiz.html"><span class="material-symbols-sharp">extension</span> Juego 2</a></li>
-        </ul>
-    </nav>
+    <!-- FONDO ESTELAR -->
+    <div class="stars"></div>
+    <div class="shooting-star"></div>
+    <div class="shooting-star"></div>
+    <div class="shooting-star"></div>
+    <div class="shooting-star"></div>
+    <div class="shooting-star"></div>
 
-    <a href="index.html" class="home-float-top">
-        <span class="material-symbols-sharp">home</span>
-    </a>
+    <!-- MENÚ FLOTANTE -->
+    <div class="menu-float">
+        <div class="menu-btn" id="menuBtn"></div>
+        <nav class="panel" id="menuPanel">
+            <a href="index.html">Inicio</a>
+            <a href="informacion.html">Teoria</a>
+            <a href="examen abierto.html">Examen abierto</a>
+             <a href="examen_multiple.html">Reiniciar Examen</a>
+        </nav>
+    </div>
+    <a href="index.html" class="home-btn"><span class="material-symbols-sharp">home</span></a>
 
     <div class="container">
-        <h1>Examen de Opción Múltiple<br><em>When</em> y <em>While</em> en Past Continuous</h1>
-        <p>Selecciona la opción correcta en cada pregunta.</p>
+        <header class="header">
+            <h1>When & While</h1>
+            <p>Examen • 10 preguntas • Elige tu respuesta y pulsa "Enviar Examen"</p>
+        </header>
 
-        <form id="quizForm">
-            <!-- Pregunta 1 -->
-            <div class="question" data-q="q1">
-                <p>1. We were having dinner ______ the lights went out.</p>
-                <label><input type="radio" name="q1" value="a"> a) when</label>
-                <label><input type="radio" name="q1" value="b"> b) while</label>
-                <label><input type="radio" name="q1" value="c"> c) both are correct</label>
-                <div id="feedback-q1" class="feedback"></div>
+        <form id="quiz">
+
+            <!-- PREGUNTA 1 -->
+            <div class="card">
+                <p class="pregunta"><span>1.</span> I was having a shower _____ the doorbell rang.</p>
+                <div class="radio-group">
+                    <label class="liquid-radio variant-lavender"><input type="radio" name="q1" value="a"><span class="radio-visual"></span><span class="radio-label">a) when</span></label>
+                    <label class="liquid-radio variant-coral"><input type="radio" name="q1" value="b"><span class="radio-visual"></span><span class="radio-label">b) while</span></label>
+                    <label class="liquid-radio variant-mint"><input type="radio" name="q1" value="c"><span class="radio-visual"></span><span class="radio-label">c) because</span></label>
+                    <label class="liquid-radio variant-sky"><input type="radio" name="q1" value="d"><span class="radio-visual"></span><span class="radio-label">d) after</span></label>
+                </div>
+                <div class="retro"></div>
             </div>
 
-            <!-- Pregunta 2 -->
-            <div class="question" data-q="q2">
-                <p>2. ______ Sarah was sleeping, someone knocked on the door.</p>
-                <label><input type="radio" name="q2" value="a"> a) When</label>
-                <label><input type="radio" name="q2" value="b"> b) While</label>
-                <label><input type="radio" name="q2" value="c"> c) Both are correct</label>
-                <div id="feedback-q2" class="feedback"></div>
+            <!-- PREGUNTA 2 -->
+            <div class="card">
+                <p class="pregunta"><span>2.</span> _____ I was sleeping, my brother was playing video games.</p>
+                <div class="radio-group">
+                    <label class="liquid-radio variant-lavender"><input type="radio" name="q2" value="a"><span class="radio-visual"></span><span class="radio-label">a) When</span></label>
+                    <label class="liquid-radio variant-coral"><input type="radio" name="q2" value="b"><span class="radio-visual"></span><span class="radio-label">b) While</span></label>
+                    <label class="liquid-radio variant-mint"><input type="radio" name="q2" value="c"><span class="radio-visual"></span><span class="radio-label">c) Until</span></label>
+                    <label class="liquid-radio variant-sky"><input type="radio" name="q2" value="d"><span class="radio-visual"></span><span class="radio-label">d) Before</span></label>
+                </div>
+                <div class="retro"></div>
             </div>
 
-            <!-- Pregunta 3 -->
-            <div class="question" data-q="q3">
-                <p>3. My parents were talking on the phone ______ I was doing my homework.</p>
-                <label><input type="radio" name="q3" value="a"> a) when</label>
-                <label><input type="radio" name="q3" value="b"> b) while</label>
-                <label><input type="radio" name="q3" value="c"> c) both are correct</label>
-                <div id="feedback-q3" class="feedback"></div>
+            <!-- PREGUNTA 3 -->
+            <div class="card">
+                <p class="pregunta"><span>3.</span> She was reading a book _____ her baby fell asleep.</p>
+                <div class="radio-group">
+                    <label class="liquid-radio variant-lavender"><input type="radio" name="q3" value="a"><span class="radio-visual"></span><span class="radio-label">a) when</span></label>
+                    <label class="liquid-radio variant-coral"><input type="radio" name="q3" value="b"><span class="radio-visual"></span><span class="radio-label">b) while</span></label>
+                    <label class="liquid-radio variant-mint"><input type="radio" name="q3" value="c"><span class="radio-visual"></span><span class="radio-label">c) because</span></label>
+                    <label class="liquid-radio variant-sky"><input type="radio" name="q3" value="d"><span class="radio-visual"></span><span class="radio-label">d) since</span></label>
+                </div>
+                <div class="retro"></div>
             </div>
 
-            <!-- Pregunta 4 -->
-            <div class="question" data-q="q4">
-                <p>4. Which sentence is grammatically correct?</p>
-                <label><input type="radio" name="q4" value="a"> a) When I was studying, my dog barked.</label>
-                <label><input type="radio" name="q4" value="b"> b) While I studied, my dog was barking.</label>
-                <label><input type="radio" name="q4" value="c"> c) Both are correct</label>
-                <div id="feedback-q4" class="feedback"></div>
+            <!-- PREGUNTA 4 -->
+            <div class="card">
+                <p class="pregunta"><span>4.</span> The lights went out _____ we were watching TV.</p>
+                <div class="radio-group">
+                    <label class="liquid-radio variant-lavender"><input type="radio" name="q4" value="a"><span class="radio-visual"></span><span class="radio-label">a) when</span></label>
+                    <label class="liquid-radio variant-coral"><input type="radio" name="q4" value="b"><span class="radio-visual"></span><span class="radio-label">b) while</span></label>
+                    <label class="liquid-radio variant-mint"><input type="radio" name="q4" value="c"><span class="radio-visual"></span><span class="radio-label">c) until</span></label>
+                    <label class="liquid-radio variant-sky"><input type="radio" name="q4" value="d"><span class="radio-visual"></span><span class="radio-label">d) as soon as</span></label>
+                </div>
+                <div class="retro"></div>
             </div>
 
-            <!-- Pregunta 5 -->
-            <div class="question" data-q="q5">
-                <p>5. I ______ TV when the earthquake started.</p>
-                <label><input type="radio" name="q5" value="a"> a) watched</label>
-                <label><input type="radio" name="q5" value="b"> b) was watching</label>
-                <label><input type="radio" name="q5" value="c"> c) was watch</label>
-                <div id="feedback-q5" class="feedback"></div>
+            <!-- PREGUNTA 5 -->
+            <div class="card">
+                <p class="pregunta"><span>5.</span> _____ my parents were cooking, I was doing homework.</p>
+                <div class="radio-group">
+                    <label class="liquid-radio variant-lavender"><input type="radio" name="q5" value="a"><span class="radio-visual"></span><span class="radio-label">a) When</span></label>
+                    <label class="liquid-radio variant-coral"><input type="radio" name="q5" value="b"><span class="radio-visual"></span><span class="radio-label">b) While</span></label>
+                    <label class="liquid-radio variant-mint"><input type="radio" name="q5" value="c"><span class="radio-visual"></span><span class="radio-label">c) After</span></label>
+                    <label class="liquid-radio variant-sky"><input type="radio" name="q5" value="d"><span class="radio-visual"></span><span class="radio-label">d) If</span></label>
+                </div>
+                <div class="retro"></div>
             </div>
 
-            <!-- Pregunta 6 -->
-            <div class="question" data-q="q6">
-                <p>6. What is the typical structure when we use "when" with Past Continuous?</p>
-                <label><input type="radio" name="q6" value="a"> a) Past Continuous + when + Past Continuous</label>
-                <label><input type="radio" name="q6" value="b"> b) Past Continuous + when + Past Simple</label>
-                <label><input type="radio" name="q6" value="c"> c) Past Simple + when + Past Continuous</label>
-                <div id="feedback-q6" class="feedback"></div>
+            <!-- PREGUNTA 6 -->
+            <div class="card">
+                <p class="pregunta"><span>6.</span> I dropped my phone _____ I was running to catch the bus.</p>
+                <div class="radio-group">
+                    <label class="liquid-radio variant-lavender"><input type="radio" name="q6" value="a"><span class="radio-visual"></span><span class="radio-label">a) when</span></label>
+                    <label class="liquid-radio variant-coral"><input type="radio" name="q6" value="b"><span class="radio-visual"></span><span class="radio-label">b) while</span></label>
+                    <label class="liquid-radio variant-mint"><input type="radio" name="q6" value="c"><span class="radio-visual"></span><span class="radio-label">c) because</span></label>
+                    <label class="liquid-radio variant-sky"><input type="radio" name="q6" value="d"><span class="radio-visual"></span><span class="radio-label">d) before</span></label>
+                </div>
+                <div class="retro"></div>
             </div>
 
-            <!-- Pregunta 7 -->
-            <div class="question" data-q="q7">
-                <p>7. ______ were you doing when I called you last night?</p>
-                <label><input type="radio" name="q7" value="a"> a) What</label>
-                <label><input type="radio" name="q7" value="b"> b) When</label>
-                <label><input type="radio" name="q7" value="c"> c) While</label>
-                <div id="feedback-q7" class="feedback"></div>
+            <!-- PREGUNTA 7 -->
+            <div class="card">
+                <p class="pregunta"><span>7.</span> We were playing in the park _____ it started raining heavily.</p>
+                <div class="radio-group">
+                    <label class="liquid-radio variant-lavender"><input type="radio" name="q7" value="a"><span class="radio-visual"></span><span class="radio-label">a) when</span></label>
+                    <label class="liquid-radio variant-coral"><input type="radio" name="q7" value="b"><span class="radio-visual"></span><span class="radio-label">b) while</span></label>
+                    <label class="liquid-radio variant-mint"><input type="radio" name="q7" value="c"><span class="radio-visual"></span><span class="radio-label">c) until</span></label>
+                    <label class="liquid-radio variant-sky"><input type="radio" name="q7" value="d"><span class="radio-visual"></span><span class="radio-label">d) after</span></label>
+                </div>
+                <div class="retro"></div>
             </div>
 
-            <!-- Pregunta 8 -->
-            <div class="question" data-q="q8">
-                <p>8. She was cooking dinner ______ her husband was playing video games.</p>
-                <label><input type="radio" name="q8" value="a"> a) when</label>
-                <label><input type="radio" name="q8" value="b"> b) while</label>
-                <label><input type="radio" name="q8" value="c"> c) both possible</label>
-                <div id="feedback-q8" class="feedback"></div>
+            <!-- PREGUNTA 8 -->
+            <div class="card">
+                <p class="pregunta"><span>8.</span> The teacher arrived _____ the students were making a lot of noise.</p>
+                <div class="radio-group">
+                    <label class="liquid-radio variant-lavender"><input type="radio" name="q8" value="a"><span class="radio-visual"></span><span class="radio-label">a) when</span></label>
+                    <label class="liquid-radio variant-coral"><input type="radio" name="q8" value="b"><span class="radio-visual"></span><span class="radio-label">b) while</span></label>
+                    <label class="liquid-radio variant-mint"><input type="radio" name="q8" value="c"><span class="radio-visual"></span><span class="radio-label">c) after</span></label>
+                    <label class="liquid-radio variant-sky"><input type="radio" name="q8" value="d"><span class="radio-visual"></span><span class="radio-label">d) before</span></label>
+                </div>
+                <div class="retro"></div>
             </div>
 
-            <!-- Pregunta 9 -->
-            <div class="question" data-q="q9">
-                <p>9. Choose the correct completion:<br>I met an old friend ______ I was shopping yesterday.</p>
-                <label><input type="radio" name="q9" value="a"> a) when</label>
-                <label><input type="radio" name="q9" value="b"> b) while</label>
-                <label><input type="radio" name="q9" value="c"> c) both are correct</label>
-                <div id="feedback-q9" class="feedback"></div>
+            <!-- PREGUNTA 9 -->
+            <div class="card">
+                <p class="pregunta"><span>9.</span> I was listening to music _____ I was cleaning my room.</p>
+                <div class="radio-group">
+                    <label class="liquid-radio variant-lavender"><input type="radio" name="q9" value="a"><span class="radio-visual"></span><span class="radio-label">a) when</span></label>
+                    <label class="liquid-radio variant-coral"><input type="radio" name="q9" value="b"><span class="radio-visual"></span><span class="radio-label">b) while</span></label>
+                    <label class="liquid-radio variant-mint"><input type="radio" name="q9" value="c"><span class="radio-visual"></span><span class="radio-label">c) because</span></label>
+                    <label class="liquid-radio variant-sky"><input type="radio" name="q9" value="d"><span class="radio-visual"></span><span class="radio-label">d) until</span></label>
+                </div>
+                <div class="retro"></div>
             </div>
 
-            <!-- Pregunta 10 -->
-            <div class="question" data-q="q10">
-                <p>10. Which connector is usually used for two long actions happening at the same time?</p>
-                <label><input type="radio" name="q10" value="a"> a) when</label>
-                <label><input type="radio" name="q10" value="b"> b) while</label>
-                <label><input type="radio" name="q10" value="c"> c) both are always interchangeable</label>
-                <div id="feedback-q10" class="feedback"></div>
+            <!-- PREGUNTA 10 -->
+            <div class="card">
+                <p class="pregunta"><span>10.</span> My mom called me _____ I was watching my favorite series.</p>
+                <div class="radio-group">
+                    <label class="liquid-radio variant-lavender"><input type="radio" name="q10" value="a"><span class="radio-visual"></span><span class="radio-label">a) when</span></label>
+                    <label class="liquid-radio variant-coral"><input type="radio" name="q10" value="b"><span class="radio-visual"></span><span class="radio-label">b) while</span></label>
+                    <label class="liquid-radio variant-mint"><input type="radio" name="q10" value="c"><span class="radio-visual"></span><span class="radio-label">c) because</span></label>
+                    <label class="liquid-radio variant-sky"><input type="radio" name="q10" value="d"><span class="radio-visual"></span><span class="radio-label">d) after</span></label>
+                </div>
+                <div class="retro"></div>
             </div>
 
-            <div class="button-group">
-                <button type="button" onclick="checkAnswers()" class="primary-button">Verificar Respuestas</button>
-                <button type="button" onclick="resetQuiz()" class="secondary-button">Reiniciar Examen</button>
+            <div class="botones-final">
+                <button type="button" id="enviar">Enviar Examen</button>
+                <button type="button" id="reiniciar">Reiniciar</button>
             </div>
         </form>
 
-        <div id="result"></div>
+        <div id="resultado" class="resultado"></div>
     </div>
-
-    <footer>
-        <p>© 2025 <strong>Academic Grammar Pro</strong> — Elite English Training</p>
-    </footer>
 
     <script src="examen_multiple.js"></script>
 </body>
