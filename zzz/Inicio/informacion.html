@@ -5,24 +5,40 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Past Continuous + When/While</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 </head>
 <body>
     <div class="overlay">
         <div class="container">
 
             <!-- MENÚ SUPERIOR (ya centrado y bonito) -->
-            <nav class="menu">
-                <a href="index.html">Inicio</a>
-                <a href="examen abierto.html">Examen 1</a>
-                <a href="examen_multiple.html">Examen 2</a>
-                <a href="mini juego supremo.html">Juego 1</a>
-                <a href="quiz.html">Juego 2</a>
-            </nav>
-
-            <!-- TÍTULO + ÁGUILA (perfectamente centrado) -->
+       <nav class="patriotic-fixed-menu">
+    <div class="menu-container">
+        <a href="index.html" class="menu-btn">
+            <span class="material-symbols-outlined">shield</span>
+            <span class="text">Inicio</span>
+        </a>
+        <a href="examen abierto.html" class="menu-btn">
+            <span class="material-symbols-outlined">edit_note</span>
+            <span class="text">Examen 1</span>
+        </a>
+        <a href="examen_multiple.html" class="menu-btn">
+            <span class="material-symbols-outlined">checklist_rtl</span>
+            <span class="text">Examen 2</span>
+        </a>
+        <a href="mini juego supremo.html" class="menu-btn">
+            <span class="material-symbols-outlined">sports_esports</span>
+            <span class="text">Juego 1</span>
+        </a>
+        <a href="quiz.html" class="menu-btn">
+            <span class="material-symbols-outlined">emoji_events</span>
+            <span class="text">Juego 2</span>
+        </a>
+    </div>
+</nav>    <!-- TÍTULO + ÁGUILA (perfectamente centrado) -->
             <header class="header-title">
                 <h1>Reglas fundamentales del past continuous y el when and while</h1>
-                <img src="USA.jpg" alt="Águila volando" class="eagle">
+                <img src="bandera usa.gif" alt="Águila volando" class="eagle">
             </header>
 
             <!-- CONTENIDO PRINCIPAL -->
@@ -78,7 +94,7 @@
                 </div>
 
                 <section>
-                    <h2>Ejemplos reales</h2>
+                    <h2>Ejemplos:</h2>
                     <ul style="max-width: 760px; margin: 30px auto; font-size: 1.25em; line-height: 2;">
                         <li>I was sleeping when you called me.</li>
                         <li>While we were having dinner, it started to rain.</li>
@@ -96,5 +112,17 @@
             </main>
         </div>
     </div>
+   <script>
+// MENÚ FIJO PATRIÓTICO – 100% FUNCIONAL
+document.addEventListener('DOMContentLoaded', () => {
+    const menu = document.querySelector('.patriotic-fixed-menu');
+    
+    window.addEventListener('scroll', () => {
+        menu.classList.toggle('scrolled', window.scrollY > 80);
+    });
+    
+    console.log("Menú patriótico fijo activado – ahora sí te sigue siempre");
+});
+</script>
 </body>
 </html>

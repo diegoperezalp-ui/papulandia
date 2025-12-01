@@ -34,9 +34,9 @@ body::before {
 }
 
 .container {
-    max-width: 1100px;
+  max-width: 1100px;
     margin: 0 auto;
-    padding: 20px;
+    padding: 100px 20px 20px;   /* ← 100px de margen superior por el menú fijo */
     position: relative;
     z-index: 3;
 }
@@ -263,4 +263,214 @@ th {
 
 .next-btn:active {
     transform: translateY(-2px);
+}
+.fixed-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(80, 40, 180, 0.92);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    padding: 12px 0;
+    text-align: center;
+    z-index: 9999;
+    box-shadow: 0 8px 32px rgba(100, 60, 200, 0.6);
+    border-bottom: 3px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
+}
+
+/* Efecto al hacer scroll: se hace más compacto y oscuro (opcional pero queda brutal) */
+.fixed-menu.scrolled {
+    padding: 8px 0;
+    background: rgba(60, 30, 150, 0.98);
+    box-shadow: 0 10px 40px rgba(100, 60, 200, 0.8);
+}
+
+.fixed-menu a {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.1em;
+    padding: 12px 24px;
+    margin: 0 8px;
+    border-radius: 50px;
+    transition: all 0.35s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.fixed-menu a:hover {
+    background: rgba(255, 255, 255, 0.25);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(120, 80, 255, 0.5);
+}
+
+.fixed-menu a .material-symbols-outlined {
+    font-size: 28px;
+    font-variation-settings: 'FILL' 1, 'wght' 700;
+    text-shadow: 0 0 10px rgba(255,255,255,0.4);
+}
+
+/* Brillo que cruza al pasar el ratón */
+.fixed-menu a::before {
+    content: '';
+    position: absolute;
+    top: 0; left: -100%;
+    width: 100%; height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+    transition: 0.7s;
+}
+.fixed-menu a:hover::before { left: 100%; }
+/* ============= MENÚ PATRIÓTICO FIJO – VERSIÓN ÉPICA USA 2025 ============= */
+.patriotic-fixed-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 9999;
+    padding: 14px 0;
+    background: rgba(0, 20, 80, 0.92);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 4px solid #c41e3a;
+    box-shadow: 0 10px 40px rgba(0, 20, 80, 0.7);
+    transition: all 0.4s ease;
+}
+
+.patriotic-fixed-menu.scrolled {
+    padding: 10px 0;
+    background: rgba(0, 10, 60, 0.98);
+    border-bottom-color: #fff;
+}
+
+.menu-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.menu-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    background: linear-gradient(135deg, rgba(255,255,255,0.15), rgba(255,255,255,0.05));
+    color: white;
+    text-decoration: none;
+    padding: 14px 20px;
+    border-radius: 20px;
+    min-width: 110px;
+    font-weight: 700;
+    font-size: 1em;
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255,255,255,0.2);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+    transition: all 0.4s ease;
+}
+
+.menu-btn:hover {
+    transform: translateY(-6px) scale(1.05);
+    background: linear-gradient(135deg, #c41e3a, #002868);
+    border-color: #fff;
+    box-shadow: 0 15px 35px rgba(196, 30, 58, 0.6);
+}
+
+.menu-btn .material-symbols-outlined {
+    font-size: 32px !important;
+    font-variation-settings: 'FILL' 1, 'wght' 700;
+    text-shadow: 0 0 15px rgba(255,255,255,0.6);
+}
+
+.menu-btn .text {
+    font-size: 0.95em;
+    letter-spacing: 1px;
+}
+
+/* En móvil los botones se hacen más pequeños pero siguen bonitos */
+@media (max-width: 768px) {
+    .menu-container { gap: 8px; }
+    .menu-btn { padding: 12px 16px; min-width: 90px; }
+    .menu-btn .material-symbols-outlined { font-size: 28px !important; }
+}
+/* MENÚ FIJO PATRIÓTICO – COLORES ORIGINALES DE TU PÁGINA DE INFORMACIÓN */
+.patriotic-fixed-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 9999;
+    padding: 16px 0;
+    background: rgba(80, 40, 180, 0.95);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    border-bottom: 4px solid rgba(255, 255, 255, 0.25);
+    box-shadow: 0 10px 40px rgba(100, 60, 200, 0.6);
+    transition: all 0.4s ease;
+}
+
+.patriotic-fixed-menu.scrolled {
+    padding: 10px 0;
+    background: rgba(60, 30, 150, 0.98);
+    border-bottom-color: #8a6bff;
+}
+
+.menu-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.menu-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    background: linear-gradient(135deg, rgba(120, 80, 255, 0.3), rgba(100, 60, 200, 0.4));
+    color: white;
+    text-decoration: none;
+    padding: 16px 22px;
+    border-radius: 22px;
+    min-width: 120px;
+    font-weight: 700;
+    font-size: 1.02em;
+    backdrop-filter: blur(12px);
+    border: 2px solid rgba(180, 140, 255, 0.4);
+    box-shadow: 0 10px 30px rgba(100, 60, 200, 0.5);
+    transition: all 0.4s ease;
+}
+
+.menu-btn:hover {
+    transform: translateY(-8px) scale(1.06);
+    background: linear-gradient(135deg, #8a6bff, #5c9eff);
+    border-color: white;
+    box-shadow: 0 18px 40px rgba(138, 107, 255, 0.7);
+}
+
+.menu-btn .material-symbols-outlined {
+    font-size: 34px !important;
+    font-variation-settings: 'FILL' 1, 'wght' 700;
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+}
+
+.menu-btn .text {
+    letter-spacing: 1.2px;
+    font-size: 0.98em;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .menu-container { gap: 10px; padding: 0 10px; }
+    .menu-btn { padding: 12px 16px; min-width: 100px; }
+    .menu-btn .material-symbols-outlined { font-size: 28px !important; }
 }

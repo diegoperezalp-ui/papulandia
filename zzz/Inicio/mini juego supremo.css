@@ -1,171 +1,230 @@
 :root {
-    --primary: #1D4ED8;
-    --accent: #7C3AED;
-    --secondary: #EA580C;
-    --dark: #1F2937;
-    --glass: rgba(255, 255, 255, 0.16);
-    --glass-hover: rgba(255, 255, 255, 0.24);
+    --bg-start: #1A0B3D;
+    --bg-mid: #2D1B69;
+    --bg-end: #6E5BFF;
+    --glass: rgba(255, 255, 255, 0.12);
+    --glass-hover: rgba(255, 255, 255, 0.20);
+    --accent: #9D4EDD;
+    --primary: #7B5EFF;
+    --light-purple: #E0D9FF;
+    --blue-glow: #5C9EFF;
+    --rosa-neon: #FF6BD6;        /* ← COLOR ROSA NEÓN DEL BOTÓN */
+    --rosa-borde: #F72585;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
-    font-family: 'Montserrat', sans-serif;
-    background: linear-gradient(rgba(69, 84, 246, 0), rgba(168, 122, 242, 0.7)),
-                url('Chicago.gif') center/cover fixed no-repeat;
-    color: white;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, var(--bg-start) 0%, var(--bg-mid) 50%, var(--bg-end) 100%);
+    color: #F4F7FA;
     min-height: 100vh;
     display: flex;
 }
 
-/* Sidebar */
+/* ===== SIDEBAR ===== */
 .sidebar {
     width: 260px;
     background: var(--glass);
-    backdrop-filter: blur(12px);
-    border-right: 1px solid rgba(255,255,255,0.2);
+    backdrop-filter: blur(16px);
+    border-right: 1px solid rgba(180, 140, 255, 0.25);
     padding: 2.5rem 1.8rem;
-    box-shadow: 8px 0 25px rgba(0,0,0,0.2);
+    box-shadow: 8px 0 35px rgba(80, 40, 180, 0.6);
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    border-left: 5px solid var(--accent);
 }
-.sidebar h2 { font-family: 'Cinzel', serif; font-size: 2rem; color: white; text-align: center; margin-bottom: 2.5rem; text-shadow: 0 2px 8px rgba(0,0,0,0.5); }
+
+.sidebar h2 {
+    font-family: 'Cinzel', serif;
+    font-size: 2.2rem;
+    text-align: center;
+    background: linear-gradient(90deg, #9D4EDD, #E0D9FF);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
 .sidebar button {
-    width: 100%; padding: 14px; margin: 10px 0;
-    background: rgba(255,255,255,0.25); border: 2px solid var(--primary);
-    border-radius: 12px; color: white; font-weight: 600; backdrop-filter: blur(8px); transition: 0.3s;
+    padding: 14px 20px;
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    color: white;
+    border: 3px solid var(--accent);
+    border-radius: 14px;
+    font-weight: 700;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.4s;
 }
-.sidebar button:hover { background: var(--primary); transform: translateY(-3px); }
 
-/* Área principal */
+.sidebar button:hover {
+    background: transparent;
+    box-shadow: 0 0 30px rgba(157, 78, 221, 0.8);
+    transform: translateY(-4px);
+}
+
+/* ===== ÁREA PRINCIPAL ===== */
 .main-game { flex: 1; padding: 2.5rem 2rem; max-width: 1100px; margin: 0 auto; }
-header h1 { font-family: 'Cinzel', serif; font-size: 3.2rem; color: white; text-align: center; text-shadow: 0 4px 15px rgba(0,0,0,0.6); margin-bottom: 0.5rem; }
-.subtitle { text-align: center; font-size: 1.25rem; color: white; opacity: 0.95; margin-bottom: 2rem; }
 
-/* Stats */
-.stats {
-    display: flex; justify-content: center; gap: 3rem;
-    background: var(--glass); backdrop-filter: blur(12px);
-    padding: 1rem 2.5rem; border-radius: 18px; border: 1px solid rgba(255,255,255,0.3);
-    margin-bottom: 2rem; font-size: 1.4rem; font-weight: 600; color: white;
-    box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+header h1 {
+    font-size: 3.5rem;
+    text-align: center;
+    font-weight: 900;
+    background: linear-gradient(90deg, #9D4EDD, #E0D9FF, #6E5BFF, #5C9EFF);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
 }
 
-/* Paneles lado a lado */
-.game-area { display: flex; gap: 2rem; height: 560px; }
+.subtitle { text-align: center; font-size: 1.3rem; opacity: 0.9; margin-bottom: 2rem; }
 
-/* Paneles translúcidos */
+.stats {
+    display: flex; justify-content: center; gap: 4rem;
+    background: var(--glass); backdrop-filter: blur(16px);
+    padding: 1.2rem 3rem; border-radius: 18px;
+    border: 1px solid rgba(180, 140, 255, 0.3);
+    margin-bottom: 2rem; font-size: 1.5rem; font-weight: 700;
+    box-shadow: 0 8px 32px rgba(80, 40, 180, 0.5);
+}
+
+.game-area { display: flex; gap: 2rem; height: 620px; }
+
 .panel {
     flex: 1; background: var(--glass); backdrop-filter: blur(16px);
-    border-radius: 22px; padding: 2.2rem 2rem; border: 1.5px solid rgba(255,255,255,0.25);
-    box-shadow: 0 12px 40px rgba(0,0,0,0.25); position: relative; overflow: hidden; transition: background 0.3s;
+    border-radius: 20px; padding: 2.5rem;
+    border: 1px solid rgba(180, 140, 255, 0.3);
+    box-shadow: 0 12px 40px rgba(80, 40, 180, 0.6);
+    position: relative;
 }
-.panel:hover { background: var(--glass-hover); }
+
 .panel::before {
-    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 6px;
-    background: linear-gradient(90deg, var(--primary), var(--accent));
-    border-radius: 22px 22px 0 0;
-}
-.panel h3 {
-    font-family: 'Cinzel', serif; font-size: 1.7rem; color: white; text-align: center;
-    margin-bottom: 1.6rem; text-shadow: 0 2px 8px rgba(0,0,0,0.6);
-    display: flex; align-items: center; justify-content: center; gap: 10px;
+    content: ''; position: absolute; top: 0; left: 0; right: 0;
+    height: 6px; background: linear-gradient(90deg, var(--primary), var(--accent));
+    border-radius: 20px 20px 0 0;
 }
 
-/* PREGUNTA ÉPICA */
+.panel h3 { font-size: 1.8rem; text-align: center; margin-bottom: 1.5rem; color: var(--light-purple); }
+
 #question-text {
-    padding: 1.6rem; background: rgba(255,255,255,0.18); border-radius: 16px;
-    text-align: center; font-size: 1.4rem; margin-bottom: 1.6rem;
-    border: 1px solid rgba(255,255,255,0.25); color: white; font-weight: 600;
-    animation: questionFade 0.8s ease-out; position: relative; overflow: hidden;
-}
-#question-text::before {
-    content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-    animation: shine 3s infinite;
+    padding: 2rem; background: rgba(255,255,255,0.12); border-radius: 16px;
+    text-align: center; font-size: 1.5rem; font-weight: 600;
+    margin-bottom: 1.5rem; border: 2px dashed rgba(180, 140, 255, 0.3);
 }
 
-/* BOTONES DE OPCIONES – AHORA BRILLAN Y EXPLOTAN */
 #options-container {
     display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
 }
+
 #options-container button {
-    position: relative; overflow: hidden; padding: 1.2rem; font-size: 1.05rem;
-    background: rgba(255,255,255,0.2); border: 2px solid var(--primary);
-    border-radius: 14px; color: white; font-weight: 700; backdrop-filter: blur(8px);
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    animation: pulse 4s infinite; text-transform: uppercase; letter-spacing: 1px;
-    cursor: pointer;
+    padding: 1.4rem; background: linear-gradient(135deg, var(--primary), var(--accent));
+    color: white; border: 3px solid var(--accent); border-radius: 14px;
+    font-weight: 700; font-size: 1.1rem; text-transform: uppercase; transition: all 0.4s;
 }
+
 #options-container button:hover {
-    transform: translateY(-6px) scale(1.05); background: var(--primary);
-    box-shadow: 0 15px 35px rgba(29,78,216,0.7);
+    background: transparent; box-shadow: 0 0 30px rgba(157, 78, 221, 0.8); transform: translateY(-6px);
 }
+
 #options-container button.correct-answer {
-    animation: correctBurst 0.8s ease-out forwards !important;
     background: #22c55e !important; border-color: #22c55e !important;
+    animation: correctBurst 0.8s ease-out;
 }
 
-/* BOTÓN DISPARAR – BOMBA NUCLEAR */
+/* BOTÓN DISPARAR → AHORA ROSA NEÓN Y TAMAÑO NORMAL */
 .shoot-btn {
-    display: block; padding: 18px 60px; font-size: 1.8rem; font-weight: 900;
-    letter-spacing: 3px; text-transform: uppercase; background: linear-gradient(45deg, var(--primary), #1e40af);
-    color: white; border: none; border-radius: 50px; margin: 1.5rem auto;
-    box-shadow: 0 12px 40px rgba(29,78,216,0.7); animation: shootPulse 2s infinite;
-    transition: all 0.4s; cursor: pointer;
+    display: block;
+    margin: 1.8rem auto 1rem;
+    padding: 14px 50px;                  /* ← Tamaño normal (antes era gigante) */
+    font-size: 1.4rem;                   /* ← Letra más pequeña */
+    font-weight: 900;
+    background: linear-gradient(135deg, var(--rosa-neon), #FF8AEF);
+    border: 4px solid var(--rosa-borde);
+    color: white;
+    border-radius: 50px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    box-shadow: 0 10px 30px rgba(255, 107, 214, 0.6);
+    animation: shootPulse 1.8s infinite;
+    cursor: pointer;
+    transition: all 0.4s;
 }
-.shoot-btn:hover:not(:disabled) { transform: translateY(-8px) scale(1.05); box-shadow: 0 20px 50px rgba(29,78,216,0.9); }
 
-/* TABLERO + PERRO PEQUEÑO */
-#game-board {
-    height: 380px; margin: 1.5rem 0; border: 5px solid var(--primary);
-    border-radius: 18px; background: url('fondo duck hunt.png') center/cover no-repeat;
-    cursor: crosshair; position: relative; overflow: hidden;
+.shoot-btn:hover {
+    transform: translateY(-6px) scale(1.06);
+    box-shadow: 0 18px 45px rgba(255, 107, 214, 0.8);
 }
+
+/* TABLERO + PERRO MUY PEQUEÑO Y DIFÍCIL */
+#game-board {
+    height: 420px;
+    background: url('fondo duck hunt.png') center/cover no-repeat;
+    border: 6px solid var(--rosa-neon);
+    border-radius: 20px;
+    cursor: crosshair;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 0 35px rgba(255, 107, 214, 0.4);
+}
+
 .target {
+    width: 92px !important;      /* ← Antes era 48px, ahora 92px → más grande y visible */
+    height: 72px !important;     /* ← Proporción perfecta */
     position: absolute;
-    width: 80px !important;     /* antes 100-120px → ahora más pequeño y bonito */
-    height: 60px !important;
-    /* proporcional */
     pointer-events: auto;
-    animation: float 3s ease-in-out infinite;
+    animation: floatFast 2.8s ease-in-out infinite;  /* ← Movimiento suave */
     z-index: 10;
+    /* La posición ahora la controla JavaScript (aleatoria) */
 }
 
 .target img {
     width: 100%;
     height: 100%;
     object-fit: contain;
-    image-rendering: pixel-art; 
+    image-rendering: pixel-art;
+    filter: drop-shadow(0 0 18px #FF6BD6);   /* ← Brillo rosa neón (combina con el botón) */
 }
 
 .target.hit {
-    animation: dogExplosion 0.9s ease-out forwards !important;
-    pointer-events: none;
+    animation: dogExplosion 1s ease-out forwards !important;
+}
+/* MENSAJES NUEVOS EN FASE DE DISPARO */
+#skill-message {
+    padding: 1.5rem;
+    border-radius: 16px;
+    text-align: center;
+    font-size: 1.6rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    min-height: 70px;
+    margin-top: 1rem;
 }
 
-
-
-.msg {
-    padding: 1.4rem; border-radius: 16px; font-size: 1.4rem; font-weight: 800;
-    text-align: center; min-height: 60px; background: rgba(255,255,255,0.2);
-    border: 2px solid transparent; text-transform: uppercase; letter-spacing: 1px;
-    animation: msgPop 0.6s ease-out;
+/* Mensaje de acierto */
+#skill-message.acierto {
+    background: linear-gradient(135deg, #22c55e, #16a34a);
+    color: white;
+    box-shadow: 0 0 50px rgba(34,197,94,0.8);
+    animation: correctGlow 1.5s infinite alternate;
 }
-.msg.correct { background: linear-gradient(135deg, #22c55e, #16a34a); border-color: #86efac;
-    box-shadow: 0 0 40px rgba(34,197,94,0.6); animation: correctGlow 1.5s infinite alternate; }
-.msg.incorrect { background: linear-gradient(135deg, #ef4444, #dc2626); border-color: #fca5a5; }
 
+/* Mensaje de fallo por tiempo */
+#skill-message.fallo-tiempo {
+    background: linear-gradient(135deg, #ef4444, #dc2626);
+    color: white;
+    box-shadow: 0 0 50px rgba(239,68,68,0.8);
+    animation: shake 0.6s;
+}
 
-
-@keyframes pulse { 0%,100%{box-shadow:0 0 0 0 rgba(29,78,216,0.4)} 50%{box-shadow:0 0 20px 8px rgba(29,78,216,0.2)} }
-@keyframes correctBurst { 0%{transform:scale(1);box-shadow:0 0 0 0 rgba(34,197,94,0.7)} 50%{transform:scale(1.15);box-shadow:0 0 40px 20px rgba(34,197,94,0.6)} 100%{transform:scale(1)} }
-@keyframes questionFade { 0%{opacity:0;transform:translateY(20px)} 100%{opacity:1;transform:translateY(0)} }
-@keyframes shine { 0%{left:-100%} 100%{left:100%} }
-@keyframes msgPop { 0%{transform:scale(0.3);opacity:0} 70%{transform:scale(1.1)} 100%{transform:scale(1);opacity:1} }
-@keyframes correctGlow { from{box-shadow:0 0 40px rgba(34,197,94,0.6)} to{box-shadow:0 0 60px rgba(34,197,94,0.9)} }
-@keyframes shootPulse { 0%,100%{box-shadow:0 12px 40px rgba(29,78,216,0.7)} 50%{box-shadow:0 12px 60px rgba(29,78,216,0.9),0 0 30px rgba(29,78,216,0.6)} }
-@keyframes dogExplosion { 0%{transform:scale(1) rotate(0);opacity:1;filter:hue-rotate(0deg)} 50%{transform:scale(1.8) rotate(15deg);filter:hue-rotate(90deg) brightness(2)} 100%{transform:scale(0) rotate(360deg);opacity:0} }
-@keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-20px)} }
-@keyframes shake { 0%,100%{transform:translateX(0)} 25%{transform:translateX(-10px)} 75%{transform:translateX(10px)} }
+/* ANIMACIONES */
+@keyframes correctBurst { 0%{transform:scale(1)} 50%{transform:scale(1.25)} 100%{transform:scale(1)} }
+@keyframes shootPulse { 0%,100%{box-shadow:0 10px 30px rgba(255,107,214,0.6)} 50%{box-shadow:0 10px 50px rgba(255,107,214,0.9)} }
+@keyframes dogExplosion { 0%{transform:scale(1)} 50%{transform:scale(2.5) rotate(30deg)} 100%{transform:scale(0) rotate(360deg);opacity:0} }
+@keyframes floatFast { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-25px)} }
+@keyframes correctGlow { from{box-shadow:0 0 50px rgba(34,197,94,0.8)} to{box-shadow:0 0 70px rgba(34,197,94,1)} }
+@keyframes shake { 0%,100%{transform:translateX(0)} 25%{transform:translateX(-12px)} 75%{transform:translateX(12px)} }
 
 /* Responsive */
 @media (max-width: 1100px) { .game-area{flex-direction:column;height:auto} .panel{min-height:500px} }

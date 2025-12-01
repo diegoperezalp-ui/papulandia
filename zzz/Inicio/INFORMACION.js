@@ -1,11 +1,19 @@
-// Solo un pequeño toque: cambia el color del menú al hacer scroll
-window.addEventListener('scroll', () => {
-    const menu = document.querySelector('.menu');
-    if (window.scrollY > 100) {
-        menu.style.background = 'rgba(0, 40, 104, 0.98)';
-    } else {
-        menu.style.background = 'rgba(0, 40, 104, 0.95)';
-    }
-});
+document.addEventListener('DOMContentLoaded', () => {
+    const menu = document.querySelector('.fixed-menu');
 
-console.log("Página de Past Continuous + When/While cargada correctamente");
+    // Si por error seguiste usando class="menu", te avisa
+    if (!menu) {
+        console.error('ERROR: El menú debe tener class="fixed-menu" (no "menu")');
+        return;
+    }
+
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 80) {
+            menu.classList.add('scrolled');
+        } else {
+            menu.classList.remove('scrolled');
+        }
+    });
+
+    console.log("Menú fijo y efecto scroll activados correctamente");
+});

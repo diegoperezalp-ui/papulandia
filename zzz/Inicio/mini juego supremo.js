@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    
+
     const livesDisplay = document.getElementById('lives');
     const scoreDisplay = document.getElementById('score');
     const grammarPhase = document.getElementById('grammar-phase');
@@ -10,54 +10,47 @@ document.addEventListener('DOMContentLoaded', () => {
     const triggerBtn = document.getElementById('trigger-btn');
     const gameBoard = document.getElementById('game-board');
     const skillMessage = document.getElementById('skill-message');
-    
-    
     const backgroundMusic = document.getElementById('musicaFondo');
-    backgroundMusic.loop = true; 
+
+    backgroundMusic.loop = true;
 
     function playMusic() {
         if (backgroundMusic.paused) {
-            backgroundMusic.play().catch(error => {
-                console.warn("Autoplay was blocked by the browser: ", error);
-            });
+            backgroundMusic.play().catch(() => {});
         }
     }
 
     function stopMusic() {
         backgroundMusic.pause();
-        backgroundMusic.currentTime = 0; 
+        backgroundMusic.currentTime = 0;
     }
 
-    
-    let lives = 3; // Initial Lives/Shots
+    let lives = 3;
     let score = 0;
     let isGameOver = false;
     let isGrammarPhaseActive = true;
     let currentQuestion = {};
     let targetSpawnTimer = null;
 
-    
     const grammarQuestions = [
         { text: "I **____** (Past Continuous) when the alarm rang.", correct: "was sleeping", options: ["was sleeping", "were sleeping", "is sleeping", "slept"] },
         { text: "We were talking **____** (Connector) he arrived.", correct: "when", options: ["when", "while", "but", "so"] },
         { text: "They were reading **____** (Connector) we were watching TV.", correct: "while", options: ["while", "when", "after", "before"] },
-        { text: "She **____** (Past Continuous) when her dog barked.", correct: "was jogging", options: ["was jogging", "were jogging", "jogged", "is jogging"] },
+        { text: "She **____** (Past Continuous) when her dog barked.", correct: "was jogging", options: ["was jogging", "were jogging", "jogged", "is jogging"] },  // ← FIJADO: sin espacio
         { text: "The thief was escaping **____** (Connector) the police arrived.", correct: "when", options: ["when", "while", "though", "unless"] }
     ];
-    let questionsPool = [...grammarQuestions]; 
 
-    // --- Game Flow Management ---
+    let questionsPool = [...grammarQuestions];
+
     function updateStatsDisplay() {
         livesDisplay.textContent = lives;
         scoreDisplay.textContent = score;
         triggerBtn.disabled = (lives <= 0);
-        triggerBtn.textContent = `Use Shot (${lives})`; // Texto traducido
+        triggerBtn.textContent = `Use Shot (${lives})`;
     }
 
     function loadGrammarPhase() {
-        // ⭐️ CONTROL DE MÚSICA: Detenemos la música al volver a la fase de gramática.
-        stopMusic(); 
-
+        stopMusic();
         if (isGameOver) return;
         isGrammarPhaseActive = true;
         skillPhase.classList.add('hidden');
@@ -68,57 +61,54 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         const randomIndex = Math.floor(Math.random() * questionsPool.length);
         currentQuestion = questionsPool.splice(randomIndex, 1)[0];
-        
+
         questionText.innerHTML = currentQuestion.text;
         optionsContainer.innerHTML = '';
-        grammarMessage.textContent = 'Select the correct option to win a Shot.'; // Texto traducido
+        grammarMessage.textContent = 'Selecciona la opción correcta para ganar un disparo';
         grammarMessage.className = '';
 
         const shuffledOptions = [...currentQuestion.options].sort(() => Math.random() - 0.5);
-        
         shuffledOptions.forEach(option => {
             const button = document.createElement('button');
             button.textContent = option;
-            button.dataset.value = option;
-            button.onclick = () => checkGrammarAnswer(option);
+            // ← FIJADO: function normal para pasar event
+            button.onclick = function(e) { 
+                checkGrammarAnswer(option, e.target); 
+            };
             optionsContainer.appendChild(button);
         });
     }
 
-function checkGrammarAnswer(answer) {
-    if (isGameOver || !isGrammarPhaseActive) return;
+    // ← FIJADO: recibe button como parámetro
+    function checkGrammarAnswer(answer, clickedButton) {
+        if (isGameOver || !isGrammarPhaseActive) return;
 
-    const clickedButton = event.target;
+        if (answer === currentQuestion.correct) {
+            lives++;  // ← +1 disparo por gramática correcta
+            grammarMessage.textContent = `¡PERFECTO! ¡DISPARA!`;
+            grammarMessage.className = 'correct msg';
+            clickedButton.classList.add('correct-answer');
+        } else {
+            lives--;
+            grammarMessage.textContent = `¡Ups! Intenta otra vez`;
+            grammarMessage.className = 'incorrect msg';
+            clickedButton.style.animation = 'shake 0.5s';
+        }
 
-    if (answer === currentQuestion.correct) {
-        lives++;
-        grammarMessage.textContent = `¡PERFECTO! ¡DISPARA!`;
-        grammarMessage.className = 'correct msg';
-        clickedButton.classList.add('correct-answer'); // ← EFECTO ÉPICO
-    } else {
-        lives--;
-        grammarMessage.textContent = `¡Ups! Intenta otra vez`;
-        grammarMessage.className = 'incorrect msg';
-        clickedButton.style.animation = 'shake 0.5s';
+        updateStatsDisplay();
+
+        if (lives <= 0) {
+            gameOver();
+            return;
+        }
+
+        optionsContainer.querySelectorAll('button').forEach(btn => btn.disabled = true);
+        setTimeout(loadSkillPhase, 1800);
     }
 
-    updateStatsDisplay();
-
-    if (lives <= 0) {
-        gameOver("grammar");
-        return;
-    }
-
-    optionsContainer.querySelectorAll('button').forEach(btn => btn.disabled = true);
-    setTimeout(loadSkillPhase, 1800);
-}
-    
     function loadSkillPhase() {
         if (isGameOver) return;
-        
-        // ⭐️ CONTROL DE MÚSICA: INICIAMOS MÚSICA CADA VEZ QUE EMPIEZA LA FASE DE DISPARO ⭐️
-        playMusic(); 
-
+        playMusic();
         isGrammarPhaseActive = false;
         grammarPhase.classList.add('hidden');
         skillPhase.classList.remove('hidden');
@@ -127,110 +117,83 @@ function checkGrammarAnswer(answer) {
     }
 
     function startSkillAttempt() {
-        if (isGameOver || isGrammarPhaseActive) return;
+        if (isGameOver || lives <= 0) return;
 
-        if (lives <= 0) {
-            gameOver("skill_no_lives");
-            return;
-        }
-
-        lives--;
+        lives--;  // ← Gasta 1 disparo
         updateStatsDisplay();
         triggerBtn.disabled = true;
         spawnTarget();
 
         targetSpawnTimer = setTimeout(() => {
-            skillFailed("time_out");
-        }, 1000);
+            skillFailed();
+        }, 3000);
     }
-    
-function spawnTarget() {
-    gameBoard.innerHTML = '';
-    const target = document.createElement('div');
-    target.classList.add('target');
 
-    const imageSource = "PERRO%20DUCK%20HUNT.gif";
+    function spawnTarget() {
+        gameBoard.innerHTML = '';
+        const target = document.createElement('div');
+        target.classList.add('target');
+        // ← FIJADO: IMAGEN DEL PERRO (era vacío)
+        target.innerHTML = `<img src="PERRO%20DUCK%20HUNT.gif" alt="Perro">`;
 
-    target.innerHTML = `
-        <img src="${imageSource}" alt="Perro gramatical" class="target-img-content">
-    `;
+        const size = 92;  // Perro más grande
+        const maxX = gameBoard.offsetWidth - size - 40;
+        const maxY = gameBoard.offsetHeight - size - 40;
 
-    // Tamaño del perro (coincide con el CSS)
-    const targetWidth = 80;
-    const targetHeight = 60;
+        const x = 20 + Math.random() * (maxX - 40);
+        const y = 20 + Math.random() * (maxY - 40);
 
-    // Márgenes para que nunca se salga del tablero
-    const margin = 20;
-    const maxX = gameBoard.clientWidth - targetWidth - margin;
-    const maxY = gameBoard.clientHeight - targetHeight - margin;
+        target.style.left = x + 'px';
+        target.style.top = y + 'px';
 
-    // Posición completamente aleatoria pero siempre visible
-    const randomX = margin + Math.random() * (maxX - margin);
-    const randomY = margin + Math.random() * (maxY - margin);
+        target.onclick = () => {
+            clearTimeout(targetSpawnTimer);
+            acertarDisparo(target);
+        };
 
-    target.style.left = `${randomX}px`;
-    target.style.top = `${randomY}px`;
+        gameBoard.appendChild(target);
+    }
 
-    target.onclick = checkTargetClick;
-    gameBoard.appendChild(target);
-}
-
-    function checkTargetClick() {
+    function acertarDisparo(target) {
         if (isGameOver) return;
+        target.classList.add('hit');
+        skillMessage.textContent = "¡ACERTASTE EL DISPARO!";
+        skillMessage.className = "msg acierto";
 
-        clearTimeout(targetSpawnTimer); 
-        gameBoard.innerHTML = ''; 
-        triggerBtn.disabled = false; 
-        
-        score++;
-        updateStatsDisplay();
-        skillMessage.textContent = `🎯 Success! You won 1 point.`; // Texto traducido
-        skillMessage.className = 'correct';
-
-        // ⭐️ CONTROL DE MÚSICA: Detenemos la música para volver a la gramática
+        score++;     // ← +1 PUNTO
+        lives++;     // ← +1 DISPARO (¡ESTO FALTABA!)
+        updateStatsDisplay();  // Actualiza pantalla
         stopMusic();
 
-        setTimeout(loadGrammarPhase, 1000);
+        setTimeout(() => {
+            gameBoard.innerHTML = '';
+            triggerBtn.disabled = false;
+            loadGrammarPhase();
+        }, 1200);
     }
 
-    function skillFailed(reason) {
+    function skillFailed() {
         if (isGameOver) return;
-
         clearTimeout(targetSpawnTimer);
-        gameBoard.innerHTML = ''; 
-        triggerBtn.disabled = false; 
+        gameBoard.innerHTML = '';
+        triggerBtn.disabled = false;
 
-        if (reason === "time_out") {
-            skillMessage.textContent = '⏱️ Too late! The target disappeared. Shot lost.'; // Texto traducido
-        } else if (reason === "skill_no_lives") {
-             skillMessage.textContent = '🚫 You need to recharge your grammatical battery!'; // Texto traducido
-        }
-        skillMessage.className = 'incorrect';
-        
-        // ⭐️ CONTROL DE MÚSICA: Detenemos la música para volver a la gramática
+        skillMessage.textContent = "¡FALLASTE! Se acabó el tiempo";
+        skillMessage.className = "msg fallo-tiempo";
+
         stopMusic();
-
-        setTimeout(loadGrammarPhase, 1000);
+        setTimeout(loadGrammarPhase, 1500);
     }
 
-    function gameOver(reason) {
+    function gameOver() {
         isGameOver = true;
         clearTimeout(targetSpawnTimer);
         triggerBtn.disabled = true;
-        
-        // ⭐️ CONTROL DE MÚSICA: Detenemos la música, el juego ha terminado
-        stopMusic(); 
-        
-        let finalMessage = '';
-        if (reason === "grammar") {
-            finalMessage = `❌ GAME OVER! You ran out of Shots after failing the grammar. Final Score: ${score}`; // Texto traducido
-        } else if (reason === "skill_no_lives") {
-             finalMessage = `❌ GAME OVER! You need more Shots to continue. Final Score: ${score}`; // Texto traducido
-        }
+        stopMusic();
 
         grammarPhase.classList.remove('hidden');
         skillPhase.classList.add('hidden');
-        grammarMessage.textContent = finalMessage;
+        grammarMessage.textContent = `GAME OVER! Puntuación final: ${score}`;
         grammarMessage.className = 'incorrect';
     }
 
@@ -238,39 +201,21 @@ function spawnTarget() {
         lives = 3;
         score = 0;
         isGameOver = false;
-        questionsPool = [...grammarQuestions]; 
-        
+        questionsPool = [...grammarQuestions];
         updateStatsDisplay();
         loadGrammarPhase();
     }
-    
-    // EFECTOS CREATIVOS AL RESPONDER
-function showAnswerFeedback(isCorrect, button) {
-    if (isCorrect) {
-        button.classList.add('correct-answer');
-        document.getElementById('grammar-message').textContent = "¡PERFECTO! ¡DISPARA!";
-        document.getElementById('grammar-message').classList.add('correct');
-        
-        // Sonido épico (si tienes uno)
-        // new Audio('correct.mp3').play();
-    } else {
-        button.style.animation = 'shake 0.5s';
-        document.getElementById('grammar-message').textContent = "¡Ups! Intenta otra vez";
-        document.getElementById('grammar-message').classList.add('incorrect');
-    }
-    }
 
-    // Animación de shake para fallos
+    // Animación shake
     const style = document.createElement('style');
     style.textContent = `
-    @keyframes shake {
-    0%, 100% { transform: translateX(0); }
-    25% { transform: translateX(-10px); }
-    75% { transform: translateX(10px); }
-   }
-   `;
-document.head.append(style);
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-10px); }
+            75% { transform: translateX(10px); }
+        }
+    `;
+    document.head.appendChild(style);
 
-    
     initGame();
 });
