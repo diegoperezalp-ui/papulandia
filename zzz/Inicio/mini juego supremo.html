@@ -12,7 +12,6 @@
 </head>
 <body>
 
-    <!-- Menú lateral -->
     <div class="sidebar">
         <h2>Just Dog It</h2>
          <button onclick="window.location.href='index.html'">Inicio</button>
@@ -33,15 +32,22 @@
         </div>
 
         <div class="game-area">
-            <!-- Fase Gramática (izquierda) -->
             <div id="grammar-phase" class="panel active">
                 <h3>Desafío Gramatical</h3>
                 <div id="question-text"></div>
-                <div id="options-container"></div>
+                
+                <div class="sentence-builder-area">
+                    <h4>Oración (Arrastra aquí)</h4>
+                    <div id="sentence-drop-area" class="drop-area"></div>
+                    
+                    <button id="check-sentence-btn" class="shoot-btn" disabled>COMPROBAR ORACIÓN</button>
+
+                    <h4>Banco de Palabras (Click o Arrastra)</h4>
+                    <div id="word-pool-container" class="word-pool"></div>
+                </div>
                 <div id="grammar-message" class="msg"></div>
             </div>
 
-            <!-- Fase Disparo (derecha) -->
             <div id="skill-phase" class="panel">
                 <h3>¡Dispara al perro!</h3>
                 <button id="trigger-btn" class="shoot-btn">DISPARAR (1 disparo)</button>

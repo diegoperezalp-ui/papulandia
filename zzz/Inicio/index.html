@@ -5,100 +5,136 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Academic Grammar Pro | Past Continuous</title>
     
-    <!-- Fuentes -->
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp" rel="stylesheet"/>
     
-    <!-- CSS -->
     <link rel="stylesheet" href="inicio.css"/>
 </head>
 
 <body>
-
     <header id="header">
         <nav class="navbar">
-            <div class="logo">Academic Grammar Pro</div>
+            <a href="index.html" class="logo">Academic Grammar Pro</a> 
             
-            <div class="menu-btn" id="menuBtn">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
+            <ul class="nav-links">
+                
+                <li class="dropdown-trigger" id="megaMenuTrigger">
+                    <a href="#" id="megaMenuToggle">
+                        Navegación <span class="material-symbols-sharp dropdown-icon">arrow_drop_down</span>
+                    </a>
+                    
+                    <div class="mega-menu" id="megaMenu">
+                        
+                        <div class="menu-column">
+                            <a href="informacion.html" class="menu-item">
+                                <span class="material-symbols-sharp">school</span>
+                                <div>
+                                    <h4>Teoría y Reglas</h4>
+                                    <p>Fundamentos, estructuras y uso de When/While.</p>
+                                </div>
+                            </a>
+                            <a href="examen abierto.html" class="menu-item">
+                                <span class="material-symbols-sharp">edit_square</span>
+                                <div>
+                                    <h4>Evaluacion Pregunta Abierta</h4>
+                                    <p>Evaluación final para demostrar tu dominio.</p>
+                                </div>
+                            </a>
+                            <a href="examen_multiple.html" class="menu-item">
+                                <span class="material-symbols-sharp">quiz</span>
+                                <div>
+                                    <h4>Evaluacion Opcion Multiple</h4>
+                                    <p>Práctica rápida con preguntas de opción múltiple.</p>
+                                </div>
+                            </a>
+                        </div>
+                        
+                        <div class="menu-column">
+                            <a href="mini juego supremo.html" class="menu-item">
+                                <span class="material-symbols-sharp">gamepad</span>
+                                <div>
+                                    <h4>Just Dog It</h4>
+                                    <p>El desafío principal de gramática y habilidad.</p>
+                                </div>
+                            </a>
+                            <a href="quiz.html" class="menu-item">
+                                <span class="material-symbols-sharp">fast_forward</span>
+                                <div>
+                                    <h4>Quiz English Pro</h4>
+                                    <p>Pon a prueba tu velocidad mental con el Quiz.</p>
+                                </div>
+                            </a>
+                            
+                            <div class="menu-column promo-card">
+                                <span class="material-symbols-sharp big-icon-promo">stars</span>
+                                <h5>Academic Grammar Pro</h5>
+                                <p>¡El sistema más efectivo para dominar la gramática inglesa!</p>
+                                <a href="#" class="btn-promo">
+                                    ¡Aprender Ahora!
+                                    <span class="material-symbols-sharp">arrow_forward</span>
+                                </a>
+                            </div>
+
+                        </div>
+                    </div>
+                    </li>
+            </ul>
         </nav>
     </header>
 
-    <!-- MENÚ FULL SCREEN -->
-    <div class="full-menu" id="fullMenu">
-        <ul>
-            <li><a href="informacion.html">
-                <span class="material-symbols-sharp">school</span> Teoría y Reglas
-            </a></li>
-            <li><a href="mini juego supremo.html">
-                <span class="material-symbols-sharp">videogame_asset</span> Juego 1
-            </a></li>
-            <li><a href="quiz.html">
-                <span class="material-symbols-sharp">extension</span> Juego 2
-            </a></li>
-            <li><a href="examen abierto.html">
-                <span class="material-symbols-sharp">quiz</span> Examen 1
-            </a></li>
-            <li><a href="examen_multiple.html">
-                <span class="material-symbols-sharp">assignment_turned_in</span> Examen 2 (Opcion Múltiples)
-            </a></li>
-        </ul>
-    </div>
-
-    <main>
+    <main id="main-content">
         <section class="hero">
-            <h1>Master Past Continuous</h1>
-            <p>Entrenamiento avanzado con explicaciones claras, juegos interactivos y exámenes reales de nivel Cambridge.</p>
-            <img src="bandera usa.gif" alt="Inglés" class="hero-img">
+            <h1>Domina el Past Continuous con la mejor experiencia interactiva</h1>
+            <p>Aprende a diferenciar el uso de **When** y **While** y afianza tus conocimientos con minijuegos dinámicos y exámenes de gramática. ¡Tu fluidez comienza aquí!</p>
+            <img src="londres.gif" alt="Imagen de Londres con estilo académico" class="hero-img">
         </section>
-
+        
         <section class="modules">
             <div class="module-card">
-                <h3><span class="material-symbols-sharp">menu_book</span> Teoría Completa</h3>
-                <p>Explicaciones detalladas, ejemplos reales, usos avanzados y los errores más comunes que cometen los hispanohablantes.</p>
-                <a href="informacion.html" class="btn btn-primary">Acceder a la Teoría</a>
+                <h3><span class="material-symbols-sharp">auto_stories</span> Fundamentos Clave y Exámenes</h3>
+                <p>Repasa las reglas esenciales y la estructura del Past Continuous. Evalúa tu dominio con el **examen abierto** y el de **opción múltiple**.</p>
+                <div class="btn-group">
+                    <a href="informacion.html" class="btn btn-primary">Ver Teoría</a>
+                    <a href="examen abierto.html" class="btn btn-secondary">Examen Abierto</a>
+                    <a href="quiz.html" class="btn btn-secondary">Examen Opción Múltiple</a>
+                </div>
             </div>
 
             <div class="module-card">
-                <h3><span class="material-symbols-sharp">smart_toy</span> Práctica Interactiva</h3>
-                <p>Juegos gamificados y exámenes cronometrados con corrección instantánea. Ideal para preparar First, Advanced o Proficiency.</p>
+                <h3><span class="material-symbols-sharp">joystick</span> Retos Interactivos</h3>
+                <p>Pon a prueba tu conocimiento de forma divertida. Estructura oraciones, identifica errores y afina tus reflejos con el desafiante juego del perro.</p>
                 <div class="btn-group">
-                    <a href="mini juego supremo.html" class="btn btn-secondary">Juego 1</a>
-                    <a href="quiz.html" class="btn btn-secondary">Juego 2</a>
-                    <a href="examen abierto.html" class="btn btn-secondary">Examen 1</a>
-                    <a href="examen_multiple.html" class="btn btn-secondary">Examen 2</a>
+                    <a href="mini juego supremo.html" class="btn btn-primary">Juego Principal</a>
+                    <a href="quiz.html" class="btn btn-secondary">Quiz Rápido</a>
                 </div>
             </div>
         </section>
-    
- <section class="compact-video">
-    <div class="module-card">
-        <h3 class="video-title">
-            <span class="material-symbols-sharp">play_circle</span>
-            Vídeo explicativo
-        </h3>
 
-        <div class="video-wrapper">
-            <iframe 
-                src="https://www.youtube.com/embed/u_u27LmEemQ?si=aJtrYSnIi3l7xEXb?origin=https://youtube.com"  <!-- ¡PARÁMETRO 'origin' ARREGLA EL REFERER! -->
-                title="When vs While - Past Continuous"
-                frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowfullscreen
-                referrerpolicy="strict-origin-when-cross-origin">  <!-- ¡ESTO ES CLAVE PARA DESKTOP! -->
-            </iframe>
-        </div>
-    </div>
-</section>
+        <section class="compact-video">
+            <div class="module-card">
+                <h3 class="video-title">
+                    <span class="material-symbols-sharp">play_circle</span>
+                    Vídeo explicativo
+                </h3>
+
+                <div class="video-wrapper">
+                    <iframe 
+                        src="https://www.youtube.com/embed/u_u27LmEemQ?si=aJtrYSnIi3l7xEXb?origin=https://youtube.com"
+                        title="When vs While - Past Continuous"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen
+                        referrerpolicy="strict-origin-when-cross-origin">
+                    </iframe>
+                </div>
+            </div>
+        </section>
+    </main>
 
     <footer>
-        <p>© 2025 Academic Grammar Pro — Elite English Training</p>
+        <p>© 2025 Academic Grammar Pro. Desarrollado para la excelencia educativa.</p>
     </footer>
 
-    <!-- JavaScript -->
     <script src="script.js"></script>
 </body>
 </html>
