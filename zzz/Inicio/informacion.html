@@ -9,6 +9,23 @@
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp" rel="stylesheet"/>
     
     <link rel="stylesheet" href="style.css"/>
+    
+    <!-- Meta tags para mejor SEO y accesibilidad -->
+    <meta name="theme-color" content="#7B5EFF">
+    <meta name="description" content="Aprende Past Continuous: estructura, formación y usos del tiempo pasado continuo en inglés">
+    
+    <!-- Estilos de impresión -->
+    <style media="print">
+        .concept-module {
+            break-inside: avoid;
+            box-shadow: none !important;
+            border: 2px solid #000 !important;
+        }
+        
+        .no-print {
+            display: none !important;
+        }
+    </style>
 </head>
 
 <body>
@@ -17,10 +34,16 @@
             <a href="index.html" class="logo">Academic Grammar Pro</a> 
             <ul class="nav-links">
                 <li><a href="index.html"><span class="material-symbols-sharp">home</span> Inicio</a></li>
-                <li><a href="informacion.html" class="active"><span class="material-symbols-sharp">school</span> Conceptos Básicos</a></li>
+                <li><a href="informacion.html" class="active"><span class="material-symbols-sharp">school</span> Past Continuous</a></li>
                 <li><a href="informacion_2.html"><span class="material-symbols-sharp">bookmark</span> WHEN vs WHILE</a></li>
-                <li><a href="quiz.html"><span class="material-symbols-sharp">quiz</span> Práctica</a></li>
-                <li><a href="mini juego supremo.html"><span class="material-symbols-sharp">gamepad</span> Juego</a></li>
+                <li class="dropdown">
+                    <a href="#"><span class="material-symbols-sharp">quiz</span> Práctica <span class="material-symbols-sharp">expand_more</span></a>
+                    <div class="dropdown-content">
+                        <a href="quiz.html"><span class="material-symbols-sharp">checklist</span> Examen Opción Múltiple</a>
+                        <a href="examen-abierto.html"><span class="material-symbols-sharp">edit_document</span> Examen Abierto</a>
+                        <a href="mini juego supremo.html"><span class="material-symbols-sharp">gamepad</span> Juego Interactivo</a>
+                    </div>
+                </li>
             </ul>
             
             <!-- Botón de menú móvil -->
@@ -32,10 +55,11 @@
         <!-- Menú móvil -->
         <div class="mobile-menu" id="mobileMenu">
             <a href="index.html"><span class="material-symbols-sharp">home</span> Inicio</a>
-            <a href="informacion.html" class="active"><span class="material-symbols-sharp">school</span> Conceptos Básicos</a>
+            <a href="informacion.html" class="active"><span class="material-symbols-sharp">school</span> Past Continuous</a>
             <a href="informacion_2.html"><span class="material-symbols-sharp">bookmark</span> WHEN vs WHILE</a>
-            <a href="quiz.html"><span class="material-symbols-sharp">quiz</span> Práctica</a>
-            <a href="mini juego supremo.html"><span class="material-symbols-sharp">gamepad</span> Juego</a>
+            <a href="quiz.html"><span class="material-symbols-sharp">checklist</span> Examen Opción Múltiple</a>
+            <a href="examen-abierto.html"><span class="material-symbols-sharp">edit_document</span> Examen Abierto</a>
+            <a href="mini juego supremo.html"><span class="material-symbols-sharp">gamepad</span> Juego Interactivo</a>
         </div>
     </header>
 
@@ -79,23 +103,23 @@
 
             <!-- Estructura básica -->
             <div class="concept-module" style="border-left-color: var(--accent);">
-                <h3><span class="material-symbols-sharp">architecture</span> Estructura Básica</h3>
+                <h3><span class="material-symbols-sharp">architecture</span> Estructura Básica del Past Continuous</h3>
                 <p>El Past Continuous se forma con el verbo auxiliar <span class="past-cont">WAS/WERE</span> + el verbo principal terminado en <span class="past-cont">-ING</span>.</p>
 
                 <div class="formula-box">
-                    <div style="font-size: 1.3rem; font-weight: 700; color: var(--primary); margin-bottom: 10px;">
-                        FÓRMULA: WAS/WERE + VERBO + ING
+                    <div style="font-size: 1.4rem; font-weight: 800; color: var(--primary); margin-bottom: 15px;">
+                        FÓRMULA DEL PAST CONTINUOUS: WAS/WERE + VERBO + ING
                     </div>
-                    <div style="font-size: 1.1rem;">
+                    <div style="font-size: 1.2rem;">
                         Sujeto + <span class="past-cont">was/were</span> + <span class="past-cont">verbo-ing</span>
                     </div>
                 </div>
 
                 <!-- Tabla de conjugación -->
                 <div class="contrast-grid">
-                    <div class="contrast-box" style="background: #F0F4FF; border: 2px solid var(--primary);">
+                    <div class="contrast-box" style="background: linear-gradient(135deg, #F0F4FF 0%, #E0E7FF 100%); border: 3px solid var(--primary);">
                         <h4><span class="material-symbols-sharp">person</span> Singular (I, He, She, It)</h4>
-                        <p style="font-size: 1.1rem; color: var(--dark);">
+                        <p style="font-size: 1.2rem; color: var(--dark);">
                             I <span class="past-cont">was studying</span><br>
                             He <span class="past-cont">was working</span><br>
                             She <span class="past-cont">was sleeping</span><br>
@@ -103,9 +127,9 @@
                         </p>
                     </div>
                     
-                    <div class="contrast-box" style="background: #F5F0FF; border: 2px solid var(--secondary);">
+                    <div class="contrast-box" style="background: linear-gradient(135deg, #F5F0FF 0%, #E9D8FD 100%); border: 3px solid var(--secondary);">
                         <h4><span class="material-symbols-sharp">groups</span> Plural (You, We, They)</h4>
-                        <p style="font-size: 1.1rem; color: var(--dark);">
+                        <p style="font-size: 1.2rem; color: var(--dark);">
                             You <span class="past-cont">were studying</span><br>
                             We <span class="past-cont">were working</span><br>
                             They <span class="past-cont">were sleeping</span><br>
@@ -136,7 +160,7 @@
                 </div>
             </div>
 
-            <!-- Reglas ortográficas -->
+            <!-- Reglas ortográficas del -ING -->
             <div class="concept-module" style="border-left-color: var(--when-color);">
                 <h3><span class="material-symbols-sharp">spellcheck</span> Reglas Ortográficas del -ING</h3>
                 <p>Al añadir -ING a los verbos, existen reglas específicas que debes seguir:</p>
@@ -147,7 +171,7 @@
                             <th>Regla</th>
                             <th>Verbo Base</th>
                             <th>Verbo + ING</th>
-                            <th>Ejemplo</th>
+                            <th>Ejemplo en Past Continuous</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -191,7 +215,7 @@
                 </div>
             </div>
 
-            <!-- Usos principales -->
+            <!-- Usos principales del Past Continuous -->
             <div class="concept-module" style="border-left-color: var(--while-color);">
                 <h3><span class="material-symbols-sharp">play_circle</span> Usos Principales del Past Continuous</h3>
                 
@@ -210,13 +234,13 @@
                         <p><strong>Ejemplo:</strong> While I <span class="past-cont">was cooking</span>, she <span class="past-cont">was studying</span>.</p>
                     </div>
                     
-                    <div class="contrast-box" style="background: #F3E5F5; border: 2px solid var(--secondary);">
+                    <div class="contrast-box" style="background: linear-gradient(135deg, #F3E5F5 0%, #E9D8FD 100%); border: 3px solid var(--secondary);">
                         <h4><span class="material-symbols-sharp">schedule</span> 3. Acciones en Progreso</h4>
                         <p>Describe una acción en un momento específico en el pasado.</p>
                         <p><strong>Ejemplo:</strong> At 8 PM yesterday, I <span class="past-cont">was having</span> dinner.</p>
                     </div>
                     
-                    <div class="contrast-box" style="background: #FFF0F5; border: 2px solid #FF6BD6;">
+                    <div class="contrast-box" style="background: linear-gradient(135deg, #FFF0F5 0%, #FFE6F2 100%); border: 3px solid #FF6BD6;">
                         <h4><span class="material-symbols-sharp">atmosphere</span> 4. Contexto o Ambiente</h4>
                         <p>Describe el ambiente o contexto en el que ocurrió algo.</p>
                         <p><strong>Ejemplo:</strong> The sun <span class="past-cont">was shining</span> and birds <span class="past-cont">were singing</span>.</p>
@@ -224,7 +248,91 @@
                 </div>
             </div>
 
-            <!-- Diferencias clave -->
+            <!-- Sección de Videos de YouTube - SOLO PAST CONTINUOUS -->
+            <div class="concept-module" style="border-left-color: var(--secondary);">
+                <h3><span class="material-symbols-sharp">video_library</span> Videos Explicativos sobre Past Continuous</h3>
+                <p>Aprende con explicaciones visuales de expertos en inglés:</p>
+                
+                <div class="multimedia-grid">
+                    <!-- Video 1: Explicación completa del Past Continuous -->
+                    <div class="video-container">
+                        <div class="video-placeholder" onclick="openVideo('https://www.youtube.com/embed/8l2j3R5yf-g')">
+                            <div class="video-thumbnail">
+                                <div style="width:100%;height:100%;background:linear-gradient(135deg,var(--primary)0%,var(--accent)100%);display:flex;align-items:center;justify-content:center;">
+                                    <span class="material-symbols-sharp" style="font-size:4rem;color:white;">play_circle</span>
+                                </div>
+                                <div class="play-button">
+                                    <span class="material-symbols-sharp">play_circle</span>
+                                </div>
+                            </div>
+                            <div class="video-info">
+                                <h4>Past Continuous - Explicación Completa</h4>
+                                <p>Learn English with Rebecca · 10 min</p>
+                                <p class="video-description">Aprende la estructura, usos y ejemplos del Past Continuous</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Video 2: Cómo formar el Past Continuous -->
+                    <div class="video-container">
+                        <div class="video-placeholder" onclick="openVideo('https://www.youtube.com/embed/nvU8s4oKkUw')">
+                            <div class="video-thumbnail">
+                                <div style="width:100%;height:100%;background:linear-gradient(135deg,var(--secondary)0%,#E94E83 100%);display:flex;align-items:center;justify-content:center;">
+                                    <span class="material-symbols-sharp" style="font-size:4rem;color:white;">play_circle</span>
+                                </div>
+                                <div class="play-button">
+                                    <span class="material-symbols-sharp">play_circle</span>
+                                </div>
+                            </div>
+                            <div class="video-info">
+                                <h4>Cómo Formar el Past Continuous</h4>
+                                <p>BBC Learning English · 8 min</p>
+                                <p class="video-description">Aprende a conjugar verbos en Past Continuous correctamente</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Video 3: Ejercicios de Past Continuous -->
+                    <div class="video-container">
+                        <div class="video-placeholder" onclick="openVideo('https://www.youtube.com/embed/3B4Xb3b4J8Q')">
+                            <div class="video-thumbnail">
+                                <div style="width:100%;height:100%;background:linear-gradient(135deg,var(--when-color)0%,#0D8C68 100%);display:flex;align-items:center;justify-content:center;">
+                                    <span class="material-symbols-sharp" style="font-size:4rem;color:white;">play_circle</span>
+                                </div>
+                                <div class="play-button">
+                                    <span class="material-symbols-sharp">play_circle</span>
+                                </div>
+                            </div>
+                            <div class="video-info">
+                                <h4>Ejercicios de Past Continuous</h4>
+                                <p>EngVid · 12 min</p>
+                                <p class="video-description">Practica con ejercicios interactivos y ejemplos reales</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Video 4: Errores comunes con Past Continuous -->
+                    <div class="video-container">
+                        <div class="video-placeholder" onclick="openVideo('https://www.youtube.com/embed/4eKXfE6oA2Y')">
+                            <div class="video-thumbnail">
+                                <div style="width:100%;height:100%;background:linear-gradient(135deg,var(--while-color)0%,#0A8B9D 100%);display:flex;align-items:center;justify-content:center;">
+                                    <span class="material-symbols-sharp" style="font-size:4rem;color:white;">play_circle</span>
+                                </div>
+                                <div class="play-button">
+                                    <span class="material-symbols-sharp">play_circle</span>
+                                </div>
+                            </div>
+                            <div class="video-info">
+                                <h4>Errores Comunes con Past Continuous</h4>
+                                <p>English with Lucy · 9 min</p>
+                                <p class="video-description">Evita los errores más frecuentes al usar este tiempo verbal</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Diferencias clave Past Continuous vs Past Simple -->
             <div class="concept-module" style="border-left-color: var(--primary);">
                 <h3><span class="material-symbols-sharp">difference</span> Past Continuous vs Past Simple</h3>
                 <p>Es crucial entender la diferencia entre estos dos tiempos pasados:</p>
@@ -275,9 +383,9 @@
                 </div>
             </div>
 
-            <!-- Práctica interactiva -->
+            <!-- Práctica interactiva del Past Continuous -->
             <div class="practice-box">
-                <h3><span class="material-symbols-sharp">edit_note</span> Práctica de Formación</h3>
+                <h3><span class="material-symbols-sharp">edit_note</span> Práctica de Past Continuous</h3>
                 <p>Conjuga los verbos en Past Continuous según el sujeto:</p>
                 
                 <div class="quiz-item">
@@ -311,71 +419,58 @@
                 </div>
             </div>
 
-            <!-- Advertencia importante -->
+            <!-- Advertencia importante sobre verbos de estado -->
             <div class="concept-module warning-module">
-                <h3><span class="material-symbols-sharp">warning</span> ¡CUIDADO! Errores Comunes</h3>
+                <h3><span class="material-symbols-sharp">warning</span> ¡CUIDADO! Verbos de Estado en Past Continuous</h3>
+                <p>NUNCA uses el Past Continuous con verbos de estado (sentimientos, posesión, conocimiento, etc.). Estos verbos siempre usan el Past Simple.</p>
                 
                 <div class="contrast-grid">
-                    <div class="contrast-box" style="background:#FEE4E4; border-color:#FF5252;">
-                        <h4 style="color:#B71C1C;"><span class="material-symbols-sharp">close</span> Error Común #1</h4>
-                        <p>Usar "was/were" con verbos de estado</p>
-                        <p class="incorrect-text">I <span>was knowing</span> the answer</p>
-                        <p><small>Los verbos de estado NO usan continuous</small></p>
+                    <div class="contrast-box" style="background:linear-gradient(135deg,#FEE4E4 0%,#FFDADA 100%); border-color:#FF5252;">
+                        <h4 style="color:#B71C1C;"><span class="material-symbols-sharp">close</span> Incorrecto</h4>
+                        <p>I <span class="incorrect-text">was knowing</span> the answer.</p>
+                        <p>She <span class="incorrect-text">was loving</span> chocolate.</p>
+                        <p>They <span class="incorrect-text">were having</span> a car.</p>
                     </div>
                     
-                    <div class="contrast-box" style="background:#FEE4E4; border-color:#FF5252;">
-                        <h4 style="color:#B71C1C;"><span class="material-symbols-sharp">close</span> Error Común #2</h4>
-                        <p>Olvidar el -ING en el verbo principal</p>
-                        <p class="incorrect-text">I <span>was study</span> for the exam</p>
-                        <p><small>¡No olvides el -ING!</small></p>
-                    </div>
-                    
-                    <div class="contrast-box" style="background:#FEE4E4; border-color:#FF5252;">
-                        <h4 style="color:#B71C1C;"><span class="material-symbols-sharp">close</span> Error Común #3</h4>
-                        <p>Confundir WAS/WERE según el sujeto</p>
-                        <p class="incorrect-text">You <span>was sleeping</span> early</p>
-                        <p><small>"You" siempre usa "were"</small></p>
-                    </div>
-                    
-                    <div class="contrast-box" style="background:#E8F5E9; border-color:#4CAF50;">
-                        <h4 style="color:#388E3C;"><span class="material-symbols-sharp">check</span> Solución</h4>
-                        <p>Memoriza la fórmula básica</p>
-                        <p class="formula-code">Sujeto + WAS/WERE + Verbo-ING</p>
-                        <p><small>Practica con diferentes sujetos</small></p>
+                    <div class="contrast-box" style="background:linear-gradient(135deg,#E8F5E9 0%,#D4EDDA 100%); border-color:#4CAF50;">
+                        <h4 style="color:#388E3C;"><span class="material-symbols-sharp">check</span> Correcto</h4>
+                        <p>I <span class="past-simple">knew</span> the answer.</p>
+                        <p>She <span class="past-simple">loved</span> chocolate.</p>
+                        <p>They <span class="past-simple">had</span> a car.</p>
                     </div>
                 </div>
                 
                 <!-- Lista de verbos de estado -->
                 <div class="interactive-element" onclick="toggleContent('verbosEstado')" style="margin-top: 20px;">
                     <span class="material-symbols-sharp">expand_more</span>
-                    <strong>Verbos de Estado (NO usan continuous)</strong>
+                    <strong>Verbos de Estado (NO usan Past Continuous)</strong>
                 </div>
                 
                 <div id="verbosEstado" class="hidden-content">
                     <div class="contrast-grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
                         <div>
-                            <h5>Sentimientos</h5>
-                            <p>love, hate, like, prefer</p>
+                            <h5>Sentimientos y Emociones</h5>
+                            <p>love, hate, like, dislike, prefer, want, need</p>
                         </div>
                         <div>
                             <h5>Posesión</h5>
-                            <p>have, own, belong, possess</p>
+                            <p>have, own, possess, belong, contain</p>
                         </div>
                         <div>
-                            <h5>Conocimiento</h5>
-                            <p>know, believe, understand</p>
+                            <h5>Conocimiento y Pensamiento</h5>
+                            <p>know, believe, understand, think, remember</p>
                         </div>
                         <div>
-                            <h5>Percepción</h5>
-                            <p>see, hear, smell, taste</p>
+                            <h5>Percepción Sensorial</h5>
+                            <p>see, hear, smell, taste, feel, sound</p>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Resumen visual -->
+            <!-- Resumen visual del Past Continuous -->
             <div class="concept-module" style="border-left-color: var(--accent);">
-                <h3><span class="material-symbols-sharp">summarize</span> Resumen Rápido</h3>
+                <h3><span class="material-symbols-sharp">summarize</span> Resumen Rápido: Past Continuous</h3>
                 
                 <div class="image-gallery">
                     <div class="gallery-item">
@@ -392,7 +487,7 @@
                             <span class="material-symbols-sharp">rule</span>
                         </div>
                         <div class="gallery-caption">
-                            <p><strong>Regla I/E</strong><br>write → writing<br>die → dying</p>
+                            <p><strong>Reglas del -ING</strong><br>write → writing<br>run → running<br>die → dying</p>
                         </div>
                     </div>
                     
@@ -401,7 +496,16 @@
                             <span class="material-symbols-sharp">timer</span>
                         </div>
                         <div class="gallery-caption">
-                            <p><strong>¿Cuándo usarlo?</strong><br>• Acciones en progreso<br>• Interrupciones<br>• Simultaneidad</p>
+                            <p><strong>¿Cuándo usarlo?</strong><br>• Acciones en progreso<br>• Interrupciones<br>• Acciones simultáneas</p>
+                        </div>
+                    </div>
+                    
+                    <div class="gallery-item">
+                        <div class="image-placeholder" style="background: linear-gradient(135deg, var(--while-color) 0%, #0A8B9D 100%);">
+                            <span class="material-symbols-sharp">warning</span>
+                        </div>
+                        <div class="gallery-caption">
+                            <p><strong>¡Precaución!</strong><br>NO usar con verbos de estado<br>Ej: know, love, have, want</p>
                         </div>
                     </div>
                 </div>
@@ -426,13 +530,14 @@
         <p>© 2025 Academic Grammar Pro. Desarrollado para la excelencia educativa.</p>
         <p class="footer-links">
             <a href="index.html">Inicio</a> | 
-            <a href="informacion.html">Conceptos Básicos</a> | 
+            <a href="informacion.html">Past Continuous</a> | 
             <a href="informacion_2.html">WHEN vs WHILE</a> | 
-            <a href="quiz.html">Práctica</a> | 
-            <a href="mini juego supremo.html">Juego</a>
+            <a href="quiz.html">Examen Opción Múltiple</a> | 
+            <a href="examen-abierto.html">Examen Abierto</a> | 
+            <a href="mini juego supremo.html">Juego Interactivo</a>
         </p>
     </footer>
 
-    <script src="script.js"></script>
+    <script src="INFORMACION.js"></script>
 </body>
 </html>
